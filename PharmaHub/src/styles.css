@@ -1,10 +1,21 @@
-html, body {
+html {
     height: 100%;
     margin: 0;
     padding: 0;
-    border-radius: 34px;
-    background: linear-gradient(145deg, #f0f0f0, #cacaca);
-    box-shadow:  27px 27px 55px #9f9f9f,
-                 -27px -27px 55px #ffffff;
 }
 
+:root {
+    --bg: #e0e5ec;
+    --shadow-dark: #a3b1c6;
+    --shadow-light: #ffffff;
+    --primary: #6c5ce7;
+    --text: #2d3436;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 2rem;
+}
