@@ -1,0 +1,31 @@
+<nav class="navbar header navbar-expand-lg mx-auto">
+    <div class="container-fluid ">
+        <!-- Logo -->
+        <a class="navbar-brand logo" href="#">
+            <img src="logo.png" alt="Logo" height="27">
+        </a>
+
+        <nav class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li *ngFor="let item of navbarItems" class="nav-item mx-2">
+                <a class="nav-link fw-medium fs-8"  [routerLink]="item.route">{{ item.label }}</a>
+              </li>
+            </ul>
+          </nav>
+
+            <!-- Login Icon -->
+            <div class="navbar-brand logo">
+            <lord-icon
+            src="https://cdn.lordicon.com/rzsnbiaw.json"
+           
+            trigger="hover"
+            style="width:27px;height:27px">
+           </lord-icon>
+           </div>
+
+          <!-- Toggler Button (for mobile) -->
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    </div>
+</nav>

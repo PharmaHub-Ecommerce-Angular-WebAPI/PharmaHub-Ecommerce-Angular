@@ -1,0 +1,43 @@
+.header {
+    border-radius: 50px;
+    background: var(--bg-color);
+    box-shadow: 8px 8px 16px var(--shadow-dark),
+               -8px -8px 16px var(--shadow-light);
+  
+    margin: 1rem auto;
+    width: 95%;
+}
+
+.logo{
+    border-radius: 50%;
+    background: var(--bg-color);
+    box-shadow: 5px 5px 10px var(--shadow-dark),
+               -5px -5px 10px var(--shadow-light);
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-collapse {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    padding: 0.75rem 1.5rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    display: inline-block;
+}
+
+.nav-link:hover {
+    box-shadow: inset 3px 3px 5px var(--shadow-dark),
+               inset -3px -3px 5px var(--shadow-light);
+    color: var(--highlight-color);
+}
