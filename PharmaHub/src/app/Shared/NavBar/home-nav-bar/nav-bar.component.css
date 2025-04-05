@@ -1,0 +1,27 @@
+.header {
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow:  8px 8px 16px #bebebe,
+                -8px -8px 16px #ffffff;
+    padding: 12px 25px;
+}
+.logo {
+    border-radius: 89px;;
+    background: #e0e0e0;
+    box-shadow:  5px 5px 10px #bebebe,
+                -5px -5px 10px #ffffff;
+    padding: 8px;
+    transition: all 0.3s ease;
+     margin-left: -3.5% ;
+}
+.nav-link {
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out; 
+}
+
+.nav-link:hover {
+    background: #e0e0e0;
+    box-shadow: inset 5px 3px 5px #bebebe,
+                inset -5px -3px 5px #ffffff;
+}

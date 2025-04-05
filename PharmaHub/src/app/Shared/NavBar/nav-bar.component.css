@@ -1,0 +1,6 @@
+.navbar{
+    border-radius: 107px;
+    background: linear-gradient(145deg, #f0f0f0, #cacaca);
+    box-shadow:  27px 27px 55px #9f9f9f,
+                 -27px -27px 55px #ffffff;
+}
