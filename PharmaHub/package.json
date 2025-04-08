@@ -22,6 +22,7 @@
     "lord-icon-element": "^4.1.2",
     "lottie-web": "^5.12.2",
     "rxjs": "~7.8.0",
+    "swiper": "^11.2.6",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
