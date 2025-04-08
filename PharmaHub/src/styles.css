@@ -5,11 +5,16 @@ html {
 }
 
 :root {
-    --bg: #e0e5ec;
-    --shadow-dark: #a3b1c6;
+    --bg: #e0e5eb;
+    --shadow-dark: #bec3c8;
     --shadow-light: #ffffff;
-    --primary: #6c5ce7;
-    --text: #2d3436;
+    --primary: rgba(255, 255, 255, 0.85);
+    --gray:rgba(110, 110, 110, 0.93);
+    --text: #d1c6ba;
+    --text-2:#5d5c5c;
+    --bg-navbar:#596c7b;
+    --shadow-dark-nav:#4c5c69;
+    --shadow-light-nav:#667c8d;
 }
 
 body {
@@ -19,3 +24,25 @@ body {
     min-height: 100vh;
     padding: 2rem;
 }
+
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+  }
+  
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--bg-navbar);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+  }
+  
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--bg-navbar);
+  }
