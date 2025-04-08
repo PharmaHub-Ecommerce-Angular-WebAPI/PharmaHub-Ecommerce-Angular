@@ -1,13 +1,21 @@
+<!-- Navbar Component -->
 <nav class="navbar header navbar-expand-lg mx-auto">
     <div class="container-fluid ">
         <!-- Logo -->
-        <a class="navbar-brand logo" href="#">
+        <a class="navbar-brand logo" >
             <img src="logo.png" alt="Logo" height="27">
         </a>
-
+        <!-- Navbar Name Of Website  -->
+        <div>
+          <span class="fw-bold " style="color: #a19587; letter-spacing: 1px;  font-family: 'Underdog', cursive;
+            font-style: normal;">PHARMA</span>
+          <span class="fw-bold " style="color: #5d5c5c; letter-spacing: 1px; font-family: 'Underdog', cursive;
+            font-style: normal;">HUB</span>
+      </div>
+        <!-- Navbar Items -->
         <nav class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-              <li *ngFor="let item of navbarItems" class="nav-item mx-2">
+              <li *ngFor="let item of navbarItems" class="nav-item mx-2 ">
                 <a class="nav-link fw-medium fs-8"  [routerLink]="item.route">{{ item.label }}</a>
               </li>
             </ul>

@@ -66,8 +66,9 @@ export class NavBarComponent implements OnInit {
     // For guests (not logged in)
     else {
       this.navbarItems = [
-        { label: 'Contact', route: '/products' },
-        { label: 'About Us', route: '/offers' },
+        { label: 'Servics', route: '/servics' },
+        { label: 'Contact', route: '/contact' },
+        { label: 'About Us', route: '/about Us' },
         { label: 'Help', route: '/help' }
       ];
     }
