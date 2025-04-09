@@ -34,12 +34,24 @@
   
   .neumorphic-box {
     margin-top: auto;
-    padding: 1.5rem;
-    border-radius: 20px;
-    background: #f0f0f0;
-    box-shadow: 8px 8px 16px #d9d9d9,
-               -8px -8px 16px #ffffff;
+    border-radius: 50px;
+    background: linear-gradient(145deg, #f0f5fb, #caced4);
+    /* box-shadow:  20px 20px 60px #bec3c8,
+                 -20px -20px 60px #ffffff; */
+    width: 11.7%;
+    height: 9%;
+      
   }
+  overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    width: 80%;
+    max-width: 800px;
+  } 
   
   .title-section h1 {
     font-size: 3.5rem;

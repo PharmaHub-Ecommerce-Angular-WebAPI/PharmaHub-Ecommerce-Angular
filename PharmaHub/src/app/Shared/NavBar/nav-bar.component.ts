@@ -10,6 +10,7 @@ interface NavbarItem {
   label: string;
   route: string;
   icon?: string;
+  href?:string;
 }
 
 @Component({
@@ -66,7 +67,7 @@ export class NavBarComponent implements OnInit {
     // For guests (not logged in)
     else {
       this.navbarItems = [
-        { label: 'Servics', route: '/servics' },
+        { label: 'Services', route: '/servics' , href:"#Services" },
         { label: 'Contact', route: '/contact' },
         { label: 'About Us', route: '/about Us' },
         { label: 'Help', route: '/help' }
