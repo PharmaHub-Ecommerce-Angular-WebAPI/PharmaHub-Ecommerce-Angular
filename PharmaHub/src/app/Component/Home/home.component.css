@@ -1,4 +1,5 @@
 /* home.component.css */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Inconsolata:wdth,wght@150,200..900&family=Poetsen+One&family=Tajawal:wght@200;300;700;800;900&family=Underdog&display=swap');
 :host {
     display: block;
     min-height: calc(100vh - 56px); /* Adjust based on navbar height */
@@ -16,6 +17,11 @@
   
   .container-wrapper {
     height: 100vh;
+  }
+  .tajawal-extralight {
+    font-family: "Tajawal", sans-serif;
+    font-weight: 200;
+    font-style: normal;
   }
   
   
@@ -35,12 +41,23 @@
   .neumorphic-box {
     margin-top: auto;
     border-radius: 50px;
-    background: linear-gradient(145deg, #f0f5fb, #caced4);
+    background: var(--bg);
     /* box-shadow:  20px 20px 60px #bec3c8,
                  -20px -20px 60px #ffffff; */
-    width: 11.7%;
-    height: 9%;
+    width: 10rem;
+    height: 4.5rem;
       
+  }
+  .logo-row img {
+    height: 8rem;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .logo-row img:hover {
+    opacity: 1;
+    filter: grayscale(0%);
   }
   overlay-content {
     position: absolute;
@@ -94,7 +111,7 @@
   }
   
   .swiper-container {
-    width: 100%;
+    width:  35%;;
     height: 100%;
   }
   
@@ -114,4 +131,18 @@
   swiper-slide p {
     color: var(--text-2);
     font-size: 1.1rem;
+  }
+  .card-services{
+    border-radius: 50px;
+background: linear-gradient(145deg, #caced4, #f0f5fb);
+box-shadow:  20px 20px 60px #bec3c8,
+             -20px -20px 60px #ffffff;
+  }
+  .full-screen-container {
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove any default padding */
+    display: flex; /* Optional: For centering or layout */
+    flex-direction: column; /* Optional: Adjust child layout */
   }
