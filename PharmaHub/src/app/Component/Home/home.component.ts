@@ -15,9 +15,5 @@ export class HomeComponent implements AfterViewInit {
   ngAfterViewInit() {
   
     register();
-  }
-  ngOnInit() {
-    console.log("Home component loaded");
-  }
-  
+  }  
 }

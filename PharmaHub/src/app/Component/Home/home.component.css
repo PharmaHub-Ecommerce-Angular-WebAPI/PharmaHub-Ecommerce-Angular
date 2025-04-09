@@ -113,6 +113,7 @@
   .swiper-container {
     width:  35%;;
     height: 100%;
+    
   }
   
   swiper-slide {
@@ -124,18 +125,24 @@
   swiper-slide h1 {
     font-size: 1.8rem;
     font-weight: 600;
-    color: var(--bg-navbar);
+    color:#c76aee;
     margin-bottom: 1rem;
+    font-family: "Tajawal", sans-serif;
+    font-weight: 400;
+    font-style: bold;
   }
   
   swiper-slide p {
-    color: var(--text-2);
+    color: rgb(124, 124, 124);
     font-size: 1.1rem;
+    font-family: "Tajawal", sans-serif;
+    font-weight: 600;
+    font-style: normal;
   }
   .card-services{
     border-radius: 50px;
-background: linear-gradient(145deg, #caced4, #f0f5fb);
-box-shadow:  20px 20px 60px #bec3c8,
+    background: linear-gradient(145deg, #caced4, #f0f5fb);
+    box-shadow:  20px 20px 60px #bec3c8,
              -20px -20px 60px #ffffff;
   }
   .full-screen-container {
