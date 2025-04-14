@@ -1,75 +1,116 @@
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<section class="offers-section">
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    rel="stylesheet"
+  />
 
-<div class="row align-items-start justify-content-between flex-wrap mb-4">
-  <h1 id="txt1" class="col-12 col-md-3">Offers</h1>
+  <div class="row align-items-start justify-content-between flex-wrap mb-4">
+    <h1 id="txt1" class="col-12 col-md-3">Offers</h1>
 
-  <!-- all offers -->
-  <div class="col-12 col-md-auto mt-3 mt-md-0">
-    <button class="btn">
-      <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
-        <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
-        <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
-      </svg>
-      <span>All Offers</span>
-    </button>
+    <!-- all offers -->
+    <div class="col-12 col-md-auto mt-3 mt-md-0">
+      <button class="btn">
+        <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+        </svg>
+        <span>All Offers</span>
+      </button>
+    </div>
   </div>
-</div>
 
-
-<div class="card-container row align-items-md-start">
+  <div class="card-container">
     <!-- button left -->
-     @if(limitedOffers.length >3){
-  <button (click)="moveLeft()" class="arrow-btn left"></button>
-     }
+    @if(limitedOffers.length >3){
+    <button (click)="moveLeft()" class="arrow-btn left"></button>
+    }
 
-  <!-- card body -->
-  <div class="custom-card col-12 col-sm-6 col-md-4 col-lg-3 mx-2 my-2"
-    *ngFor="let card of visibleCards; let i = index"
-    [ngClass]="{'active': i === 1, 'center-card': i === 1}">
-    <div class="custom-card-img-container">
-      <img [src]="card.imgUrl" alt="Image" class="custom-card-img">
-      <lord-icon class="custom-icon"
-        src="./heart.json"
-        trigger="hover"
-        style="width:45px;height:40px">
-      </lord-icon>
-    </div>
-    <div class="custom-card-body">
-      <div class="row">
-        <h5 class="custom-card-title col-8">{{card.name}}</h5>
-        <lord-icon src="./addcart.json"
-          trigger="hover"
-          style="width:40px;height:35px"
-          class="col-2">
-        </lord-icon>
-      </div>
-      <!-- <p class="custom-card-text row">Price : {{card.price | currency : 'EGP'}}</p> -->
-       <div class="row custom-card-text">
-           <p class="  col-2" >Price:</p>
-           <p class=" col-2" style="text-decoration-line: line-through;"> {{card.price }} 
-           <p class=" col-2">  <b>{{card.price | discount : card.DissPrice}} </b> </p>
-           <p class="col-2 custom-card-text">EGP</p>
+    <!-- card body -->
+    <div
+      class="custom-card col-12 col-sm-6 col-md-4 col-lg-3 mx-2 my-2 flip-card"
+      *ngFor="let card of visibleCards; let i = index"
+      [ngClass]="{ active: i === 1, 'center-card': i === 1 }"
+    >
+      <div class="flip-card-inner" [class.flipped]="card.isFlipped">
+        <div class="flip-card-front">
+          <div class="custom-card-img-container">
+            <img [src]="card.imgUrl" alt="Image" class="custom-card-img" />
+            <lord-icon
+              class="custom-icon"
+              src="./heart.json"
+              trigger="hover"
+              style="width: 45px; height: 40px"
+            >
+            </lord-icon>
+          </div>
+          <div class="custom-card-body">
+            <div class="row">
+              <h5 class="custom-card-title col-8">{{ card.name }}</h5>
+              <lord-icon
+                src="./addcart.json"
+                trigger="hover"
+                style="width: 40px; height: 35px"
+                class="col-2"
+              >
+              </lord-icon>
+            </div>
+            <!-- <p class="custom-card-text row">Price : {{card.price | currency : 'EGP'}}</p> -->
+            <div class="row custom-card-text">
+              <p class="col-2">Price:</p>
+              <p class="col-2" style="text-decoration-line: line-through">
+                {{ card.price }}
+              </p>
+              <p class="col-2">
+                <b>{{ card.price | discount : card.DissPrice }} </b>
+              </p>
+              <p class="col-2 custom-card-text">EGP</p>
+            </div>
+
+            <p class="custom-card-text">
+              {{ card.description.slice(0, 2).join(", ") }}
+
+              @if (card.description.length > 2) {
+              <button
+                style="color: #596c7b"
+                class="flipp-button-1"
+                (click)="card.isFlipped = !card.isFlipped"
+              >
+                ......
+              </button>
+              }
+            </p>
+
+            <div class="row align-items-center px-4">
+              <img
+                class="col-3"
+                [src]="card.imgPharm"
+                style="
+                  border-radius: 50%;
+                  border: 1px solid #596c7b;
+                  width: 40px;
+                  height: 50px;
+                "
+              />
+              <p class="custom-card-text row col-6 m-1">{{ card.pharmName }}</p>
+            </div>
+          </div>
         </div>
-  
-     
-      
-
-      <p class="custom-card-text ">
-        {{ card.description.slice(0, 2).join(', ') }}
-       
-        @if (card.description.length > 2) { <a href="#" style="text-decoration-line: none; color:  #596c7b;">......</a> }
-      </p>
-
-      <div class="row align-items-center">
-        <img class="col-3" [src]="card.imgPharm" style="border-radius: 50%; border: 1px solid #596c7b; width:40px; height: 50px;">
-        <p class="custom-card-text row col-6 m-1">{{card.pharmName}}</p>
+        <div class="flip-card-back">
+          <p class="custom-card-text">
+            {{ card.description }}
+          </p>
+          <button
+            class="flip-button-2"
+            (click)="card.isFlipped = !card.isFlipped"
+          >
+            Back
+          </button>
+        </div>
       </div>
     </div>
+    <!-- button rigth -->
+    @if(limitedOffers.length >3){
+    <button (click)="moveRight()" class="arrow-btn right"></button>
+    }
   </div>
-
-
-<!-- button rigth -->
-@if(limitedOffers.length >3){
-  <button (click)="moveRight()" class="arrow-btn right"></button>
-}
-</div>
+</section>
