@@ -1,0 +1,87 @@
+.ViewAllPharmaciesSearch {
+  color: #000;
+}
+.Heading-Search-Bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60rem;
+  margin: 0 auto;
+  padding: 5rem 0;
+  gap: 2rem;
+  position: relative;
+}
+.search-bar {
+  height: 2rem;
+  width: 30rem;
+  border-radius: 100px;
+  padding: 1.2rem;
+  background-color: #f7f7f7;
+  opacity: 65%;
+  transition: opacity 0.3s ease;
+  position: relative;
+}
+.search-bar:focus {
+  opacity: 100%;
+}
+.search-icon {
+  color: #000;
+  position: absolute;
+  right: 16rem;
+  opacity: 60%;
+}
+.Pharmacies-displayed-section {
+  color: #000;
+}
+.All-Pharmacies-Section {
+  max-width: 78rem;
+  margin: 0 auto;
+}
+.section-heading {
+  font-size: 2.6rem;
+  padding-bottom: 3rem;
+}
+.pharmacies-container {
+  padding-bottom: 4rem;
+}
+.Pharmacies-grid-container {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 16px;
+}
+.row {
+  gap: 4rem;
+}
+.pharmacy-item {
+  display: block;
+  width: 100%;
+  max-width: 15.625rem;
+  height: 10.625rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: black;
+  transition: transform 0.3s;
+  box-shadow: 0 4px 5px 2px rgba(0, 0, 0, 0.17);
+}
+.pharmacy-item:hover {
+  transform: translateY(-1rem) scale(1);
+}
+.pharmacy-image {
+  width: 4.5rem;
+  height: auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 5px 2px rgba(0, 0, 0, 0.17);
+}
+img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+}
