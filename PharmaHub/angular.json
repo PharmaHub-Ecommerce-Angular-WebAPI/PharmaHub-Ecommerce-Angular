@@ -16,9 +16,7 @@
             "outputPath": "dist/pharma-hub",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -76,10 +74,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {
@@ -87,15 +82,15 @@
                 "input": "public"
               }
             ],
-       "styles": [
-                "node_modules/bootstrap/dist/css/bootstrap.min.css",
-                "node_modules/swiper/swiper-bundle.min.css",
-                "src/styles.css"
-                 ],
-        "scripts": [
-                "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-                 "node_modules/swiper/swiper-bundle.min.js"
-               ]
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/swiper/swiper-bundle.min.css",
+              "src/styles.css"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/swiper/swiper-bundle.min.js"
+            ]
           }
         }
       }
