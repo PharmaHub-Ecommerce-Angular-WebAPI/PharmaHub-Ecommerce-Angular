@@ -1,178 +1,288 @@
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-    background-color: #e8eef6;
-  }
-  
-  .card-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: nowrap;
-    overflow: hidden;
-    position: relative;
-    padding: 2rem 0;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background-color: #e8eef6;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  position: relative;
+  padding: 2rem 0;
+}
+
+.custom-card {
+  width: 19rem;
+  transition: transform 0.3s ease;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+}
+
+.custom-card-img-container {
+  position: relative;
+}
+
+.custom-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.custom-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.custom-card-body {
+  padding: 15px;
+}
+
+.custom-card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.custom-card-text {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.center-card {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
+
+#txt1 {
+  color: #596c7b;
+}
+
+/* arrow buttons */
+.arrow-btn {
+  --arrow-size: 3rem;
+  --arrow-color: #596c7b;
+  --arrow-color-hover: rgba(255, 255, 255, 0.5);
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.arrow-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: calc(var(--arrow-size) * 0.7071);
+  height: calc(var(--arrow-size) * 0.7071);
+  box-sizing: border-box;
+  border-top: calc(var(--arrow-size) / 5) solid var(--arrow-color);
+  transition: all 0.2s ease-in-out;
+}
+
+.arrow-btn.left {
+  left: 10px;
+}
+
+.arrow-btn.right {
+  right: 10px;
+}
+
+.arrow-btn.left::after {
+  left: calc(var(--arrow-size) / 5);
+  border-left: calc(var(--arrow-size) / 5) solid var(--arrow-color);
+  transform: rotate(-45deg);
+  transform-origin: top left;
+}
+
+.arrow-btn.right::after {
+  right: calc(var(--arrow-size) / 5);
+  border-right: calc(var(--arrow-size) / 5) solid var(--arrow-color);
+  transform: rotate(45deg);
+  transform-origin: top right;
+}
+
+.arrow-btn.left:hover::after {
+  box-shadow: calc(var(--arrow-size) / -8) calc(var(--arrow-size) / -8) 0
+    var(--arrow-color);
+  border-color: var(--arrow-color-hover);
+}
+
+.arrow-btn.right:hover::after {
+  box-shadow: calc(var(--arrow-size) / 8) calc(var(--arrow-size) / -8) 0
+    var(--arrow-color);
+  border-color: var(--arrow-color-hover);
+}
+
+/* all packages button */
+.btn {
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #91c9ff;
+  outline: none;
+  transition: 1s ease-in-out;
+  position: relative;
+}
+
+svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  fill: none;
+  stroke: #fff;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: 1s ease-in-out;
+}
+
+.btn:hover {
+  transition: 1s ease-in-out;
+  background: #596c7b;
+}
+
+.btn:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.btn:hover span {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.btn span {
+  color: #596c7b;
+  font-size: 18px;
+  font-weight: 100;
+}
+.flip-card {
+  background-color: transparent;
+  width: 19rem;
+  height: 26.6rem;
+  perspective: 150rem;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.9s;
+  transform-style: preserve-3d;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  background: #e0e0e0;
+}
+
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: block;
+}
+
+.flip-card-back {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8rem;
+  align-items: center;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  transform: rotateY(180deg);
+  text-align: center;
+  background: #e0e0e0;
+}
+.flipp-button-1 {
+  background: #e0e0e0;
+}
+.flip-button-2 {
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #91c9ff;
+  outline: none;
+  transition: 1s ease-in-out;
+  position: relative;
+  color: #596c7b;
+}
+.flip-button-2:hover {
+  transition: 1s ease-in-out;
+  background: #596c7b;
+  color: #fff;
+}
+@media (max-width: 1200px) {
   .custom-card {
-    width: 19rem;
-    border-radius: 50px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    border: 1px solid #ddd;
-    transition: transform 0.3s ease;
-    background: #e0e0e0;
+    width: 18rem;
   }
-  
-  .custom-card:hover {
-    transform: translateY(-5px);
+}
+
+@media (max-width: 992px) {
+  .custom-card {
+    width: 70%;
+    max-width: 18rem;
   }
-  
-  .custom-card-img-container {
-    position: relative;
+  .card-container {
+    justify-content: center;
   }
-  
-  .custom-card-img {
+}
+
+@media (max-width: 768px) {
+  .custom-card {
+    width: 70%;
+    max-width: 18rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .custom-card {
+    width: 70%;
+    max-width: 18rem;
+  }
+
+  h1#txt1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    flex-wrap: nowrap;
+    /* overflow: hidden; */
+    justify-content: center;
+  }
+
+  .custom-card {
+    flex: 0 0 100%; /* Full width */
+    max-width: 70%; /* Add some padding from screen edge */
+  }
+
+  .flip-card {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
   }
-  
-  .custom-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  
-  .custom-card-body {
-    padding: 15px;
-  }
-  
-  .custom-card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .custom-card-text {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 15px;
-  }
-  
-  .center-card {
-    transform: scale(1.2);
-    transition: transform 0.3s ease;
-  }
-  
-  #txt1 {
-    color: #596c7b;
-  }
-  
-  /* arrow buttons */
-  .arrow-btn {
-    --arrow-size: 3rem;
-    --arrow-color: #596c7b;
-    --arrow-color-hover: rgba(255, 255, 255, 0.5);
-    width: var(--arrow-size);
-    height: var(--arrow-size);
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    padding: 0;
-    display: flex;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-  }
-  
-  .arrow-btn::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: calc(var(--arrow-size) * 0.7071);
-    height: calc(var(--arrow-size) * 0.7071);
-    box-sizing: border-box;
-    border-top: calc(var(--arrow-size) / 5) solid var(--arrow-color);
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .arrow-btn.left {
-    left: 10px;
-  }
-  
-  .arrow-btn.right {
-    right: 10px;
-  }
-  
-  .arrow-btn.left::after {
-    left: calc(var(--arrow-size) / 5);
-    border-left: calc(var(--arrow-size) / 5) solid var(--arrow-color);
-    transform: rotate(-45deg);
-    transform-origin: top left;
-  }
-  
-  .arrow-btn.right::after {
-    right: calc(var(--arrow-size) / 5);
-    border-right: calc(var(--arrow-size) / 5) solid var(--arrow-color);
-    transform: rotate(45deg);
-    transform-origin: top right;
-  }
-  
-  .arrow-btn.left:hover::after {
-    box-shadow: calc(var(--arrow-size) / -8) calc(var(--arrow-size) / -8) 0 var(--arrow-color);
-    border-color: var(--arrow-color-hover);
-  }
-  
-  .arrow-btn.right:hover::after {
-    box-shadow: calc(var(--arrow-size) / 8) calc(var(--arrow-size) / -8) 0 var(--arrow-color);
-    border-color: var(--arrow-color-hover);
-  }
-  
-  /* all packages button */
-  .btn {
-    width: 180px;
-    height: 60px;
-    cursor: pointer;
-    background: transparent;
-    border: 1px solid #91C9FF;
-    outline: none;
-    transition: 1s ease-in-out;
-    position: relative;
-  }
-  
-  svg {
-    position: absolute;
-    left: 0;
-    top: 0;
-    fill: none;
-    stroke: #fff;
-    stroke-dasharray: 150 480;
-    stroke-dashoffset: 150;
-    transition: 1s ease-in-out;
-  }
-  
-  .btn:hover {
-    transition: 1s ease-in-out;
-    background: #596c7b;
-  }
-  
-  .btn:hover svg {
-    stroke-dashoffset: -480;
-  }
-  
-  .btn:hover span {
-    color: rgba(255, 255, 255, 0.5);
-  }
-  
-  .btn span {
-    color: #596c7b;
-    font-size: 18px;
-    font-weight: 100;
-  }
-  
+}
