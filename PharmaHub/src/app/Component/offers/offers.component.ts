@@ -3,11 +3,14 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Ioffers } from '../../Models/ioffers';
 import { DiscountPipe } from '../Pipes/discount.pipe';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-offers',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [FormsModule, CommonModule, DiscountPipe],
+
+  imports: [FormsModule, CommonModule , DiscountPipe , RouterModule],
+
   templateUrl: './offers.component.html',
   styleUrl: './offers.component.css',
 })

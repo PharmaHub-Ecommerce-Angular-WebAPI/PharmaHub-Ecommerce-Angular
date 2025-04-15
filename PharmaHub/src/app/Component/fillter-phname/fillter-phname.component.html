@@ -1,0 +1,20 @@
+<div class="search-dropdown-container">
+    <input
+      type="text"
+      placeholder="Search pharmacy..."
+      [(ngModel)]="searchText"
+      (input)="onSearchChange()"
+      class="search-input"
+    />
+  
+    <ul *ngIf="showDropdown" class="dropdown-list">
+      <li
+        *ngFor="let option of filteredOptions"
+        (click)="selectOption(option)"
+        class="dropdown-item"
+      >
+        {{ option }}
+      </li>
+    </ul>
+  </div>
+  
