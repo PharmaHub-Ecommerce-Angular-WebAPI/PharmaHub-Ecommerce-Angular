@@ -1,0 +1,83 @@
+.Pharmacies-Section {
+  background-color: #e0e5eb;
+  position: relative;
+  padding: 10px;
+  padding: 3.5rem 0;
+}
+.section-Header {
+  max-width: 75rem;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.section-Header h2 {
+  font-size: 2.3rem;
+  letter-spacing: -1px;
+  color: #596c7b;
+}
+.Pharmacies-grid-container {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 16px;
+}
+.row {
+  gap: 4rem;
+}
+.pharmacy-item {
+  display: block;
+  width: 100%;
+  max-width: 15.625rem;
+  height: 10.625rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: black;
+  transition: transform 0.3s;
+  box-shadow: 0 4px 5px 2px rgba(0, 0, 0, 0.17);
+  background: #e0e0e0;
+}
+.pharmacy-item:hover {
+  transform: translateY(-1rem) scale(1);
+}
+.pharmacy-image {
+  width: 4.5rem;
+  height: auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 5px 2px rgba(0, 0, 0, 0.17);
+}
+img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.btn:link,
+.btn:link {
+  display: inline-block;
+  font-size: 1.18rem;
+  padding: 15px 30px;
+  border-radius: 100px;
+  animation-name: appearing;
+  animation-duration: 2.5s;
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+.btn-full:link,
+.btn-full:visited {
+  background-color: #596c7b;
+  color: #fff;
+}
+.btn-full:hover,
+.btn-full:active {
+  background-color: #485762;
+  color: #fff;
+}

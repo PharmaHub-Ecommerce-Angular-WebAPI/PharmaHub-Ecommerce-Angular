@@ -1,0 +1,128 @@
+.section-Customer-Hero {
+  background-color: #e0e5eb;
+  padding: 5rem 0;
+}
+.Hero {
+  max-width: 75rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+}
+.Hero-img {
+  width: 100%;
+  animation-name: moveInUp;
+  animation-duration: 1s;
+}
+.heading-primary {
+  font-size: 4.1rem;
+  font-weight: 500;
+  color: #596c7b;
+  letter-spacing: -1px;
+  margin-bottom: 2rem;
+  animation-name: moveInUp;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+.Hero-describtion {
+  font-size: 1rem;
+  margin-bottom: 3rem;
+  animation-name: moveInUp;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  color: #596c7b;
+}
+@keyframes moveInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.btn:link,
+.btn:link {
+  display: inline-block;
+  font-size: 1.18rem;
+  padding: 1rem 2rem;
+  border-radius: 100px;
+  animation-name: moveInUp;
+  animation-duration: 1.5s;
+  transition: all 0.3s;
+}
+.btn-full:link,
+.btn-full:visited {
+  background-color: #596c7b;
+  color: #fff;
+}
+.btn-full:hover,
+.btn-full:active {
+  background-color: #495864;
+  color: #fff;
+}
+.btn-outline:link,
+.btn-outline:visited {
+  background-color: #b5c6d2;
+}
+.btn-outline:hover,
+.btn-outline:active {
+  background-color: #e0e5eb;
+  box-shadow: inset 0 0 0 3px #596c7b;
+}
+@keyframes appearing {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+.margin-right-sm {
+  margin-right: 1rem !important;
+}
+
+@media (max-width: 992px) {
+  .Hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .Hero-TextBox {
+    order: 2;
+  }
+
+  .Hero-Image-box {
+    order: 1;
+    max-width: 70%;
+    margin: 0 auto;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .margin-right-sm {
+    margin-right: 0 !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .heading-primary {
+    font-size: 2.2rem;
+  }
+
+  .Hero-describtion {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
