@@ -2,12 +2,13 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Ipackage } from '../../Models/ipackage';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-packages',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule , RouterModule],
   templateUrl: './packages.component.html',
   styleUrls: ['./packages.component.css']
 })
