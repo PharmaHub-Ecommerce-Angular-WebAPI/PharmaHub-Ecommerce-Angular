@@ -1,25 +1,19 @@
-<section class="offers-section">
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    rel="stylesheet"
-  />
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  rel="stylesheet"
+/>
 
-  <div class="row align-items-start justify-content-between flex-wrap mb-4">
-    <h1 id="txt1" class="col-12 col-md-3">Offers</h1>
-
-
+<div class="row align-items-start justify-content-between flex-wrap mb-4">
+  <h1 id="txt1" class="col-12 col-md-3">Offers</h1>
   <!-- all offers -->
   <div class="col-12 col-md-auto mt-3 mt-md-0">
-    <button class="btn"  [routerLink]="['/alloffers']">
+    <button class="btn" [routerLink]="['/alloffers']">
       <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
         <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
         <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
       </svg>
       <span>All Offers</span>
     </button>
-
-   
-
   </div>
 
   <div class="card-container">
@@ -116,4 +110,4 @@
     <button (click)="moveRight()" class="arrow-btn right"></button>
     }
   </div>
-</section>
+</div>
