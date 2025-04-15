@@ -35,7 +35,7 @@
     *ngFor="let card of visibleCards; let i = index"
     [ngClass]="{ active: i === 1, 'center-card': i === 1 }"
   >
-    <div class="flip-card-inner" [class.flipped]="isFlipped">
+    <div class="flip-card-inner" [class.flipped]="card.isFlipped">
       <div class="flip-card-front">
         <!-- Card Image and Favourite Icon -->
         <div class="custom-card-img-container">
@@ -71,7 +71,7 @@
             <button
               style="color: #596c7b"
               class="flipp-button-1"
-              (click)="isFlipped = !isFlipped"
+              (click)="card.isFlipped = !card.isFlipped"
             >
               .....
             </button>
@@ -98,7 +98,10 @@
         <p class="custom-card-text">
           {{ card.description }}
         </p>
-        <button class="flip-button-2" (click)="isFlipped = !isFlipped">
+        <button
+          class="flip-button-2"
+          (click)="card.isFlipped = !card.isFlipped"
+        >
           Back
         </button>
       </div>
