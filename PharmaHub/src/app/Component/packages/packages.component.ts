@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-packages',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [FormsModule, CommonModule , RouterModule],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './packages.component.html',
   styleUrls: ['./packages.component.css'],
 })
@@ -30,11 +30,64 @@ export class PackagesComponent {
         pharmName: 'tobgy',
         price: 1555,
         imgPharm: './logo.png',
+        isFlipped: false,
       },
-      // { imgUrl: './logo.png', name: 'Card 2', description :  ['This is compnet 1' , 'This is compnet 2' ,'This is compnet 3' ] , id : 1 , pharmName: 'tobgy' , price : 1555 , imgPharm : './logo.png'  },
-      // { imgUrl: './logo.png', name: 'Card 3', description :  ['This is compnet 1' , 'This is compnet 2' ,'This is compnet 3' ], id : 1 , pharmName: 'tobgy' , price : 1555 , imgPharm : './logo.png'  },
-      // { imgUrl: './logo.png', name: 'Card 4', description :  ['This is compnet 1' , 'This is compnet 2' ,'This is compnet 3' ], id : 1 , pharmName: 'tobgy' , price : 1555 , imgPharm : './logo.png'  },
-      // { imgUrl: './logo.png', name: 'Card 5', description :  ['This is compnet 1' , 'This is compnet 2' ,'This is compnet 3' ], id : 1 , pharmName: 'tobgy' , price : 1555 , imgPharm : './logo.png'  },
+      {
+        imgUrl: './logo.png',
+        name: 'Card 2',
+        description: [
+          'This is compnet 1',
+          'This is compnet 2',
+          'This is compnet 3',
+        ],
+        id: 1,
+        pharmName: 'tobgy',
+        price: 1555,
+        imgPharm: './logo.png',
+        isFlipped: false,
+      },
+      {
+        imgUrl: './logo.png',
+        name: 'Card 3',
+        description: [
+          'This is compnet 1',
+          'This is compnet 2',
+          'This is compnet 3',
+        ],
+        id: 1,
+        pharmName: 'tobgy',
+        price: 1555,
+        imgPharm: './logo.png',
+        isFlipped: false,
+      },
+      {
+        imgUrl: './logo.png',
+        name: 'Card 4',
+        description: [
+          'This is compnet 1',
+          'This is compnet 2',
+          'This is compnet 3',
+        ],
+        id: 1,
+        pharmName: 'tobgy',
+        price: 1555,
+        imgPharm: './logo.png',
+        isFlipped: false,
+      },
+      {
+        imgUrl: './logo.png',
+        name: 'Card 5',
+        description: [
+          'This is compnet 1',
+          'This is compnet 2',
+          'This is compnet 3',
+        ],
+        id: 1,
+        pharmName: 'tobgy',
+        price: 1555,
+        imgPharm: './logo.png',
+        isFlipped: false,
+      },
       // { imgUrl: './logo.png', name: 'Card 6', description :  ['This is compnet 1' , 'This is compnet 2' ,'This is compnet 3' ], id : 1 , pharmName: 'tobgy' , price : 1555 , imgPharm : './logo.png'  },
       // { imgUrl: './logo.png', name: 'Card 7', description :  ['This is compnet 1' , 'This is compnet 2' ,'This is compnet 3' ], id : 1 , pharmName: 'tobgy' , price : 1555 , imgPharm : './logo.png'  },
       // { imgUrl: './logo.png', name: 'Card 8', description :  ['This is compnet 1' , 'This is compnet 2' ,'This is compnet 3' ], id : 1 , pharmName: 'tobgy' , price : 1555 , imgPharm : './logo.png'  },
@@ -67,5 +120,4 @@ export class PackagesComponent {
       this.currentIndex = 0;
     }
   }
-  isFlipped: boolean = false;
 }
