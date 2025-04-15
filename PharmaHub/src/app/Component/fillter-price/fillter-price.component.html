@@ -1,0 +1,14 @@
+<h3>Filter By Price</h3>
+<br />
+<div class="slidecontainer">
+  <input
+    type="range"
+    min="1"
+    [max]="maxPrice"
+    [(ngModel)]="sliderValue"
+    (input)="onSliderChange()"
+    class="slider"
+    id="myRange"
+  />
+  <p>max: <span>{{ sliderValue }}</span></p>
+</div>
