@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { IPharmacies } from '../../Models/ipharmacies';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-pharmacies',
-  imports: [CommonModule],
+  imports: [CommonModule , RouterModule],
   templateUrl: './pharmacies.component.html',
   styleUrl: './pharmacies.component.css',
 })
