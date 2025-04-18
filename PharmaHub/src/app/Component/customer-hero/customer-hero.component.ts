@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { MoveUpAnimateDirective } from '../../Directives/move-up-animate.directive';
 
 @Component({
   selector: 'app-customer-hero',
-  imports: [],
+  imports: [MoveUpAnimateDirective],
   templateUrl: './customer-hero.component.html',
   styleUrl: './customer-hero.component.css',
 })
