@@ -1,6 +1,11 @@
-import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA ,Input} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  CUSTOM_ELEMENTS_SCHEMA,
+  Input,
+} from '@angular/core';
 import { defineElement } from 'lord-icon-element';
-import { NavigationEnd, Router , Event } from '@angular/router';
+import { NavigationEnd, Router, Event } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -10,30 +15,29 @@ interface NavbarItem {
   label: string;
   route: string;
   icon?: string;
-  href?:string;
+  href?: string;
 }
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [RouterModule ,CommonModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css'],
-  providers: [AuthService] 
+  providers: [AuthService],
 })
-
-
 export class NavBarComponent implements OnInit {
+  isMenuOpen = false;
   isLoggedIn = false;
   currentRoute = '';
   navbarItems: NavbarItem[] = [];
   constructor(private router: Router, private authService: AuthService) {}
-   ngOnInit() {
-     // Initialize Lordicon
-     defineElement(lottie.loadAnimation);
+  ngOnInit() {
+    // Initialize Lordicon
+    defineElement(lottie.loadAnimation);
 
-     this.authService.isLoggedIn$.subscribe(status => {
+    this.authService.isLoggedIn$.subscribe((status) => {
       this.isLoggedIn = status;
       this.updateNavbarItems();
     });
@@ -52,7 +56,7 @@ export class NavBarComponent implements OnInit {
       this.navbarItems = [
         { label: 'Admin', route: '/admin' },
         { label: 'Dashboard', route: '/admin/users' },
-        { label: 'Logout', route: '/logout' }
+        { label: 'Logout', route: '/logout' },
       ];
     }
     // For logged-in users
@@ -61,17 +65,20 @@ export class NavBarComponent implements OnInit {
         { label: 'Home', route: '/home' },
         { label: 'Profile', route: '/profile' },
         { label: 'Dashboard', route: '/dashboard' },
-        { label: 'Logout', route: '/logout' }
+        { label: 'Logout', route: '/logout' },
       ];
     }
     // For guests (not logged in)
     else {
       this.navbarItems = [
-        { label: 'Services', route: '/servics' , href:"#Services" },
+        { label: 'Services', route: '/servics', href: '#Services' },
         { label: 'Contact', route: '/contact' },
         { label: 'About Us', route: '/about Us' },
-        { label: 'Help', route: '/help' }
+        { label: 'Help', route: '/help' },
       ];
     }
+  }
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }
