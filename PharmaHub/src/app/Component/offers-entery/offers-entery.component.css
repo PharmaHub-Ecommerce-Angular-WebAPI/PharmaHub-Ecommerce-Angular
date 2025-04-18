@@ -1,0 +1,25 @@
+.OffersEntery-section {
+  padding: 5rem 0;
+}
+.section-container {
+  max-width: 75rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.Section-Image {
+  max-width: 75%;
+}
+.section-Heading {
+  font-size: 3rem;
+  color: #2b8a3e;
+  margin-bottom: 2rem;
+}
+.section-Description {
+  font-size: 1.2rem;
+  color: #2b8a3e;
+  margin: 1rem 0;
+}
