@@ -10,20 +10,23 @@
       </h1>
     </a>
   </div>
-  <div class="center-section">
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#" class="link">Services</a></li>
-        <li><a href="#" class="link">Pharmacies</a></li>
-        <li><a href="#" class="link">About Us</a></li>
-        <li><a href="#" class="link">Contact</a></li>
-      </ul>
-    </nav>
+  <div class="menu-overlay" [ngClass]="{ open: isMenuOpen }">
+    <div class="center-section">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#" class="link">Services</a></li>
+          <li><a href="#" class="link">Pharmacies</a></li>
+          <li><a href="#" class="link">About Us</a></li>
+          <li><a href="#" class="link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
   <div class="right-sction">
     <a href="#" class="login-button">
       <lord-icon src="https://cdn.lordicon.com/rzsnbiaw.json" trigger="hover">
       </lord-icon>
     </a>
+    <button class="hamburger" (click)="toggleMenu()">☰</button>
   </div>
 </header>
