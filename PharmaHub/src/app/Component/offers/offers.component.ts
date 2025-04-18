@@ -4,12 +4,19 @@ import { FormsModule } from '@angular/forms';
 import { Ioffers } from '../../Models/ioffers';
 import { DiscountPipe } from '../Pipes/discount.pipe';
 import { RouterModule } from '@angular/router';
+import { MoveUpAnimateDirective } from '../../Directives/move-up-animate.directive';
 
 @Component({
   selector: 'app-offers',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
-  imports: [FormsModule, CommonModule , DiscountPipe , RouterModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    DiscountPipe,
+    RouterModule,
+    MoveUpAnimateDirective,
+  ],
 
   templateUrl: './offers.component.html',
   styleUrl: './offers.component.css',

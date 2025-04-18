@@ -1,7 +1,9 @@
-<Section class="Pharmacies-Section">
+<Section class="Pharmacies-Section" appMoveUpAnimate>
   <div class="section-Header">
     <h2>Explore Our Trusted Pharmacy Collection</h2>
-    <a href="#" class="btn btn-full" [routerLink]="['/allpharmacies']"  > View all Pharmacies</a>
+    <a href="#" class="btn btn-full" [routerLink]="['/allpharmacies']">
+      View all Pharmacies</a
+    >
   </div>
   <div class="Pharmacies-grid-container container">
     <div class="row gy-4 gx-4 justify-content-center">
@@ -14,7 +16,7 @@
         <div class="pharmacy-image">
           <img [src]="pharma.imgUrl" alt="pharmacy-logo" />
         </div>
-        <p>{{ pharma.Name }}</p>
+        <p class="Pharma-name">{{ pharma.Name }}</p>
       </a>
     </div>
   </div>

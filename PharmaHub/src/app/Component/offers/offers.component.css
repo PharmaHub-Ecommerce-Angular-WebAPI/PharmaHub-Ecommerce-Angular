@@ -3,9 +3,22 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
-  background-color: #e8eef6;
+  background-color: #f8f4e1;
 }
-
+.section-header {
+  max-width: 75rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.Heading {
+  font-size: 2.6rem;
+  color: #2b8a3e;
+  max-width: 35rem;
+  margin-bottom: 4rem;
+}
 .card-container {
   display: flex;
   justify-content: center;
@@ -13,63 +26,77 @@ body {
   flex-wrap: nowrap;
   position: relative;
   padding: 2rem 0;
+  max-width: 75rem;
+  margin: 0 auto;
 }
 
 .custom-card {
-  width: 19rem;
   transition: transform 0.3s ease;
 }
 
 .custom-card:hover {
   transform: translateY(-5px);
 }
-
-.custom-card-img-container {
-  position: relative;
+.pharma-logo {
+  max-width: 3.75rem;
+  height: auto;
+}
+.pharma-logo:hover {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+  transform: rotateY(180deg);
 }
 
 .custom-card-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+  height: auto;
 }
 
 .custom-icon {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+.cart-icon {
+  position: absolute;
+  right: 30px;
+  top: 147px;
+  cursor: pointer;
 }
 
 .custom-card-body {
-  padding: 15px;
+  padding: 1.2rem;
 }
 
 .custom-card-title {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: bold;
-  margin-bottom: 10px;
+  color: #207230;
+  margin-bottom: 1.5rem;
 }
 
-.custom-card-text {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 15px;
+.custom-card-text1 {
+  font-size: 0.8rem;
+  color: #207230;
 }
-
+.custom-card-text2 {
+  font-size: 0.8rem;
+  color: #207230;
+  margin-bottom: 2rem;
+}
 .center-card {
   transform: scale(1.2);
   transition: transform 0.3s ease;
 }
 
-#txt1 {
-  color: #596c7b;
-}
-
 /* arrow buttons */
 .arrow-btn {
-  --arrow-size: 3rem;
-  --arrow-color: #596c7b;
-  --arrow-color-hover: rgba(255, 255, 255, 0.5);
+  --arrow-size: 2.5rem;
+  --arrow-color: #2b8a3e;
+  --arrow-color-hover: #d8f5a2;
   width: var(--arrow-size);
   height: var(--arrow-size);
   background: transparent;
@@ -96,11 +123,10 @@ body {
 }
 
 .arrow-btn.left {
-  left: 10px;
+  left: 0.75rem;
 }
-
 .arrow-btn.right {
-  right: 10px;
+  right: 0.75rem;
 }
 
 .arrow-btn.left::after {
@@ -139,6 +165,7 @@ body {
   outline: none;
   transition: 1s ease-in-out;
   position: relative;
+  margin-bottom: 4rem;
 }
 
 svg {
@@ -173,7 +200,7 @@ svg {
 .flip-card {
   background-color: transparent;
   width: 19rem;
-  height: 26.6rem;
+  height: 25rem;
   perspective: 150rem;
 }
 
@@ -185,8 +212,7 @@ svg {
   transform-style: preserve-3d;
   border-radius: 50px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ddd;
-  background: #e0e0e0;
+  background-color: #ebfbee;
 }
 
 .flip-card-inner.flipped {
@@ -211,29 +237,28 @@ svg {
   align-items: center;
   border-radius: 50px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ddd;
   transform: rotateY(180deg);
   text-align: center;
-  background: #e0e0e0;
+  background-color: #ebfbee;
 }
-.flipp-button-1 {
-  background: #e0e0e0;
+.flip-button-1 {
+  background-color: #ebfbee;
+
+  color: #207230;
 }
 .flip-button-2 {
-  width: 180px;
-  height: 60px;
+  width: 90px;
+  height: 30px;
+  border-radius: 100px;
   cursor: pointer;
-  background: transparent;
-  border: 1px solid #91c9ff;
-  outline: none;
-  transition: 1s ease-in-out;
-  position: relative;
-  color: #596c7b;
+  background-color: #207230;
+  transition: 0.5s ease;
+  color: #fff;
 }
 .flip-button-2:hover {
-  transition: 1s ease-in-out;
-  background: #596c7b;
-  color: #fff;
+  background: #ebfbee;
+  color: #207230;
+  box-shadow: inset 0 0 0 2px #207230;
 }
 @media (max-width: 1200px) {
   .custom-card {

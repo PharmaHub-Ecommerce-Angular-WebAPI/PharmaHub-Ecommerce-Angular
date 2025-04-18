@@ -1,62 +1,29 @@
-<!-- Navbar Component -->
-<nav class="navbar header navbar-expand-lg mx-auto mt-4">
-  <div class="container-fluid">
-    <!-- Logo -->
-    <a class="navbar-brand logo">
-      <img src="logo.png" alt="Logo" height="27" />
+<header>
+  <div class="left-section">
+    <a href="#" title="Home" class="logo">
+      <img src="logo.png" alt="Logo" height="27" class="logo" />
     </a>
-    <!-- Navbar Name Of Website  -->
-    <div>
-      <span
-        class="fw-bold"
-        style="
-          color: #a19587;
-          letter-spacing: 1px;
-          font-family: 'Underdog', cursive;
-          font-style: normal;
-        "
-        >PHARMA</span
-      >
-      <span
-        class="fw-bold"
-        style="
-          color: #5d5c5c;
-          letter-spacing: 1px;
-          font-family: 'Underdog', cursive;
-          font-style: normal;
-        "
-        >HUB</span
-      >
-    </div>
-    <!-- Navbar Items -->
-    <nav class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li *ngFor="let item of navbarItems" class="nav-item mx-2">
-          <a class="nav-link fw-medium fs-8" [routerLink]="item.route">{{
-            item.label
-          }}</a>
-        </li>
+    <a href="#" style="text-decoration: none">
+      <h1 class="websiteName">
+        <span class="prefix">Pharma</span>
+        <span class="sufix">Hub</span>
+      </h1>
+    </a>
+  </div>
+  <div class="center-section">
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#" class="link">Services</a></li>
+        <li><a href="#" class="link">Pharmacies</a></li>
+        <li><a href="#" class="link">About Us</a></li>
+        <li><a href="#" class="link">Contact</a></li>
       </ul>
     </nav>
-
-    <!-- Login Icon -->
-    <div class="navbar-brand logo">
-      <lord-icon
-        src="https://cdn.lordicon.com/rzsnbiaw.json"
-        trigger="hover"
-        style="width: 27px; height: 27px"
-      >
-      </lord-icon>
-    </div>
-
-    <!-- Toggler Button (for mobile) -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
   </div>
-</nav>
+  <div class="right-sction">
+    <a href="#" class="login-button">
+      <lord-icon src="https://cdn.lordicon.com/rzsnbiaw.json" trigger="hover">
+      </lord-icon>
+    </a>
+  </div>
+</header>

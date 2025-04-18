@@ -1,0 +1,56 @@
+.Entering-Package-Section {
+  padding: 5rem 0;
+}
+.section-Container {
+  max-width: 75rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+.Img {
+  max-width: 90%;
+}
+.Heading {
+  font-size: 3.2rem;
+  font-weight: 500;
+  color: #2b8a3e;
+  letter-spacing: -1px;
+  margin-bottom: 2rem;
+}
+.description {
+  font-size: 1.28rem;
+  margin-bottom: 3rem;
+  color: #2b8a3e;
+}
+@media (max-width: 576px) {
+  .Heading {
+    font-size: 2.2rem;
+  }
+
+  .describtion {
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 992px) {
+  .section-Container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .Text-box {
+    order: 2;
+  }
+
+  .ImgBox {
+    order: 1;
+    max-width: 70%;
+    margin: 0 auto;
+  }
+
+  .margin-right-sm {
+    margin-right: 0 !important;
+  }
+}
