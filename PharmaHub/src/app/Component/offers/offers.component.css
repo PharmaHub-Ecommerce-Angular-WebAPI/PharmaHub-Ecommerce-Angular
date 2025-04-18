@@ -230,6 +230,7 @@ svg {
 }
 
 .flip-card-back {
+  color: #2b8a3e;
   display: flex;
   flex-direction: column;
   justify-content: center;
