@@ -1,0 +1,33 @@
+.marquee-wrapper {
+  white-space: nowrap;
+  width: 100%;
+  background: #f9fdfa;
+  padding: 5rem 0;
+}
+
+.marquee-content {
+  display: flex;
+  gap: 9rem;
+  animation: marquee 20s linear infinite;
+  width: max-content;
+}
+.marquee-image {
+  max-width: 9rem;
+  height: auto;
+  /* filter: grayscale(100%);
+  opacity: 0.7; */
+  /* transition: all 0.5s ease-in-out; */
+}
+.marquee-image:hover {
+  transition: transform 0.3s ease;
+  /* opacity: 1;
+  filter: grayscale(0%); */
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

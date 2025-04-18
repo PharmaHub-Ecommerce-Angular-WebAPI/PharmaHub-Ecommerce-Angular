@@ -1,0 +1,27 @@
+footer {
+  color: #92e0a2;
+}
+.social-icons {
+  display: flex;
+  gap: 0.95rem;
+}
+.social-icons a {
+  color: #92e0a2;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #ffffff;
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
+.footer-links:link,
+.footer-links:visited {
+  color: #92e0a2;
+  transition: color 0.3s ease;
+}
+.footer-links:hover,
+.footer-links:active {
+  color: #fff;
+}
