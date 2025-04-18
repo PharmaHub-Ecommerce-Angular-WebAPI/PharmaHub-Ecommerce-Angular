@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MoveUpAnimateDirective } from '../../Directives/move-up-animate.directive';
+import { MoveUpAnimateDirective } from '../../../Directives/move-up-animate.directive';
 
 @Component({
   selector: 'app-pharmacies-entry',

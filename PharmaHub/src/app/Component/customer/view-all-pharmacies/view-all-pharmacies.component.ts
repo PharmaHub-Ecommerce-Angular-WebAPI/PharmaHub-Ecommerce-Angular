@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IPharmacies } from '../../Models/ipharmacies';
+import { IPharmacies } from '../../../Models/ipharmacies';
 import { CommonModule } from '@angular/common';
 
 @Component({

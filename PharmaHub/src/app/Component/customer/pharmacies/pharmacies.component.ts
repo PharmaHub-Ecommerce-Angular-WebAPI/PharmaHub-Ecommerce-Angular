@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IPharmacies } from '../../Models/ipharmacies';
+import { IPharmacies } from '../../../Models/ipharmacies';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MoveUpAnimateDirective } from '../../Directives/move-up-animate.directive';
+import { MoveUpAnimateDirective } from '../../../Directives/move-up-animate.directive';
 
 @Component({
   selector: 'app-pharmacies',

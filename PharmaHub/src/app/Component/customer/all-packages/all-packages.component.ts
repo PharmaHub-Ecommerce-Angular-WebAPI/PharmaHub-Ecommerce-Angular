@@ -5,10 +5,12 @@ import { FillterPHnameComponent } from '../fillter-phname/fillter-phname.compone
 
 @Component({
   selector: 'app-all-packages',
-  imports: [FillterPriceComponent,DisplayPackagesComponent , FillterPHnameComponent ],
+  imports: [
+    FillterPriceComponent,
+    DisplayPackagesComponent,
+    FillterPHnameComponent,
+  ],
   templateUrl: './all-packages.component.html',
-  styleUrl: './all-packages.component.css'
+  styleUrl: './all-packages.component.css',
 })
-export class AllPackagesComponent {
-
-}
+export class AllPackagesComponent {}
