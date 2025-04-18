@@ -1,0 +1,56 @@
+.Pharmacies-Section {
+  padding: 5rem;
+}
+.section-container {
+  max-width: 75rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+.section-image {
+  max-width: 90%;
+  display: block;
+}
+.Section-Heading {
+  font-size: 3rem;
+  font-weight: 500;
+  color: #2b8a3e;
+  letter-spacing: -1px;
+  margin-bottom: 2.2rem;
+}
+.description {
+  font-size: 1.28rem;
+  margin-bottom: 3rem;
+  color: #2b8a3e;
+}
+@media (max-width: 576px) {
+  .Section-Heading {
+    font-size: 2.2rem;
+  }
+
+  .describtion {
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 992px) {
+  .section-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .Text-Box {
+    order: 2;
+  }
+
+  .section-image {
+    order: 1;
+    max-width: 70%;
+    margin: 0 auto;
+  }
+  .margin-right-sm {
+    margin-right: 0 !important;
+  }
+}
