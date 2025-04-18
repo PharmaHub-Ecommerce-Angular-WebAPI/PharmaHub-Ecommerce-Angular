@@ -3,13 +3,16 @@
   width: 100%;
   background: #f9fdfa;
   padding: 5rem 0;
+  overflow: hidden;
 }
 
 .marquee-content {
   display: flex;
   gap: 9rem;
-  animation: marquee 20s linear infinite;
-  width: max-content;
+  animation: marquee 15s linear infinite;
+  width: 100%;
+  align-items: center;
+  /* overflow: hidden; */
 }
 .marquee-image {
   max-width: 9rem;
@@ -25,9 +28,33 @@
 }
 @keyframes marquee {
   0% {
-    transform: translateX(50%);
+    transform: translateX(0%);
   }
   100% {
     transform: translateX(-100%);
+  }
+}
+@media (max-width: 768px) {
+  .marquee-wrapper {
+    padding: 2rem 0;
+  }
+
+  .marquee-content {
+    gap: 3rem;
+    animation-duration: 15s;
+  }
+
+  .marquee-image {
+    max-width: 5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .marquee-content {
+    gap: 2rem;
+  }
+
+  .marquee-image {
+    max-width: 4rem;
   }
 }
