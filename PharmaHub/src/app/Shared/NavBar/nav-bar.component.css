@@ -1,48 +1,82 @@
-.header {
-  border-radius: 50px;
-  background: var(--bg-navbar);
-  box-shadow: 8px 8px 16px var(--shadow-dark-nav),
-    -8px -8px 16px var(--shadow-light-nav);
-
-  width: 95%;
-}
-
-.logo {
-  border-radius: 50%;
-  background: var(--bg-navbar);
-  box-shadow: 5px 5px 10px var(--shadow-dark-nav),
-    -5px -5px 10px var(--shadow-light-nav);
-  padding: 0.5rem;
-  transition: all 0.3s ease;
+header {
+  /* border-top: 10px solid #2b8a3e; */
+  background-color: #f9fdfa;
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 2rem 4rem;
+  width: 100%;
+  position: relative;
+}
+.center-section {
+  flex: 1;
+  display: flex;
   justify-content: center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
 }
-
-.navbar-collapse {
+.left-section {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
-
-.nav-link {
-  padding: 0.75rem 1.5rem;
-  border-radius: 20px;
-  transition: all 0.3s ease;
+.right-section {
+  display: flex;
+  align-items: center;
+  /* gap: 2rem; */
+}
+.right-section lord-icon {
+  width: 32px;
+  height: 32px;
+}
+.logo {
+  position: relative;
+  top: -2px;
+}
+.logo :hover {
+  transition: transform 0.3s ease;
+  transform: rotateY(180deg);
+}
+.websiteName {
+  font-weight: 800;
+  letter-spacing: 0.75px;
+  font-size: 1.4rem;
+}
+.prefix {
+  color: #2b8a3e;
+  transition: all 0.3s;
+}
+.prefix:hover {
+  color: #40c057;
+  cursor: pointer;
+}
+.sufix {
+  color: #bcef5d;
+  font-weight: 800;
+  transition: all 0.3s;
+}
+.sufix:hover {
+  color: #96d326;
+  cursor: pointer;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+.link:link,
+.link:visited {
   text-decoration: none;
-  font-weight: 500;
   display: inline-block;
-  color: var(--text);
+  color: #2b8a3e;
+  font-weight: 600;
+  transition: all 0.1s;
 }
-
-.nav-link:hover {
-  box-shadow: inset 3px 3px 5px var(--shadow-dark-nav),
-    inset -3px -3px 5px var(--shadow-light-nav);
-  color: var(--bg-navbar);
-  color: var(--text);
-}
-.poetsen-one-regular {
-  font-family: "Poetsen One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+.link:hover,
+.link:active {
+  color: #22bb11;
+  transform: scale(1.1);
 }
