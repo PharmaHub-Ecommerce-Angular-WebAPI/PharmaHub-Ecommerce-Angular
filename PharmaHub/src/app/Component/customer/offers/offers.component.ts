@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Ioffers } from '../../Models/ioffers';
-import { DiscountPipe } from '../Pipes/discount.pipe';
+import { Ioffers } from '../../../Models/ioffers';
+import { DiscountPipe } from '../../Pipes/discount.pipe';
 import { RouterModule } from '@angular/router';
-import { MoveUpAnimateDirective } from '../../Directives/move-up-animate.directive';
+import { MoveUpAnimateDirective } from '../../../Directives/move-up-animate.directive';
 
 @Component({
   selector: 'app-offers',

@@ -1,9 +1,9 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MaxpriceService } from '../../services/maxprice.service';
-import { Ioffers } from '../../Models/ioffers';
-import { PharmNameService } from '../../services/pharm-name.service';
+import { MaxpriceService } from '../../../services/maxprice.service';
+import { Ioffers } from '../../../Models/ioffers';
+import { PharmNameService } from '../../../services/pharm-name.service';
 
 @Component({
   selector: 'app-display-offers',

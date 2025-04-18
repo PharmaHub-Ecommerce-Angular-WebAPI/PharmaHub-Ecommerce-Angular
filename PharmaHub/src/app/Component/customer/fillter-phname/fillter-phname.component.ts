@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PharmNameService } from '../../services/pharm-name.service';
+import { PharmNameService } from '../../../services/pharm-name.service';
 
 @Component({
   selector: 'app-fillter-phname',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './fillter-phname.component.html',
-  styleUrl: './fillter-phname.component.css'
+  styleUrl: './fillter-phname.component.css',
 })
 export class FillterPHnameComponent {
   searchText: string = '';
@@ -17,7 +17,7 @@ export class FillterPHnameComponent {
   filteredOptions: string[] = [];
 
   constructor(private pharmNameService: PharmNameService) {
-    this.pharmNameService.pharmNames$.subscribe(names => {
+    this.pharmNameService.pharmNames$.subscribe((names) => {
       this.allOptions = names;
     });
   }
@@ -30,7 +30,7 @@ export class FillterPHnameComponent {
       this.showDropdown = false;
       this.pharmNameService.setSelectedPharmName(null); // ← عند المسح يرجع يعرض الكل
     } else {
-      this.filteredOptions = this.allOptions.filter(option =>
+      this.filteredOptions = this.allOptions.filter((option) =>
         option.toLowerCase().includes(input.toLowerCase())
       );
       this.showDropdown = this.filteredOptions.length > 0;

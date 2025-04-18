@@ -6,9 +6,9 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Ipackage } from '../../Models/ipackage';
+import { Ipackage } from '../../../Models/ipackage';
 import { RouterModule } from '@angular/router';
-import { MoveUpAnimateDirective } from '../../Directives/move-up-animate.directive';
+import { MoveUpAnimateDirective } from '../../../Directives/move-up-animate.directive';
 
 @Component({
   selector: 'app-packages',
