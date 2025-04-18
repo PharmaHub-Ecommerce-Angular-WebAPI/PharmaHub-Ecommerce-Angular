@@ -24,7 +24,8 @@ header {
 .right-section {
   display: flex;
   align-items: center;
-  /* gap: 2rem; */
+  justify-content: center;
+  gap: 2rem;
 }
 .right-section lord-icon {
   width: 32px;
@@ -79,4 +80,100 @@ header {
 .link:active {
   color: #22bb11;
   transform: scale(1.1);
+}
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #2b8a3e;
+  cursor: pointer;
+}
+/* .login-button {
+  position: absolute;
+  right: 7rem;
+  top: 2.6rem;
+} */
+@media (max-width: 880px) {
+  .menu-overlay {
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+      to top right,
+      #1a852f,
+      #6df359
+    ); /* Semi-transparent background */
+    z-index: 9998; /* Overlay layer */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .menu-overlay.open {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+  }
+  .center-section {
+    width: 100%;
+    order: 0;
+    /* display: none; */
+    justify-content: center;
+  }
+
+  .center-section.open {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    display: flex;
+    /* position: absolute;
+    top: 2rem;
+    left: 2.5rem; */
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .link:link,
+  .link:visited {
+    color: #f7f7f7;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+  .link:hover,
+  .link:active {
+    color: #2b8a3e;
+    font-weight: 700;
+  }
+
+  .hamburger {
+    display: inline-block;
+    position: absolute;
+    right: 7rem;
+    z-index: 9999;
+    top: 1.5rem;
+  }
+  .menu-overlay {
+    display: none;
+  }
+
+  .right-section {
+    order: 1;
+    margin-left: 0;
+  }
+
+  .left-section {
+    order: -1;
+  }
+
+  header {
+    align-items: flex-start;
+  }
 }
