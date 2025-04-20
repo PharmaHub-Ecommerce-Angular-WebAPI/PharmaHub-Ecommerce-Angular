@@ -1,0 +1,37 @@
+<!-- Load an icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- The sidebar -->
+<div class="sidebar">
+  <a 
+    [routerLink]="['/pharmacy/addproduct']" 
+    routerLinkActive="active-link"
+ 
+  >
+    <i class="fa fa-plus-square"></i> Add Product
+  </a>
+
+  <a 
+    [routerLink]="['/pharmacy/updateproduct']" 
+    routerLinkActive="active-link"
+    
+  >
+    <i class="fa fa-wrench"></i> Update
+  </a>
+
+  <a 
+    [routerLink]="['/pharmacy/deleteproduct']" 
+    routerLinkActive="active-link"
+  
+  >
+    <i class="fa fa-trash"></i> Delete
+  </a>
+
+  <a 
+    [routerLink]="['/pharmacy/pharmacyinfo']" 
+    routerLinkActive="active-link"
+
+  >
+    <i class="fa fa-table"></i> Dashboard
+  </a>
+</div>
+
