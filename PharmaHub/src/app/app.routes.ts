@@ -20,4 +20,20 @@ export const routes: Routes = [
   { path: 'alloffers', component: AllOffersComponent },
   { path: 'allpharmacies', component: ViewAllPharmaciesComponent },
   
+  
+  { path: 'pharmacyinfo', component: PharmacyInfoComponent },
+  
+  { path: 'pharmacy', component: DashPharmaciesComponent,
+    children: [
+      {path: '' , redirectTo: 'pharmacyinfo' , pathMatch: 'full'} ,
+      {path: 'pharmacyinfo' , component: PharmacyInfoComponent} ,
+      {path: 'addproduct' , component: AddproductComponent} ,
+
+      {path: 'updateproduct' , component: UpdateproductComponent} ,
+      {path: 'deleteproduct' , component: DeleteproductComponent} ,
+
+
+
+    ]
+   },
 ];
