@@ -1,0 +1,31 @@
+<div class="stock">
+    <div class="productsock">
+      <div class="prodtext">
+        <h3>Products in Stock</h3>
+      </div>
+  
+      <div class="prodtable">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>In Stock</th>
+              <th>Discount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let card of allPackages">
+              <td>{{ card.id }}</td>
+              <td>{{ card.name }}</td>
+              <td>{{ card.price }}</td>
+              <td>Yes</td>
+              <td>No</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
