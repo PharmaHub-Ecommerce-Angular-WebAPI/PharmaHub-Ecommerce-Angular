@@ -1,0 +1,125 @@
+.stock{
+    /* background-color: greenyellow ; */
+   
+    width: 90%;
+    height: auto;
+    gap: 20px;
+}
+
+
+/* Table Styles */
+
+.prodtable{
+    /* background-color: rgb(202, 20, 202) ; */
+    width: 90%;
+    height: auto;
+    margin: 10px 35px 70px;
+}
+.table{
+    white-space: nowrap;
+    border-collapse: collapse;
+    
+}
+.table thead th {
+    font-size: 23px;
+    color: #ffffff;
+    background: #2b9c7a;
+}
+.table tbody td  {
+    /* background: #dddee5; */
+    border: #2b9c7a 1px solid;
+}
+
+
+.table td {
+    padding: 20px .625em .625em .625em;
+    min-height: 60px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    width: 120px;
+    font-size: 13px;
+    white-space: normal; /* ينزل الكلام سطر جديد */
+    word-break: break-word; /* يكسر الكلمة الطويلة */
+    overflow-y: auto; /* يظهر Scroll لو زاد المحتوى عموديًا */
+    max-height: 100px; /* أقصى ارتفاع للـ td */
+    overflow-x: auto;
+  }
+.table th{
+    padding: 20px .625em .625em .625em;
+    min-height: 60px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    width: 120px;
+    font-size: 13px;
+    text-align: center;
+
+  }
+.table td {
+    font-size: 10px;
+    border-right: 1px solid #f8f8f8;
+}
+.table thead th {
+    color: #ffffff;
+    background: #2b8a3e;
+}
+
+
+
+.table tr:nth-child(even) {
+    background: #48dad0;
+} 
+
+
+
+/* Responsive */
+
+@media (max-width: 767px) {
+    .table {
+        display: block;
+        width: 100%;
+    }
+   
+    .table thead, .table tbody, .table thead th {
+        display: block;
+    }
+    .table thead th:last-child{
+        border-bottom: none;
+    }
+    .table thead {
+        float: left;
+    }
+    .table tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+    .table td, .table th {
+        padding: 20px .625em .625em .625em;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+       width: 120px;
+        font-size: 13px;
+        text-overflow: ellipsis;
+       
+    }
+    .table thead th {
+        text-align: left;
+        border-bottom: 1px solid #f7f7f9;
+    }
+    .table tbody tr {
+        display: table-cell;
+    }
+    .table tbody tr:nth-child(odd) {
+        background: none;
+    }
+    .table tr:nth-child(even) {
+        background: transparent;
+    }
+    
+    
+    .table tbody td {
+        display: block;
+        text-align: center;
+    }
+}
