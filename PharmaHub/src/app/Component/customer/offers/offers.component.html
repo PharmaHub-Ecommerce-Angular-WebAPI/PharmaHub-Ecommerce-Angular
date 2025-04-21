@@ -10,20 +10,12 @@
     <h2 class="Heading">Checkout The Offers Here &darr;</h2>
     <!-- all offers -->
     <div class="col-12 col-md-auto mt-3 mt-md-0">
-      <button
-        class="btn"
-        [routerLink]="['/alloffers']"
-        style="border-radius: 100px"
-      >
-        <svg width="180px" height="60px" viewBox="0 0 180 60">
-          <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
-          <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
-        </svg>
-        <span>All Offers</span>
-      </button>
+      <a href="#" class="AllOffers" [routerLink]="['/alloffers']">
+        All Offers
+      </a>
     </div>
 
-    <div class="card-container row align-items-md-center">
+    <div class="card-container row align-items-md-center mt-5">
       <!-- button left -->
       <!-- @if(limitedOffers.length >3){
       <button (click)="moveLeft()" class="arrow-btn left"></button>
