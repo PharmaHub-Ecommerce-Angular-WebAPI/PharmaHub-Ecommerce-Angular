@@ -14,7 +14,7 @@ html {
 }
 
 :root {
-  --bg: #e0e5eb;
+  /* --bg: #e0e5eb;
   --shadow-dark: #bec3c8;
   --shadow-light: #ffffff;
   --primary: rgba(255, 255, 255, 0.85);
@@ -23,7 +23,7 @@ html {
   --text-2: #5d5c5c;
   --bg-navbar: #596c7b;
   --shadow-dark-nav: #4c5c69;
-  --shadow-light-nav: #667c8d;
+  --shadow-light-nav: #667c8d; */
 }
 
 body {
@@ -67,7 +67,29 @@ body {
   transform: translateY(100px);
   transition: all 0.8s ease-out;
 }
-
+.active {
+  opacity: 1;
+  transform: translateY(0);
+}
 .reveal.active {
   animation: moveInUp 0.8s ease-out forwards;
+}
+.fade-left,
+.fade-right {
+  opacity: 0;
+  transform: translateX(0);
+  transition: all 0.8s ease-out;
+}
+
+.fade-left {
+  transform: translateX(-100px);
+}
+
+.fade-right {
+  transform: translateX(100px);
+}
+
+.active {
+  opacity: 1;
+  transform: translateX(0);
 }
