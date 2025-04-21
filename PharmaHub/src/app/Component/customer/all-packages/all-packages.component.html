@@ -1,15 +1,14 @@
-<div style="text-align: center;">
-  <h1   class="m-5">All Packages</h1>
-</div>
-
-<br><br>
-<div class="row">
-  <div class="col-md-3 px-5" >
-    <app-fillter-price class="row"></app-fillter-price>
-    <app-fillter-phname class="row"></app-fillter-phname>
+<section class="allPackages" appMoveUpAnimate>
+  <div class="section-container">
+    <div>
+      <h2>The Perfect Package Collection for Your Goals</h2>
+    </div>
+    <div class="fliters-container">
+      <app-fillter-phname class="row"></app-fillter-phname>
+      <app-fillter-price class="row"></app-fillter-price>
+    </div>
+    <div>
+      <app-display-packages></app-display-packages>
+    </div>
   </div>
-  <div class="col-md-9">
-    <app-display-packages></app-display-packages>
-  </div>
-
-</div>
+</section>

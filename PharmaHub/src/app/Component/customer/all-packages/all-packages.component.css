@@ -1,0 +1,16 @@
+.allPackages {
+  background-color: #f9fdfa;
+  color: #2b8a3e;
+}
+.section-container {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+.fliters-container {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6rem;
+}
