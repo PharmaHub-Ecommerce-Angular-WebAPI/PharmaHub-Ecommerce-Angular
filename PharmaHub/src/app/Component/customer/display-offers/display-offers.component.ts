@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { MaxpriceService } from '../../../services/maxprice.service';
 import { Ioffers } from '../../../Models/ioffers';
 import { PharmNameService } from '../../../services/pharm-name.service';
+import { MoveUpAnimateDirective } from '../../../Directives/move-up-animate.directive';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-display-offers',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, MoveUpAnimateDirective, RouterModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './display-offers.component.html',
   styleUrl: './display-offers.component.css',
