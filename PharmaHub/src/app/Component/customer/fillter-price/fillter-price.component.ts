@@ -18,7 +18,7 @@ export class FillterPriceComponent implements OnInit {
 
   ngOnInit(): void {
     this.priceService.maxPrice.subscribe((price) => {
-      this.maxPrice = price;
+      this.maxPrice = Math.ceil(price);
       this.sliderValue = price;
     });
   }

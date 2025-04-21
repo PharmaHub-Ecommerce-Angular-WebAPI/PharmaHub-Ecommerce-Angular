@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { Ipackage } from '../../../Models/ipackage';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -6,18 +6,23 @@ import { MaxpriceService } from '../../../services/maxprice.service';
 import { PharmNameService } from '../../../services/pharm-name.service';
 import { MoveUpAnimateDirective } from '../../../Directives/move-up-animate.directive';
 import { RouterModule } from '@angular/router';
+import { ApiProductService } from '../../../services/api-product.service';
+import { Iproduct } from '../../../Models/iproduct';
+import { forkJoin } from 'rxjs';
+import { DiscountPipe } from '../../Pipes/discount.pipe';
 
 @Component({
   selector: 'app-display-packages',
   standalone: true,
-  imports: [FormsModule, CommonModule, MoveUpAnimateDirective, RouterModule],
+  imports: [FormsModule, CommonModule, MoveUpAnimateDirective, RouterModule, DiscountPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [ApiProductService],
   templateUrl: './display-packages.component.html',
   styleUrl: './display-packages.component.css',
 })
-export class DisplayPackagesComponent {
-  allPackages: Ipackage[] = [];
-  filteredPackages: Ipackage[] = [];
+export class DisplayPackagesComponent implements OnInit {
+  allPackages: Iproduct[] = [];
+  filteredPackages: Iproduct[] = [];
   currentPage = 1;
   cardsPerPage = 12;
   selectedPrice: number = Infinity;
@@ -25,149 +30,56 @@ export class DisplayPackagesComponent {
 
   constructor(
     private priceService: MaxpriceService,
-    private pharmNameService: PharmNameService
-  ) {
-    this.allPackages = [
-      {
-        imgUrl: './logo.png',
-        name: 'Card 1',
-        description: ['comp 1'],
-        id: 1,
-        pharmName: 'keky',
-        price: 2000,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-      {
-        imgUrl: './logo.png',
-        name: 'Card 2',
-        description: ['comp 1'],
-        id: 2,
-        pharmName: 'tarshoby',
-        price: 1500,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-      {
-        imgUrl: './logo.png',
-        name: 'Card 3',
-        description: ['comp 1'],
-        id: 3,
-        pharmName: 'almeldin',
-        price: 4000,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-      {
-        imgUrl: './logo.png',
-        name: 'Card 4',
-        description: ['comp 1'],
-        id: 4,
-        pharmName: 'weso',
-        price: 1926,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-      {
-        imgUrl: './logo.png',
-        name: 'Card 5',
-        description: ['comp 1', 'comp2', 'comp3'],
-        id: 5,
-        pharmName: 'khaled',
-        price: 400,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-      {
-        imgUrl: './logo.png',
-        name: 'Card 6',
-        description: ['comp 1'],
-        id: 6,
-        pharmName: 'mahdy',
-        price: 100,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-      {
-        imgUrl: './logo.png',
-        name: 'Card 7',
-        description: ['comp 1'],
-        id: 7,
-        pharmName: 'rewan',
-        price: 600,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-      {
-        imgUrl: './logo.png',
-        name: 'Card 8',
-        description: ['comp 1'],
-        id: 8,
-        pharmName: 'emo',
-        price: 800,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-      {
-        imgUrl: './logo.png',
-        name: 'Card 9',
-        description: ['comp 1'],
-        id: 9,
-        pharmName: 'roby',
-        price: 500,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-      {
-        imgUrl: './logo.png',
-        name: 'Card 10',
-        description: ['comp 1'],
-        id: 10,
-        pharmName: 'ali',
-        price: 100,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-      {
-        imgUrl: './logo.png',
-        name: 'Card 11',
-        description: ['comp 1'],
-        id: 11,
-        pharmName: 'koky',
-        price: 2,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-      {
-        imgUrl: './logo.png',
-        name: 'Card 12',
-        description: ['comp 1'],
-        id: 12,
-        pharmName: 'hader',
-        price: 555,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-      {
-        imgUrl: './logo.png',
-        name: 'Card 13',
-        description: ['comp 1'],
-        id: 13,
-        pharmName: 'koko',
-        price: 9080,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-    ];
+    private pharmNameService: PharmNameService,
+    private apiService: ApiProductService
+  ) {}
 
-    const max = Math.max(...this.allPackages.map((p) => p.price));
-    this.priceService.setMaxPrice(max);
+  ngOnInit(): void {
+    const packagesWithoutOffers$ = this.apiService.getPackages();
+    const packagesWithOffers$ = this.apiService.getpackgeslimeted();
+    const maxPrice$ = this.apiService.getmaxpricePackages();
 
-    const uniquePharmNames = [
-      ...new Set(this.allPackages.map((p) => p.pharmName)),
-    ];
-    this.pharmNameService.setPharmNames(uniquePharmNames);
+    forkJoin([packagesWithoutOffers$, packagesWithOffers$, maxPrice$]).subscribe(
+      ([nonOfferPackages, offerPackages, max]: [any[], any[], any]) => {
+        const formattedNonOffer = nonOfferPackages.map((pkg) => ({
+          id: pkg.id,
+          name: pkg.name,
+          imgUrl: pkg.imageUrl,
+          description: pkg.packageComponents,
+          pharmName: pkg.pharmacyName,
+          imgPharm: pkg.pharmacyLogo,
+          price: pkg.price,
+          isFlipped: false,
+        }));
 
+        const formattedOffers = offerPackages.map((offer) => ({
+          id: offer.id,
+          name: offer.name,
+          imgUrl: offer.imageUrl,
+          description: offer.packageComponents,
+          pharmName: offer.pharmacyName,
+          imgPharm: offer.pharmacyLogo,
+          price: offer.price,
+          discountRate: offer.discountRate,
+          isFlipped: false,
+        }));
+
+        this.allPackages = [...formattedNonOffer, ...formattedOffers];
+
+      
+        const maxPriceFromApi = typeof max === 'number' ? max : parseFloat(max);
+        this.priceService.setMaxPrice(maxPriceFromApi);
+
+        const uniquePharmNames = [
+          ...new Set(this.allPackages.map((p) => p.pharmName)),
+        ];
+        this.pharmNameService.setPharmNames(uniquePharmNames);
+
+        this.filteredPackages = [...this.allPackages];
+      }
+    );
+
+    
     this.priceService.selectedPrice.subscribe((price) => {
       this.selectedPrice = price;
       this.filterPackages();
@@ -177,8 +89,6 @@ export class DisplayPackagesComponent {
       this.selectedPharmName = name;
       this.filterPackages();
     });
-
-    this.filteredPackages = [...this.allPackages];
   }
 
   filterPackages() {

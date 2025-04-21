@@ -1,11 +1,11 @@
 export interface Ioffers {
-  id: number;
+  id: string;
   name: string;
-  imgUrl: string;
+  description: string[]; // دي هنحولها من packageComponents
+  imgUrl: string; // imageUrl
   price: number;
-  DissPrice: number;
-  description: string[];
-  pharmName: string;
-  imgPharm: string;
+  DissPrice: number; // discountRate
+  pharmName: string; // pharmacyName
+  imgPharm: string; // pharmacyLogo
   isFlipped: boolean;
 }
