@@ -1,16 +1,14 @@
-
-
-<div style="text-align: center;">
-    <h1   class="m-5">All Offers</h1>
+<section class="AllOffers" appMoveUpAnimate>
+  <div class="section-container">
+    <div>
+      <h2>Explore The Best Offers Only Here in PharmaHub</h2>
+    </div>
+    <div class="fliters-container">
+      <app-fillter-phname class="row"></app-fillter-phname>
+      <app-fillter-price class="row"></app-fillter-price>
+    </div>
+    <div>
+      <app-display-offers></app-display-offers>
+    </div>
   </div>
-<br><br>
-<div class="row">
-  <div class="col-md-3 px-5" >
-    <app-fillter-price class="row"></app-fillter-price>
-    <app-fillter-phname class="row"></app-fillter-phname>
-  </div>
-  <div class="col-md-9">
-    <app-display-offers></app-display-offers>
-  </div>
-
-</div>
+</section>
