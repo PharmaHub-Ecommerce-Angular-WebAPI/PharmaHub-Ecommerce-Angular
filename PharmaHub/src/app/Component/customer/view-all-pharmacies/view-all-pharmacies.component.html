@@ -1,25 +1,19 @@
-<section class="ViewAllPharmaciesSearch">
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  />
-  <!-- <div class="Heading-Search-Bar">
-    <i class="fas fa-search search-icon"></i>
-    <input
-      type="Search"
-      placeholder=" search for a pharmacy"
-      class="search-bar"
-    />
-  </div> -->
-</section>
-<section class="Pharmacies-displayed-section">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+
+<section class="Pharmacies-displayed-section" appMoveUpAnimate>
   <div class="All-Pharmacies-Section">
     <h2 class="section-heading">All trusted pharmacies are here &darr;</h2>
+    <div class="Heading-Search-Bar ViewAllPharmaciesSearch">
+      <app-fillter-phname></app-fillter-phname>
+    </div>
     <div class="pharmacies-container">
       <div class="Pharmacies-grid-container container">
-        <div class="row gy-4 gx-4 justify-content-center">
+        <div class="row gy-4 gx-4 justify-content-center" appMoveUpAnimate>
           <a
-            *ngFor="let pharma of pharmacies"
+            *ngFor="let pharma of filteredPharmacies"
             href="#"
             title="navigate pharmacy"
             class="pharmacy-item col-12 col-sm-6 col-md-4 col-lg-3"
@@ -31,6 +25,9 @@
           </a>
         </div>
       </div>
+    </div>
+    <div class="backButton" style="max-width: 10rem">
+      <a href="#" class="Back-Button" [routerLink]="['/customer']">Back</a>
     </div>
   </div>
 </section>
