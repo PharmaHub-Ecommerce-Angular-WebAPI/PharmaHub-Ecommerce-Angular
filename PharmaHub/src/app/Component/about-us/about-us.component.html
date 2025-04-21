@@ -1,0 +1,55 @@
+<section class="aboutUs">
+  <div class="section-container">
+    <div class="Text-Box">
+      <h1>What is PharmaHub?</h1>
+      <p>
+        PharmaHub is a leading online pharmacy platform that connects patients
+        with licensed pharmacies. Our mission is to provide convenient access to
+        high-quality medications and healthcare products while ensuring safety
+        and reliability.
+      </p>
+    </div>
+    <video class="background-video" autoplay muted loop>
+      <source [src]="videoUrl" type="video/mp4" />
+    </video>
+    <div class="video-gradient-overlay"></div>
+  </div>
+</section>
+<section class="about-us-second-section">
+  <div>
+    <div class="Text-Box2">
+      <h2 appMoveAnimateleftorright direction="left">Our Vision & Mission</h2>
+      <p appMoveAnimateleftorright direction="right">
+        At PharmaHub, we envision a world where healthcare is accessible to
+        everyone. We strive to empower individuals to take control of their
+        health by providing them with the tools and resources they need to make
+        informed decisions about their medications.
+      </p>
+    </div>
+  </div>
+</section>
+<section class="Meet-the-team-section">
+  <div class="section-container">
+    <div class="Text-Box2 text-margin">
+      <h2 appMoveAnimateleftorright direction="right">Meet Our Team</h2>
+      <p appMoveAnimateleftorright direction="left">
+        Meet the team who thaught of the idea of PharmaHub. We are a group of
+        developers who are dedicated to make the world a better place we wanted
+        to help people with their health and make it easier for them to get the
+        medicines they need.
+      </p>
+    </div>
+  </div>
+  <div class="Team-Container">
+    <div class="Team-member" *ngFor="let member of Team">
+      <div class="Member-Image">
+        <img [src]="member.Image" alt="Team Member" class="Team-member-image" />
+      </div>
+      <div class="Team-member-info">
+        <h3>{{ member.Name }}</h3>
+        <p>{{ member.Position }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer-marquee></app-footer-marquee>
