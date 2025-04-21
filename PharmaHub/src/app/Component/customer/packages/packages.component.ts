@@ -9,107 +9,55 @@ import { CommonModule } from '@angular/common';
 import { Ipackage } from '../../../Models/ipackage';
 import { RouterModule } from '@angular/router';
 import { MoveUpAnimateDirective } from '../../../Directives/move-up-animate.directive';
+import { ApiProductService } from '../../../services/api-product.service';
+import { DiscountPipe } from "../../Pipes/discount.pipe";
 
 @Component({
   selector: 'app-packages',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [FormsModule, CommonModule, RouterModule, MoveUpAnimateDirective],
+  providers: [ApiProductService],
+  
+  imports: [FormsModule, CommonModule, RouterModule, MoveUpAnimateDirective, DiscountPipe],
   templateUrl: './packages.component.html',
   styleUrls: ['./packages.component.css'],
 })
 export class PackagesComponent implements OnInit, OnDestroy {
-  packages: Ipackage[];
+  packages: Ipackage[] = [];
   currentIndex = 0;
   cardsPerView = 3;
   resizeObserver: any;
-  constructor() {
-    this.packages = [
-      {
-        imgUrl: './logo.png',
-        name: 'Card 1',
-        description: [
-          'This is compnet 1',
-          'This is compnet 2',
-          'This is compnet 3',
-        ],
-        id: 1,
-        pharmName: 'tobgy',
-        price: 1555,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-      {
-        imgUrl: './logo.png',
-        name: 'Card 2',
-        description: [
-          'This is compnet 1',
-          'This is compnet 2',
-          'This is compnet 3',
-        ],
-        id: 1,
-        pharmName: 'tobgy',
-        price: 1555,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-      {
-        imgUrl: './logo.png',
-        name: 'Card 3',
-        description: [
-          'This is compnet 1',
-          'This is compnet 2',
-          'This is compnet 3',
-        ],
-        id: 1,
-        pharmName: 'tobgy',
-        price: 1555,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-      {
-        imgUrl: './logo.png',
-        name: 'Card 4',
-        description: [
-          'This is compnet 1',
-          'This is compnet 2',
-          'This is compnet 3',
-        ],
-        id: 1,
-        pharmName: 'tobgy',
-        price: 1555,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-      {
-        imgUrl: './logo.png',
-        name: 'Card 5',
-        description: [
-          'This is compnet 1',
-          'This is compnet 2',
-          'This is compnet 3',
-        ],
-        id: 1,
-        pharmName: 'tobgy',
-        price: 1555,
-        imgPharm: './logo.png',
-        isFlipped: false,
-      },
-      // { imgUrl: './logo.png', name: 'Card 6', description :  ['This is compnet 1' , 'This is compnet 2' ,'This is compnet 3' ], id : 1 , pharmName: 'tobgy' , price : 1555 , imgPharm : './logo.png'  },
-      // { imgUrl: './logo.png', name: 'Card 7', description :  ['This is compnet 1' , 'This is compnet 2' ,'This is compnet 3' ], id : 1 , pharmName: 'tobgy' , price : 1555 , imgPharm : './logo.png'  },
-      // { imgUrl: './logo.png', name: 'Card 8', description :  ['This is compnet 1' , 'This is compnet 2' ,'This is compnet 3' ], id : 1 , pharmName: 'tobgy' , price : 1555 , imgPharm : './logo.png'  },
-      // { imgUrl: './logo.png', name: 'Card 9', description :  ['This is compnet 1' , 'This is compnet 2' ,'This is compnet 3' ], id : 1 , pharmName: 'tobgy' , price : 1555 , imgPharm : './logo.png'  },
-      // { imgUrl: './logo.png', name: 'Card 10', description : ['This is compnet 1' , 'This is compnet 2' ,'This is compnet 3' ] , id : 1 , pharmName: 'tobgy' , price : 1555 , imgPharm : './logo.png'  },
-    ];
-  }
-  ngOnInit() {
+  constructor(private apiService: ApiProductService) {
     this.setCardsPerView();
     window.addEventListener('resize', this.setCardsPerView.bind(this));
+  }
+  // ngOnInit() {
+  //   this.setCardsPerView();
+  //   window.addEventListener('resize', this.setCardsPerView.bind(this));
+  // }
+
+  ngOnInit(): void {
+    this.apiService.getPackages().subscribe((response: any[]) => {
+      this.packages = response.map((pkg) => ({
+        id: pkg.id,
+        name: pkg.name,
+        imgUrl: pkg.imageUrl,
+        description: pkg.packageComponents,
+        pharmName: pkg.pharmacyName,
+        imgPharm: pkg.pharmacyLogo,
+        price: pkg.price,
+        isFlipped: false,
+        DissPrice: pkg.discountRate,
+        
+      }));
+    }
+  )
   }
 
   ngOnDestroy() {
     window.removeEventListener('resize', this.setCardsPerView.bind(this));
   }
+
   setCardsPerView() {
     const width = window.innerWidth;
     if (width <= 768) {
