@@ -34,12 +34,11 @@
   color: #2b8a3e;
 }
 .btn:link,
-.btn:link {
+.btn:visited {
   display: inline-block;
   font-size: 1.18rem;
   padding: 1rem 2rem;
   border-radius: 100px;
-
   transition: all 0.3s;
 }
 .btn-full:link,
@@ -47,11 +46,7 @@
   background-color: #2b8a3e;
   color: #fff;
 }
-/* .btn-full:hover,
-.btn-full:active {
-  background-color: #40c057;
-  color: #fff;
-} */
+
 .btn-full:hover,
 .btn-full:active {
   background-color: #f9fdfa;
