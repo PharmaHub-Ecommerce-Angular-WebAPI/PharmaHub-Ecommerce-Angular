@@ -49,4 +49,5 @@ export class AboutUsComponent {
       },
     ];
   }
+  imgUrl: string = './AboutUs/1.png';
 }

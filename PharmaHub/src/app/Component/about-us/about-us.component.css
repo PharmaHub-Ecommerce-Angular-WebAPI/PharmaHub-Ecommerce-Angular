@@ -60,21 +60,42 @@
   line-height: 1.6;
   animation: fadeInleft 1s ease;
 }
+
 .about-us-second-section,
 .Meet-the-team-section {
   background-color: #f9fdfa;
   margin: 0;
   padding: 0;
 }
+.section2-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 5rem;
+}
+.about-us-image {
+  width: 100%;
+}
+.sectionImage {
+  overflow: hidden;
+  /* border-radius: 0 50% 0 50%; */
+  border-radius: 00% 100% 100% 0;
+  /* 
+  border-top-right-radius: 100%;
+  border-bottom-right-radius: 100%; */
+}
 .Text-Box2 {
   text-align: center;
   width: 60%;
   margin: 0 auto;
   color: #2b8a3e;
-  padding: 1.3rem;
 }
 .Text-Box2 h2 {
   font-size: 3rem;
+  margin-bottom: 1.2rem;
 }
 .Text-Box2 p {
   font-size: 1.15rem;
