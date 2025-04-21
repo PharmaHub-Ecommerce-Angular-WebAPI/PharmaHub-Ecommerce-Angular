@@ -46,9 +46,6 @@
 .pharmacy-item:hover {
   transform: translateY(-1rem) scale(1);
 }
-.pharmacy-item:active {
-  transform: translateY(2rem) scale(0.75);
-}
 .pharmacy-image {
   width: 4.5rem;
   height: auto;
@@ -62,10 +59,10 @@ img {
   border-radius: 12px;
 }
 .btn:link,
-.btn:link {
+.btn:visited {
   display: inline-block;
-  font-size: 1.18rem;
-  padding: 15px 30px;
+  font-size: 1.1rem;
+  padding: 10px 20px;
   border-radius: 100px;
   animation-name: appearing;
   animation-duration: 2.5s;
