@@ -16,16 +16,7 @@
         class="btn"
         [routerLink]="['/allpackages']"
       >
-        <svg
-          width="180px"
-          height="60px"
-          viewBox="0 0 180 60"
-          style="border-radius: 100px"
-        >
-          <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
-          <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
-        </svg>
-        <span>All Packages</span>
+        All Packages
       </button>
     </div>
   </div>
@@ -56,7 +47,7 @@
               class="custom-icon"
               src="./heart.json"
               trigger="hover"
-              style="width: 1.85rem; height: 1.8rem"
+              style="width: 1.3rem; height: 1.3rem"
             >
             </lord-icon>
           </div>
@@ -65,7 +56,9 @@
             <div
               class="row align-items-center align-content-center justify-content-between"
             >
-              <h4 class="custom-card-title col-8">{{ card.name }}</h4>
+              <h4 class="custom-card-title" style="text-align: center">
+                {{ card.name }}
+              </h4>
               <lord-icon
                 src="./addcart.json"
                 trigger="hover"
@@ -77,9 +70,9 @@
             <!-- Price and Describtion -->
             <!-- <p class="custom-card-text row">Price : {{card.price | currency : 'EGP'}}</p> -->
             <p class="custom-card-text">
-              Price : {{ card.price }} <small>EGP</small>
+              Price : <strong> {{ card.price }} EGP</strong>
             </p>
-            <p class="custom-card-text">
+            <p class="custom-card-text" style="text-align: center">
               {{ card.description.slice(0, 2).join(", ") }}
               @if (card.description.length > 2) {
               <button
@@ -104,6 +97,7 @@
             </div>
           </div>
         </div>
+        <!-- Card Back Side -->
         <div class="flip-card-back">
           <p class="custom-card-text">
             {{ card.description }}
