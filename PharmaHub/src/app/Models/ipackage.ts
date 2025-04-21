@@ -1,4 +1,5 @@
 export interface Ipackage {
+DissPrice: any;
   id: number;
   name: string;
   imgUrl: string;
@@ -7,4 +8,8 @@ export interface Ipackage {
   pharmName: string;
   imgPharm: string;
   isFlipped: boolean;
+  
 }
+
+
+
