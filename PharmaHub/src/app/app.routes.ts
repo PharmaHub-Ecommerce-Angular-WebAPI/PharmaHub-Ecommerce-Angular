@@ -10,6 +10,7 @@ import { AddproductComponent } from './Component/dash-pharmacies/addproduct/addp
 import { UpdateproductComponent } from './Component/dash-pharmacies/updateproduct/updateproduct.component';
 import { DeleteproductComponent } from './Component/dash-pharmacies/deleteproduct/deleteproduct.component';
 import { PharmacyInfoComponent } from './Component/dash-pharmacies/pharmacy-info/pharmacy-info.component';
+import { AboutUsComponent } from './Component/about-us/about-us.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,21 +20,20 @@ export const routes: Routes = [
   { path: 'allpackages', component: AllPackagesComponent },
   { path: 'alloffers', component: AllOffersComponent },
   { path: 'allpharmacies', component: ViewAllPharmaciesComponent },
-  
-  
+  { path: 'AboutUs', component: AboutUsComponent },
+
   { path: 'pharmacyinfo', component: PharmacyInfoComponent },
-  
-  { path: 'pharmacy', component: DashPharmaciesComponent,
+
+  {
+    path: 'pharmacy',
+    component: DashPharmaciesComponent,
     children: [
-      {path: '' , redirectTo: 'pharmacyinfo' , pathMatch: 'full'} ,
-      {path: 'pharmacyinfo' , component: PharmacyInfoComponent} ,
-      {path: 'addproduct' , component: AddproductComponent} ,
+      { path: '', redirectTo: 'pharmacyinfo', pathMatch: 'full' },
+      { path: 'pharmacyinfo', component: PharmacyInfoComponent },
+      { path: 'addproduct', component: AddproductComponent },
 
-      {path: 'updateproduct' , component: UpdateproductComponent} ,
-      {path: 'deleteproduct' , component: DeleteproductComponent} ,
-
-
-
-    ]
-   },
+      { path: 'updateproduct', component: UpdateproductComponent },
+      { path: 'deleteproduct', component: DeleteproductComponent },
+    ],
+  },
 ];
