@@ -1,74 +1,177 @@
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-    background-color: #e8eef6;
-  }
-  
-  .card-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: nowrap;
-    overflow: hidden;
-    position: relative;
-    padding: 2rem 0;
-  }
-  
-  .custom-card {
-    width: 19rem;
-    border-radius: 50px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    border: 1px solid #ddd;
-    transition: transform 0.3s ease;
-    background: #e0e0e0;
-    margin: 1% ;
-  }
-  
-  .custom-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .custom-card-img-container {
-    position: relative;
-  }
-  
-  .custom-card-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .custom-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  
-  .custom-card-body {
-    padding: 15px;
-  }
-  
-  .custom-card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .custom-card-text {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 15px;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-  .active-page {
-    background-color: #780cc5 !important;
-    color: white !important;
-  }
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  position: relative;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
 
-  .page{
-    border: 2px solid #780cc5 !important;
-  }
+.flip-card {
+  background-color: transparent;
+  width: 15rem;
+  height: 22rem;
+  perspective: 150rem;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  transition: transform 0.9s;
+  transform-style: preserve-3d;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ebfbee;
+}
+
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: block;
+}
+
+.flip-card-back {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8rem;
+  align-items: center;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* border: 1px solid #ddd; */
+  transform: rotateY(180deg);
+  text-align: center;
+  /* background: #f3faf4; */
+  background-color: #ebfbee;
+}
+.flip-button-1 {
+  /* background: #f3faf4; */
+  background-color: #ebfbee;
+
+  color: #207230;
+}
+.flip-button-1:hover {
+  text-decoration: underline;
+}
+.flip-button-2 {
+  width: 90px;
+  height: 30px;
+  border-radius: 100px;
+  cursor: pointer;
+  background-color: #207230;
+  transition: 0.5s ease;
+  color: #fff;
+}
+.flip-button-2:hover {
+  background-color: #ebfbee;
+  color: #207230;
+  box-shadow: inset 0 0 0 2px #207230;
+}
+.custom-card {
+  transition: transform 0.3s ease;
+  margin: 1%;
+}
+.custom-card:hover {
+  transform: translateY(-5px);
+}
+.pharma-logo {
+  max-width: 3.2rem;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+.pharma-logo:hover {
+  transform: rotateY(180deg);
+}
+
+.custom-card-img {
+  display: block;
+  margin: 0 auto;
+  width: 65%;
+  height: auto;
+}
+
+.custom-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+.cart-icon {
+  position: absolute;
+  right: 16px;
+  bottom: 118px;
+  cursor: pointer;
+}
+
+.custom-card-body {
+  padding: 1.2rem;
+}
+
+.custom-card-title {
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-align: center;
+
+  color: #207230;
+}
+
+.custom-card-text {
+  font-size: 0.8rem;
+  color: #207230;
+  /* margin-bottom: 15px; */
+}
+
+.active-page {
+  background-color: #207230;
+  color: white !important;
+}
+
+.page {
+  border: 2.5px solid #d8fddf !important;
+  color: #207230;
+}
+.pagination-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.Back-Button:link,
+.Back-Button:visited {
+  display: inline-block;
+  background-color: #2b8a3e;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 0.3rem 1.1rem;
+  border-radius: 100px;
+  transition: all 0.3s;
+  width: 6rem;
+}
+
+.Back-Button:hover,
+.Back-Button:active {
+  box-shadow: inset 0 0 0 2.5px #d8f5a2;
+  background-color: #f9fdfa;
+  color: #2b8a3e;
+}

@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MaxpriceService } from '../../../services/maxprice.service';
 import { PharmNameService } from '../../../services/pharm-name.service';
+import { MoveUpAnimateDirective } from '../../../Directives/move-up-animate.directive';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-display-packages',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, MoveUpAnimateDirective, RouterModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './display-packages.component.html',
   styleUrl: './display-packages.component.css',
@@ -69,7 +71,7 @@ export class DisplayPackagesComponent {
       {
         imgUrl: './logo.png',
         name: 'Card 5',
-        description: ['comp 1'],
+        description: ['comp 1', 'comp2', 'comp3'],
         id: 5,
         pharmName: 'khaled',
         price: 400,
