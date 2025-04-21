@@ -15,8 +15,14 @@
       <nav>
         <ul class="nav-links">
           <li><a href="#" class="link">Services</a></li>
-          <li><a href="#" class="link">Pharmacies</a></li>
-          <li><a href="#" class="link">About Us</a></li>
+          <li>
+            <a href="#" class="link" [routerLink]="['/allpharmacies']"
+              >Pharmacies</a
+            >
+          </li>
+          <li>
+            <a href="#" class="link" [routerLink]="['/AboutUs']">About Us</a>
+          </li>
           <li><a href="#" class="link">Contact</a></li>
         </ul>
       </nav>
