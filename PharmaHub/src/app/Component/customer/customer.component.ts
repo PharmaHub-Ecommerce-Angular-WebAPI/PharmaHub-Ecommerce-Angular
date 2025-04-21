@@ -7,6 +7,7 @@ import { PackageHeadingComponent } from './package-heading/package-heading.compo
 import { PharmaciesEntryComponent } from './pharmacies-entry/pharmacies-entry.component';
 import { OffersEnteryComponent } from './offers-entery/offers-entery.component';
 import { FooterMarqueeComponent } from './footer-marquee/footer-marquee.component';
+import { AboutUsComponent } from '../about-us/about-us.component';
 
 @Component({
   selector: 'app-customer',
@@ -19,6 +20,7 @@ import { FooterMarqueeComponent } from './footer-marquee/footer-marquee.componen
     PharmaciesEntryComponent,
     OffersEnteryComponent,
     FooterMarqueeComponent,
+    AboutUsComponent,
   ],
   templateUrl: './customer.component.html',
   styleUrl: './customer.component.css',
