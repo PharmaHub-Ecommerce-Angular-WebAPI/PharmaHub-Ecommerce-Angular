@@ -66,7 +66,7 @@ export class DisplayPackagesComponent implements OnInit {
 
         this.allPackages = [...formattedNonOffer, ...formattedOffers];
 
-        // 🟢 استخدم القيمة القادمة من API بدل الحساب اليدوي
+      
         const maxPriceFromApi = typeof max === 'number' ? max : parseFloat(max);
         this.priceService.setMaxPrice(maxPriceFromApi);
 
@@ -79,7 +79,7 @@ export class DisplayPackagesComponent implements OnInit {
       }
     );
 
-    // استماع للفلاتر
+    
     this.priceService.selectedPrice.subscribe((price) => {
       this.selectedPrice = price;
       this.filterPackages();
