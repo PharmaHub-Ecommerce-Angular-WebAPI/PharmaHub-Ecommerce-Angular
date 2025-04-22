@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MoveUpAnimateDirective } from '../../Directives/move-up-animate.directive';
 
@@ -17,6 +17,8 @@ export class SignupcustomerComponent {
   location: string = '';
   selectedCountry: string = '';
   selectedCity: string = '';
+  fullName: string = '';
+  phoneNumber: string = '';
   countries = [
     {
       name: 'Egypt',
@@ -56,5 +58,10 @@ export class SignupcustomerComponent {
     const country = this.countries.find((c) => c.name === this.selectedCountry);
     this.filteredCities = country ? country.cities : [];
     this.selectedCity = ''; // reset city
+  }
+  onSubmit(form: NgForm) {
+    if (form.invalid || this.signupPassword !== this.confirmPassword) {
+      return;
+    }
   }
 }

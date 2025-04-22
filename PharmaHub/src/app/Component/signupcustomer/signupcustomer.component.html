@@ -7,16 +7,69 @@
     </div>
     <div class="form-container">
       <div class="form-inner">
-        <form class="signup">
+        <form class="signup" #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
           <div class="fields">
             <!-- Full Name -->
             <div class="field">
-              <input type="text" placeholder="Full Name" required />
+              <input
+                type="text"
+                placeholder="Full Name"
+                name="fullName"
+                required
+                maxlength="100"
+                pattern="^[A-Za-z\s]+$"
+                [(ngModel)]="fullName"
+                #fullNameField="ngModel"
+              />
+              <!-- Error messages -->
+              <div
+                *ngIf="fullNameField.invalid && fullNameField.touched"
+                class="error-message"
+              >
+                <p *ngIf="fullNameField.errors?.['required']">
+                  Full Name is required.
+                </p>
+                <p *ngIf="fullNameField.errors?.['maxlength']">
+                  Full Name must be no more than 100 characters.
+                </p>
+                <p *ngIf="fullNameField.errors?.['pattern']">
+                  Full Name must contain only letters and spaces.
+                </p>
+              </div>
             </div>
             <!-- phone number -->
             <div class="field">
-              <input type="text" placeholder="Phone Number" required />
+              <input
+                type="text"
+                placeholder="Phone Number"
+                name="phoneNumber"
+                required
+                maxlength="11"
+                minlength="11"
+                pattern="^[0-9]{1,11}$"
+                [(ngModel)]="phoneNumber"
+                #phoneNumberField="ngModel"
+              />
+              <!-- Error messages -->
+              <div
+                *ngIf="phoneNumberField.invalid && phoneNumberField.touched"
+                class="error-message"
+              >
+                <p *ngIf="phoneNumberField.errors?.['required']">
+                  Phone Number is required.
+                </p>
+                <p *ngIf="phoneNumberField.errors?.['minlength']">
+                  Phone Number must be exactly 11 digits.
+                </p>
+                <p *ngIf="phoneNumberField.errors?.['maxlength']">
+                  Phone Number must be exactly 11 digits.
+                </p>
+                <p *ngIf="phoneNumberField.errors?.['pattern']">
+                  Phone Number must contain only numbers.
+                </p>
+              </div>
             </div>
+
             <!-- Email input -->
             <div class="field">
               <input
@@ -78,7 +131,7 @@
             <div class="field">
               <input
                 type="text"
-                placeholder="Location"
+                placeholder="Detailed Location"
                 name="location"
                 required
                 maxlength="280"
@@ -150,7 +203,13 @@
               </div>
             </div>
             <div class="btn">
-              <input type="submit" value="Signup" />
+              <input
+                type="submit"
+                value="Sign up"
+                [disabled]="
+                  formRef.invalid || signupPassword !== confirmPassword
+                "
+              />
             </div>
           </div>
         </form>
