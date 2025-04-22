@@ -95,12 +95,15 @@ form .btn input[type="submit"] {
 }
 .drop-down {
   display: block;
-  margin: 0 auto;
-  color: #2b8a3e;
+  width: 100%;
+  color: #298d3d95;
+  border-radius: 15px;
   font-size: 1.1rem;
   padding: 0.3rem;
   border-radius: 10px;
   border: 1px solid #23983bb4;
+  border-bottom-width: 2px;
+  height: 3rem;
 }
 .error-message {
   color: red;

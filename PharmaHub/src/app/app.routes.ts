@@ -12,6 +12,9 @@ import { DeleteproductComponent } from './Component/dash-pharmacies/deleteproduc
 import { PharmacyInfoComponent } from './Component/dash-pharmacies/pharmacy-info/pharmacy-info.component';
 import { AboutUsComponent } from './Component/about-us/about-us.component';
 import { LoginAndRegisterCustomerComponent } from './Component/login-and-register-customer/login-and-register-customer.component';
+import { PharmacyProfileComponent } from './Component/pharmacy-profile/pharmacy-profile.component';
+import { SignupcustomerComponent } from './Component/signupcustomer/signupcustomer.component';
+import { PharmacistSignUpComponent } from './Component/pharmacist-sign-up/pharmacist-sign-up.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -24,7 +27,9 @@ export const routes: Routes = [
   { path: 'AboutUs', component: AboutUsComponent },
   { path: 'logincustomer', component: LoginAndRegisterCustomerComponent },
   { path: 'pharmacyinfo', component: PharmacyInfoComponent },
-
+  { path: 'pharmacyprofile', component: PharmacyProfileComponent },
+  { path: 'CustomerSignUp', component: SignupcustomerComponent },
+  { path: 'PharmacistSignUp', component: PharmacistSignUpComponent },
   {
     path: 'pharmacy',
     component: DashPharmaciesComponent,

@@ -1,0 +1,185 @@
+<!-- sign up  -->
+<!-- //////////////////////////////////////////////////////// -->
+<section appMoveUpAnimate>
+  <div class="wrapper">
+    <div class="title-text">
+      <div class="title signup">Join PharmaHub as a Licensed Pharmacist</div>
+    </div>
+    <div class="form-container">
+      <div class="form-inner">
+        <form class="signup">
+          <div class="fields">
+            <!-- Full Name -->
+            <div class="field">
+              <input type="text" placeholder="Full Name" required />
+            </div>
+            <!-- phone number -->
+            <div class="field">
+              <input type="text" placeholder="Phone Number" required />
+            </div>
+            <!-- Email input -->
+            <div class="field">
+              <input
+                type="email"
+                placeholder="Email Address"
+                required
+                name="signupemail"
+                [(ngModel)]="signupemail"
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$"
+                #signupemailField="ngModel"
+              />
+              <!-- Email Validation -->
+              <div
+                *ngIf="signupemailField.invalid && signupemailField.touched"
+                class="error"
+                class="error-message"
+              >
+                <p *ngIf="signupemailField.errors?.['required']">
+                  Email is required.
+                </p>
+                <p *ngIf="signupemailField.errors?.['pattern']">
+                  Email must be a valid .com address.
+                </p>
+              </div>
+            </div>
+            <!-- Selected country -->
+            <div class="field">
+              <select
+                [(ngModel)]="selectedCountry"
+                name="selectedCountry"
+                (change)="onCountryChange()"
+                required
+                class="drop-down"
+              >
+                <option value="" disabled selected>Select Country</option>
+                <option
+                  *ngFor="let country of countries"
+                  [value]="country.name"
+                >
+                  {{ country.name }}
+                </option>
+              </select>
+            </div>
+            <!-- selected city -->
+            <div class="field">
+              <select
+                [(ngModel)]="selectedCity"
+                name="selectedCity"
+                required
+                class="drop-down"
+              >
+                <option value="" disabled selected>Select City</option>
+                <option *ngFor="let city of filteredCities" [value]="city">
+                  {{ city }}
+                </option>
+              </select>
+            </div>
+            <!-- Location input -->
+            <div class="field">
+              <input
+                type="text"
+                placeholder="Location"
+                name="location"
+                required
+                maxlength="280"
+                [(ngModel)]="location"
+                #locationField="ngModel"
+              />
+              <!-- Location validation -->
+              <div
+                *ngIf="locationField.invalid && locationField.touched"
+                class="error"
+                class="error-message"
+              >
+                <p *ngIf="locationField.errors?.['required']">
+                  Location is required.
+                </p>
+                <p *ngIf="locationField.errors?.['maxlength']">
+                  Location must be no more than 280 characters.
+                </p>
+              </div>
+            </div>
+            <!-- Only Appear For Pharmacist -->
+            <!-- Pharma Name -->
+            <div class="field">
+              <input type="text" placeholder="Pharma Name" required />
+            </div>
+            <!-- Pharmacist certificate input -->
+            <div class="field">
+              <input type="text" placeholder="Certificate" required />
+            </div>
+            <!-- Credit card number -->
+            <div class="field">
+              <input type="text" placeholder="Credit Car Number" required />
+            </div>
+            <!-- open time -->
+            <div class="field">
+              <input type="text" placeholder="Open Time" required />
+            </div>
+            <!-- close time -->
+            <div class="field">
+              <input type="text" placeholder="Close Time" required />
+            </div>
+            <!-- logo input -->
+            <div class="field">
+              <input type="text" placeholder="Logo" required />
+            </div>
+            <!-- password input -->
+            <div class="field">
+              <input
+                type="password"
+                placeholder="Password"
+                required
+                name="signupPassword"
+                [(ngModel)]="signupPassword"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{10,}$"
+                #signupPasswordField="ngModel"
+              />
+              <!-- password validation -->
+              <div
+                *ngIf="
+                  signupPasswordField.invalid && signupPasswordField.touched
+                "
+                class="error"
+                class="error-message"
+              >
+                <p *ngIf="signupPasswordField.errors?.['required']">
+                  Password is required.
+                </p>
+                <p *ngIf="signupPasswordField.errors?.['pattern']">
+                  Password must be at least 10 characters and include uppercase,
+                  lowercase, number, and special character.
+                </p>
+              </div>
+            </div>
+            <!-- confirm password -->
+            <div class="field">
+              <input
+                type="password"
+                placeholder="Confirm password"
+                required
+                name="confirmPassword"
+                [(ngModel)]="confirmPassword"
+                #confirmPasswordField="ngModel"
+              />
+              <!-- confirm password validation -->
+              <div
+                *ngIf="
+                  confirmPasswordField.touched &&
+                  signupPassword !== confirmPassword
+                "
+                class="error"
+                class="error-message"
+              >
+                <p>Passwords do not match.</p>
+              </div>
+            </div>
+            <div class="btn">
+              <input type="submit" value="Signup" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
