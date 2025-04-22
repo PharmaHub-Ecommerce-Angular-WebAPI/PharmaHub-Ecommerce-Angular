@@ -11,6 +11,7 @@ import { UpdateproductComponent } from './Component/dash-pharmacies/updateproduc
 import { DeleteproductComponent } from './Component/dash-pharmacies/deleteproduct/deleteproduct.component';
 import { PharmacyInfoComponent } from './Component/dash-pharmacies/pharmacy-info/pharmacy-info.component';
 import { AboutUsComponent } from './Component/about-us/about-us.component';
+import { LoginAndRegisterCustomerComponent } from './Component/login-and-register-customer/login-and-register-customer.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,7 +22,7 @@ export const routes: Routes = [
   { path: 'alloffers', component: AllOffersComponent },
   { path: 'allpharmacies', component: ViewAllPharmaciesComponent },
   { path: 'AboutUs', component: AboutUsComponent },
-
+  { path: 'logincustomer', component: LoginAndRegisterCustomerComponent },
   { path: 'pharmacyinfo', component: PharmacyInfoComponent },
 
   {
