@@ -21,13 +21,17 @@
         Join PharmaHub to explore services or browse available products.
       </p>
 
-      <a href="/pharmacy-login" class="btn btn-outline-secondary btn-lg m-3"
+      <a
+        href="/pharmacy-login"
+        class="btn btn-outline-secondary btn-lg m-3"
+        [routerLink]="['/PharmacistSignUp']"
         >Pharmacy Login & Services</a
       >
       <a
         href="/products"
         class="btn btn-lg"
         style="background-color: #d1c6ba; color: var(--bg-navbar)"
+        [routerLink]="['/CustomerSignUp']"
         >Explore Available Products</a
       >
     </div>
