@@ -7,7 +7,7 @@
     </div>
     <div class="form-container">
       <div class="form-inner">
-        <form class="login">
+        <form class="login" #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
           <div class="fields">
             <!-- Email input -->
             <div class="field">
@@ -61,7 +61,7 @@
               </div>
             </div>
             <div class="btn">
-              <input type="submit" value="Login" />
+              <input type="submit" value="Login" [disabled]="formRef.invalid" />
             </div>
           </div>
           <div class="signup-link">

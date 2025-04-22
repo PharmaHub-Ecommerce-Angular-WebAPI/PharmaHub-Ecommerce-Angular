@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { MoveUpAnimateDirective } from '../../Directives/move-up-animate.directive';
 import { RouterModule } from '@angular/router';
 
@@ -14,4 +14,8 @@ export class LoginAndRegisterCustomerComponent {
   loginemail: string = '';
   loginPassword: string = '';
   confirmPassword: string = '';
+  onSubmit(form: NgForm) {
+    if (form.invalid) return 'invalid inputs';
+    return 'Valid information ✅';
+  }
 }
