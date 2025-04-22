@@ -1,245 +1,86 @@
 <!-- auth.component.html -->
+<!-- Sign in form Customer and Pharmacis -->
 <section class="login-section" appMoveUpAnimate>
   <div class="wrapper">
-    <div class="title-text" [style.marginLeft]="isSignup ? '-100%' : '0%'">
-      <div class="title login">Customer Login</div>
-      <div class="title signup">New Comer to PharmaHub!</div>
+    <div class="title-text">
+      <div class="title login">Sign In to PharmaHub</div>
     </div>
     <div class="form-container">
-      <div class="slide-controls">
-        <input type="radio" name="slide" id="login" [checked]="!isSignup" />
-        <input type="radio" name="slide" id="signup" [checked]="isSignup" />
-        <label class="slide login" (click)="switchToLogin()">Login</label>
-        <label class="slide signup" (click)="switchToSignup()">Signup</label>
-        <div class="slider-tab" [style.left]="isSignup ? '50%' : '0%'"></div>
-      </div>
-      <div class="form-inner" [style.marginLeft]="isSignup ? '-100%' : '0%'">
+      <div class="form-inner">
         <form class="login">
-          <div class="field">
-            <input
-              type="email"
-              placeholder="Email Address"
-              required
-              name="loginemail"
-              [(ngModel)]="loginemail"
-              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$"
-              #loginemailField="ngModel"
-            />
-            <div
-              *ngIf="loginemailField.invalid && loginemailField.touched"
-              class="error"
-              class="error-message"
-            >
-              <p *ngIf="loginemailField.errors?.['required']">
-                Email is required.
-              </p>
-              <p *ngIf="loginemailField.errors?.['pattern']">
-                Email must be a valid .com address.
-              </p>
+          <div class="fields">
+            <!-- Email input -->
+            <div class="field">
+              <input
+                type="email"
+                placeholder="Email Address"
+                required
+                name="loginemail"
+                [(ngModel)]="loginemail"
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$"
+                #loginemailField="ngModel"
+              />
+              <!-- email validation -->
+              <div
+                *ngIf="loginemailField.invalid && loginemailField.touched"
+                class="error"
+                class="error-message"
+              >
+                <p *ngIf="loginemailField.errors?.['required']">
+                  Email is required.
+                </p>
+                <p *ngIf="loginemailField.errors?.['pattern']">
+                  Email must be a valid .com address.
+                </p>
+              </div>
             </div>
-          </div>
-          <div class="field">
-            <input
-              type="password"
-              placeholder="Password"
-              required
-              name="loginPassword"
-              [(ngModel)]="loginPassword"
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{10,}$"
-              #loginPasswordField="ngModel"
-            />
-            <div
-              *ngIf="loginPasswordField.invalid && loginPasswordField.touched"
-              class="error"
-              class="error-message"
-            >
-              <p *ngIf="loginPasswordField.errors?.['required']">
-                Password is required.
-              </p>
-              <p *ngIf="loginPasswordField.errors?.['pattern']">
-                Password must be at least 10 characters and include uppercase,
-                lowercase, number, and special character.
-              </p>
+            <!-- Password input -->
+            <div class="field">
+              <input
+                type="password"
+                placeholder="Password"
+                required
+                name="loginPassword"
+                [(ngModel)]="loginPassword"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{10,}$"
+                #loginPasswordField="ngModel"
+              />
+              <!-- password validation -->
+              <div
+                *ngIf="loginPasswordField.invalid && loginPasswordField.touched"
+                class="error"
+                class="error-message"
+              >
+                <p *ngIf="loginPasswordField.errors?.['required']">
+                  Password is required.
+                </p>
+                <p *ngIf="loginPasswordField.errors?.['pattern']">
+                  Password must be at least 10 characters and include uppercase,
+                  lowercase, number, and special character.
+                </p>
+              </div>
             </div>
-          </div>
-
-          <div class="pass-link"><a href="#">Forgot password?</a></div>
-          <div class="field btn">
-            <div class="btn-layer"></div>
-            <input type="submit" value="Login" />
+            <div class="btn">
+              <input type="submit" value="Login" />
+            </div>
           </div>
           <div class="signup-link">
-            Not a member?
-            <a href="#" (click)="switchToSignup(); $event.preventDefault()"
-              >Signup now</a
-            >
-          </div>
-          <!-- ///////////////////////////////////////////////////// -->
-          <!-- sign up  -->
-          <!-- //////////////////////////////////////////////////////// -->
-        </form>
-        <form class="signup">
-          <div class="field">
-            <select
-              [(ngModel)]="selectedRole"
-              name="selectedRole"
-              required
-              class="drop-down"
-            >
-              <option value="" disabled selected>Select your role</option>
-              <option value="customer">Customer</option>
-              <option value="pharmacist">pharmacist</option>
-            </select>
-          </div>
-          <div class="field">
-            <input type="text" placeholder="Full Name" required />
-          </div>
-          <div class="field">
-            <input type="text" placeholder="Phone Number" required />
-          </div>
-          <div class="field">
-            <input
-              type="email"
-              placeholder="Email Address"
-              required
-              name="signupemail"
-              [(ngModel)]="signupemail"
-              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$"
-              #signupemailField="ngModel"
-            />
-            <div
-              *ngIf="signupemailField.invalid && signupemailField.touched"
-              class="error"
-              class="error-message"
-            >
-              <p *ngIf="signupemailField.errors?.['required']">
-                Email is required.
-              </p>
-              <p *ngIf="signupemailField.errors?.['pattern']">
-                Email must be a valid .com address.
-              </p>
-            </div>
-          </div>
-          <!-- Only Appear For Pharmacist -->
-          <div class="field">
-            <select
-              [(ngModel)]="selectedCountry"
-              name="selectedCountry"
-              (change)="onCountryChange()"
-              required
-              class="drop-down"
-            >
-              <option value="" disabled selected>Select Country</option>
-              <option *ngFor="let country of countries" [value]="country.name">
-                {{ country.name }}
-              </option>
-            </select>
-          </div>
-          <div class="field">
-            <select
-              [(ngModel)]="selectedCity"
-              name="selectedCity"
-              required
-              class="drop-down"
-            >
-              <option value="" disabled selected>Select City</option>
-              <option *ngFor="let city of filteredCities" [value]="city">
-                {{ city }}
-              </option>
-            </select>
-          </div>
-          <div class="field">
-            <input
-              type="text"
-              placeholder="Location"
-              name="location"
-              required
-              maxlength="280"
-              [(ngModel)]="location"
-              #locationField="ngModel"
-            />
-            <div
-              *ngIf="locationField.invalid && locationField.touched"
-              class="error"
-              class="error-message"
-            >
-              <p *ngIf="locationField.errors?.['required']">
-                Location is required.
-              </p>
-              <p *ngIf="locationField.errors?.['maxlength']">
-                Location must be no more than 280 characters.
-              </p>
-            </div>
-          </div>
-          <div *ngIf="selectedRole === 'pharmacist'">
-            <div class="field">
-              <input type="text" placeholder="Certificate" required />
-            </div>
-            <div class="field">
-              <input type="text" placeholder="Credit Car Number" required />
-            </div>
-            <div class="field">
-              <input type="text" placeholder="Open Time" required />
-            </div>
-            <div class="field">
-              <input type="text" placeholder="Close Time" required />
-            </div>
-            <div class="field">
-              <input type="text" placeholder="Logo" required />
-            </div>
-          </div>
-          <div class="field">
-            <input
-              type="password"
-              placeholder="Password"
-              required
-              name="signupPassword"
-              [(ngModel)]="signupPassword"
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{10,}$"
-              #signupPasswordField="ngModel"
-            />
-            <div
-              *ngIf="signupPasswordField.invalid && signupPasswordField.touched"
-              class="error"
-              class="error-message"
-            >
-              <p *ngIf="signupPasswordField.errors?.['required']">
-                Password is required.
-              </p>
-              <p *ngIf="signupPasswordField.errors?.['pattern']">
-                Password must be at least 10 characters and include uppercase,
-                lowercase, number, and special character.
-              </p>
-            </div>
-          </div>
-          <div class="field">
-            <input
-              type="password"
-              placeholder="Confirm password"
-              required
-              name="confirmPassword"
-              [(ngModel)]="confirmPassword"
-              #confirmPasswordField="ngModel"
-            />
-            <div
-              *ngIf="
-                confirmPasswordField.touched &&
-                signupPassword !== confirmPassword
-              "
-              class="error"
-              class="error-message"
-            >
-              <p>Passwords do not match.</p>
-            </div>
-          </div>
-          <div class="field btn">
-            <div class="btn-layer"></div>
-            <input type="submit" value="Signup" />
+            <p>Not a member?</p>
+            <ul class="signuplist" style="padding-left: 0">
+              <li class="listitem">
+                <a href="#" [routerLink]="['/CustomerSignUp']"
+                  >Sign up as a new Customer</a
+                >
+              </li>
+              <li class="listitem">
+                <a href="#" [routerLink]="['/PharmacistSignUp']"
+                  >Sign up as a new Pharmacist</a
+                >
+              </li>
+            </ul>
           </div>
         </form>
       </div>
     </div>
   </div>
-
-  <!-- Link your styles in auth.component.css -->
 </section>
