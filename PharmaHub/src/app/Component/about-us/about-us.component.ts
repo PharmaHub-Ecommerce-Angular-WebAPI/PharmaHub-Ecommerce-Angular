@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FooterMarqueeComponent } from '../customer/footer-marquee/footer-marquee.component';
 import { MoveAnimateDirective } from '../../Directives/leftorrightfade.directive';
 import { ITeamMembers } from '../../Models/iteam-members';
+import { MoveUpAnimateDirective } from '../../Directives/move-up-animate.directive';
 
 @Component({
   selector: 'app-about-us',
@@ -12,6 +13,7 @@ import { ITeamMembers } from '../../Models/iteam-members';
     RouterModule,
     FooterMarqueeComponent,
     MoveAnimateDirective,
+    MoveUpAnimateDirective,
   ],
   standalone: true,
   templateUrl: './about-us.component.html',
