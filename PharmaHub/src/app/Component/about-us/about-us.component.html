@@ -18,7 +18,13 @@
 <section class="about-us-second-section">
   <div class="section2-container">
     <div class="sectionImage">
-      <img [src]="imgUrl" alt="About Us" class="about-us-image" />
+      <img
+        [src]="imgUrl"
+        alt="About Us"
+        class="about-us-image"
+        appMoveAnimateleftorright
+        direction="left"
+      />
     </div>
     <div class="Text-Box2">
       <h2 appMoveAnimateleftorright direction="left">Our Vision & Mission</h2>
@@ -43,7 +49,7 @@
       </p>
     </div>
   </div>
-  <div class="Team-Container">
+  <div class="Team-Container" appMoveUpAnimate>
     <div class="Team-member" *ngFor="let member of Team">
       <div class="Member-Image">
         <img [src]="member.Image" alt="Team Member" class="Team-member-image" />
