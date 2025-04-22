@@ -1,0 +1,114 @@
+.login-section {
+  background: #f9fdfa;
+}
+.wrapper {
+  max-width: 27rem;
+  margin: 2rem auto;
+  background: #daffe0;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.175);
+}
+.title-text {
+  color: #2b8a3e;
+  transition: all 0.6s ease;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+}
+.fields {
+  display: grid;
+  gap: 4rem;
+}
+.field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.form-inner form .field input {
+  height: 3rem;
+  width: 100%;
+  outline: none;
+  padding-left: 15px;
+  border-radius: 15px;
+  border: 1px solid #23983bb4;
+  border-bottom-width: 2px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+.form-inner form .field input:focus {
+  border-color: #2b8a3e;
+}
+
+.form-inner form .field input::placeholder {
+  color: #298d3d95;
+  transition: all 0.3s ease;
+}
+form .field input:focus::placeholder {
+  color: #2b8a3e;
+}
+
+.form-inner form .signup-link {
+  text-align: center;
+  margin: 0;
+  margin-top: 30px;
+}
+
+.form-inner form .signup-link a {
+  color: #2b8a3e;
+  text-decoration: none;
+}
+
+.form-inner form .signup-link a:hover {
+  text-decoration: underline;
+}
+.signuplist {
+  margin-bottom: 1rem;
+  list-style: none;
+  display: flex;
+}
+.btn {
+  height: 50px;
+  width: 100%;
+  border-radius: 15px;
+  border: none;
+  position: relative;
+  background: -webkit-linear-gradient(left, #2b8a3e, #30ac49, #23d546, #a5f5a2);
+}
+
+form .btn input[type="submit"] {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  position: relative;
+  background: none;
+  color: #fff;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.drop-down {
+  display: block;
+  width: 100%;
+  color: #298d3d95;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  padding: 0.3rem;
+  border-radius: 10px;
+  border: 1px solid #23983bb4;
+  border-bottom-width: 2px;
+  height: 3rem;
+}
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  /* margin-top: 5px; */
+  padding-left: 5px;
+  min-height: 20px;
+}
