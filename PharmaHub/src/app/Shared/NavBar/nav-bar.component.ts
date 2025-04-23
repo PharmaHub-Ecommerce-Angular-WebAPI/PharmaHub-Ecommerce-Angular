@@ -81,4 +81,11 @@ export class NavBarComponent implements OnInit {
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
+
+  onLogout() {
+    this.authService.logout();
+    this.router.navigate(['home']);
+     
+
+  }
 }

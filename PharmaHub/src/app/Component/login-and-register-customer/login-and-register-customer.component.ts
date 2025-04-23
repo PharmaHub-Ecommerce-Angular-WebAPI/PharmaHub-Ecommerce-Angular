@@ -1,17 +1,69 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { MoveUpAnimateDirective } from '../../Directives/move-up-animate.directive';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import {jwtDecode} from 'jwt-decode';
 
 @Component({
   selector: 'app-login-and-register-customer',
   imports: [CommonModule, FormsModule, MoveUpAnimateDirective, RouterModule],
+  standalone: true,
   templateUrl: './login-and-register-customer.component.html',
   styleUrl: './login-and-register-customer.component.css',
 })
 export class LoginAndRegisterCustomerComponent {
+  //// formdata 
   loginemail: string = '';
   loginPassword: string = '';
   confirmPassword: string = '';
+
+
+  constructor(private authService: AuthService , private router: Router) {
+  }
+  
+  
+  
+  login() {
+    const loginData = {
+      email: this.loginemail,
+      password: this.loginPassword
+    };
+  
+    this.authService.login(loginData).subscribe({
+      next: (response) => {
+        const token = response.token;
+        localStorage.setItem('token', token); 
+  
+        const decodedToken: any = jwtDecode(token);
+        const role = decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+        const userName = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
+        const userId = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
+
+        localStorage.setItem('role', role);
+        localStorage.setItem('userName', userName);
+        localStorage.setItem('userId', userId);
+        
+        if (role === 'Customer') {
+          this.router.navigate(['customer']);
+        } else if (role === 'Pharmacy') {
+          this.router.navigate(['pharmacy']);
+        } else {
+          alert('Unknown role');
+        }
+      },
+      error: (error) => {
+        console.error('Login error:', error);
+        alert('Invalid email or password.');
+      }
+    });
+  }
+  
+
+  onSubmit(form: NgForm) {
+    if (form.invalid) return 'invalid inputs';
+    return 'Valid information ✅';
+  }
+
 }

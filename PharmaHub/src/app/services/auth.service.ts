@@ -1,5 +1,7 @@
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../enviroments/enviroment.development';
 
 @Injectable({
   providedIn: 'root' 
@@ -11,24 +13,65 @@ export class AuthService {
   
     public isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
   
-    constructor() {
+
+
+    constructor(private httpclient: HttpClient) {
       const savedLoginStatus = localStorage.getItem('isLoggedIn');
       if (savedLoginStatus === 'true') {
         this.isLoggedInSubject.next(true);
       }
     }
-  
-    login(): void {
-      this.isLoggedInSubject.next(true);
-      localStorage.setItem('isLoggedIn', 'true');
+
+    sendVerificationCode(data: any): Observable<any> {
+      return this.httpclient.post(`${environment.baseUrl}/api/auth/send-verification-code`, data);
     }
+  
+    verifyCode(data: any): Observable<any> {
+      return this.httpclient.post(`${environment.baseUrl}/api/auth/verify-code`, data, {
+        responseType: 'text' 
+      });
+    }
+  
+    signupCustomer(data: any): Observable<any> {
+      return this.httpclient.post(`${environment.baseUrl}/api/auth/register`, data, {
+        responseType: 'text' 
+      });}
+
+      signupPharmacy(data: FormData): Observable<any> {
+        return this.httpclient.post(`${environment.baseUrl}/api/auth/pharmacyregister`, data, {
+          responseType: 'text' 
+        });}
+  /////////////// login 
+      login(credentials: { email: string; password: string }): Observable<any> {
+        return this.httpclient.post<any>(`${environment.baseUrl}/api/auth/login`, credentials).pipe(
+          tap(response => {
+            const token = response.token;
+            localStorage.setItem('authToken', token);
+      
+            this.isLoggedInSubject.next(true);
+          })
+        );
+      }
+      
+      getToken(): string | null {
+        return localStorage.getItem('authToken');
+      }
+      
+      isLoggedIn(): boolean {
+        return !!this.getToken(); 
+      }
+      
+    
   
     logout(): void {
-      this.isLoggedInSubject.next(false);
-      localStorage.setItem('isLoggedIn', 'false');
+      // this.isLoggedInSubject.next(false);
+      // localStorage.setItem('isLoggedIn', 'false');
+      localStorage.removeItem('authToken');
+
+  this.isLoggedInSubject.next(false);
     }
   
-    isLoggedIn(): boolean {
-      return this.isLoggedInSubject.value;
-    }
+    // isLoggedIn(): boolean {
+    //   return this.isLoggedInSubject.value;
+    // }
   }
