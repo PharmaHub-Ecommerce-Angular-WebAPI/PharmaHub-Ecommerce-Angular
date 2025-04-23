@@ -1,7 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+
+
 import { Router, RouterModule } from '@angular/router';
+
+import { FormsModule, NgForm } from '@angular/forms';
+
+
 import { MoveUpAnimateDirective } from '../../Directives/move-up-animate.directive';
 import { ICustomerSignUp } from '../../Models/icustomer-sign-up';
 import { AuthService } from '../../services/auth.service';
@@ -23,11 +28,13 @@ export class SignupcustomerComponent {
   location: string = '';
   selectedCountry: string = '';
   selectedCity: string = '';
+
   verificationCode: string = '';
   isCodeSent: boolean = false;
   isCodeVerified : boolean = false; 
   
   
+
   countries = [
     {
       name: 'Egypt',
@@ -127,5 +134,13 @@ export class SignupcustomerComponent {
       }
     });
   }
+
   
+
+  onSubmit(form: NgForm) {
+    if (form.invalid || this.signupPassword !== this.confirmPassword) {
+      return;
+    }
+  }
+
 }

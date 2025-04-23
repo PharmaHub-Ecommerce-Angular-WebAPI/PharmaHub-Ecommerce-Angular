@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { MoveUpAnimateDirective } from '../../Directives/move-up-animate.directive';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -17,6 +17,7 @@ export class LoginAndRegisterCustomerComponent {
   loginemail: string = '';
   loginPassword: string = '';
   confirmPassword: string = '';
+
 
   constructor(private authService: AuthService , private router: Router) {
   }
@@ -42,4 +43,10 @@ export class LoginAndRegisterCustomerComponent {
     });
   }
   
+
+  onSubmit(form: NgForm) {
+    if (form.invalid) return 'invalid inputs';
+    return 'Valid information ✅';
+  }
+
 }
