@@ -27,7 +27,7 @@ export const routes: Routes = [
   { path: 'AboutUs', component: AboutUsComponent },
   { path: 'logincustomer', component: LoginAndRegisterCustomerComponent },
   { path: 'pharmacyinfo', component: PharmacyInfoComponent },
-  // { path: 'pharmacyprofile', component: PharmacyProfileComponent },
+
   { path: 'CustomerSignUp', component: SignupcustomerComponent },
   { path: 'PharmacistSignUp', component: PharmacistSignUpComponent },
   {

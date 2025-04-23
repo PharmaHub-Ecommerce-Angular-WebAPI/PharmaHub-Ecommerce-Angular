@@ -1,0 +1,37 @@
+ .category
+ {
+    display: flex;
+    flex-wrap: wrap; /* ليتم ترتيب الأزرار في عدة صفوف */
+    justify-content: space-between; /* توزيع الأزرار بشكل متساوي بين المسافة */
+    gap: 20px; /* المسافة بين الأزرار في الصفوف */
+    padding: 20px;
+    background-color:  #c8f7d2;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+ /* تهيئة الستايل للأزرار */
+ .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; /* لتوزيع الأزرار بشكل متساوي */
+    gap: 10px; /* المسافة بين الأزرار */
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50; /* لون الخلفية */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049; /* تأثير عند المرور على الزر */
+}
