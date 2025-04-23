@@ -51,9 +51,9 @@
                 placeholder="Phone Number"
                 name="phoneNumber"
                 required
-                maxlength="16"
-                minlength="16"
-                pattern="^[0-9]{1,16}$"
+                maxlength="14"
+                minlength="14"
+                pattern="^\+?[1-9]\d{1,14}$"
                 [(ngModel)]="phoneNumber"
                 #phoneNumberField="ngModel"
               />
@@ -66,10 +66,10 @@
                   Phone Number is required.
                 </p>
                 <p *ngIf="phoneNumberField.errors?.['minlength']">
-                  Phone Number must be exactly 16 digits.
+                  Phone Number must be exactly 14 digits.
                 </p>
                 <p *ngIf="phoneNumberField.errors?.['maxlength']">
-                  Phone Number must be exactly 16 digits.
+                  Phone Number must be exactly 14 digits.
                 </p>
                 <p *ngIf="phoneNumberField.errors?.['pattern']">
                   Phone Number must contain only numbers.
@@ -172,7 +172,8 @@
 
             <div class="btn">
 
-              <button type="submit" [disabled]="!isCodeSent || !isCodeVerified || !signupForm.valid || formRef.invalid || signupPassword !== confirmPassword">Signup</button>
+              <button type="submit" [disabled]="!isCodeSent || !isCodeVerified || !signupForm.valid || signupPassword !== confirmPassword">Signup</button>
+              
               <button type="button" (click)="sendVerificationCode()" *ngIf="!isCodeSent">Send Verification Code</button>
               <button type="button" (click)="verifyCode()" *ngIf="isCodeSent && !isCodeVerified">Verify Code</button>
 
