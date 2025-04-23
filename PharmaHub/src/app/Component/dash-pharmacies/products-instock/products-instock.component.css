@@ -38,10 +38,10 @@
     box-sizing: border-box;
     width: 120px;
     font-size: 13px;
-    white-space: normal; /* ينزل الكلام سطر جديد */
-    word-break: break-word; /* يكسر الكلمة الطويلة */
-    overflow-y: auto; /* يظهر Scroll لو زاد المحتوى عموديًا */
-    max-height: 100px; /* أقصى ارتفاع للـ td */
+    white-space: normal; 
+    word-break: break-word; 
+    overflow-y: auto; 
+    max-height: 100px;
     overflow-x: auto;
   }
 .table th{
