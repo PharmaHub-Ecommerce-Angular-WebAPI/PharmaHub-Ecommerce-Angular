@@ -3,7 +3,8 @@ import { tap } from 'rxjs/operators';
 
 export const cacheInterceptor: HttpInterceptorFn = (req, next) => {
   const cache = new Map<string, { data: any, expiry: number }>();
-  const cacheDuration = 5 * 60 * 1000; // 5 دقائق
+  const cacheDuration = 5 * 60 * 1000;
+  
 
   if (req.method !== 'GET') {
     return next(req);
@@ -27,4 +28,6 @@ export const cacheInterceptor: HttpInterceptorFn = (req, next) => {
       }
     })
   );
+
+  
 };

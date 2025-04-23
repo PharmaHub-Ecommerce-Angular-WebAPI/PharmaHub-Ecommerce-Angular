@@ -1,5 +1,5 @@
 <!-- auth.component.html -->
-<!-- Sign in form Customer and Pharmacis -->
+<!-- Sign in form Customer and Pharmacist -->
 <section class="login-section" appMoveUpAnimate>
   <div class="wrapper">
     <div class="title-text">
@@ -7,7 +7,10 @@
     </div>
     <div class="form-container">
       <div class="form-inner">
-        <form class="login" #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
+
+        <form class="login" (ngSubmit)="login(); onSubmit(formRef)" #loginForm="ngForm" #formRef="ngForm">
+
+
           <div class="fields">
             <!-- Email input -->
             <div class="field">
@@ -17,15 +20,10 @@
                 required
                 name="loginemail"
                 [(ngModel)]="loginemail"
-                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$"
                 #loginemailField="ngModel"
               />
               <!-- email validation -->
-              <div
-                *ngIf="loginemailField.invalid && loginemailField.touched"
-                class="error"
-                class="error-message"
-              >
+              <div *ngIf="loginemailField.invalid && loginemailField.touched" class="error-message">
                 <p *ngIf="loginemailField.errors?.['required']">
                   Email is required.
                 </p>
@@ -34,6 +32,7 @@
                 </p>
               </div>
             </div>
+
             <!-- Password input -->
             <div class="field">
               <input
@@ -42,15 +41,11 @@
                 required
                 name="loginPassword"
                 [(ngModel)]="loginPassword"
-                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{10,}$"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\W_]).{10,}$"
                 #loginPasswordField="ngModel"
               />
               <!-- password validation -->
-              <div
-                *ngIf="loginPasswordField.invalid && loginPasswordField.touched"
-                class="error"
-                class="error-message"
-              >
+              <div *ngIf="loginPasswordField.invalid && loginPasswordField.touched" class="error-message">
                 <p *ngIf="loginPasswordField.errors?.['required']">
                   Password is required.
                 </p>
@@ -60,22 +55,20 @@
                 </p>
               </div>
             </div>
+
             <div class="btn">
               <input type="submit" value="Login" [disabled]="formRef.invalid" />
             </div>
           </div>
+
           <div class="signup-link">
             <p>Not a member?</p>
             <ul class="signuplist" style="padding-left: 0">
               <li class="listitem">
-                <a href="#" [routerLink]="['/CustomerSignUp']"
-                  >Sign up as a new Customer</a
-                >
+                <a [routerLink]="['/CustomerSignUp']">Sign up as a new Customer</a>
               </li>
               <li class="listitem">
-                <a href="#" [routerLink]="['/PharmacistSignUp']"
-                  >Sign up as a new Pharmacist</a
-                >
+                <a [routerLink]="['/PharmacistSignUp']">Sign up as a new Pharmacist</a>
               </li>
             </ul>
           </div>
