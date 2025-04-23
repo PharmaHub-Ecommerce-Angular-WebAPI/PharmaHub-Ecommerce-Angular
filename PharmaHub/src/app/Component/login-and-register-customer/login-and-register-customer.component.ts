@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { MoveUpAnimateDirective } from '../../Directives/move-up-animate.directive';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import {jwtDecode} from 'jwt-decode';
 
 @Component({
   selector: 'app-login-and-register-customer',
@@ -23,7 +24,7 @@ export class LoginAndRegisterCustomerComponent {
   }
   
   
-
+  
   login() {
     const loginData = {
       email: this.loginemail,
@@ -32,9 +33,25 @@ export class LoginAndRegisterCustomerComponent {
   
     this.authService.login(loginData).subscribe({
       next: (response) => {
-        console.log('Login successful!', response);
+        const token = response.token;
+        localStorage.setItem('token', token); 
   
-        this.router.navigate(['customer']);
+        const decodedToken: any = jwtDecode(token);
+        const role = decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+        const userName = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
+        const userId = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
+
+        localStorage.setItem('role', role);
+        localStorage.setItem('userName', userName);
+        localStorage.setItem('userId', userId);
+        
+        if (role === 'Customer') {
+          this.router.navigate(['customer']);
+        } else if (role === 'Pharmacy') {
+          this.router.navigate(['pharmacy']);
+        } else {
+          alert('Unknown role');
+        }
       },
       error: (error) => {
         console.error('Login error:', error);
