@@ -3,7 +3,7 @@ form {
     margin: 2rem auto;
     padding: 2rem;
     border-radius: 12px;
-    background-color: #f5fff5; /* أخضر فاتح جداً */
+    background-color: #f5fff5; 
     box-shadow: 0 0 10px rgba(0, 128, 0, 0.1);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
@@ -11,7 +11,7 @@ form {
   label {
     display: block;
     margin-bottom: 0.3rem;
-    color: #2e7d32; /* أخضر متوسط */
+    color: #2e7d32; 
     font-weight: 600;
   }
   
