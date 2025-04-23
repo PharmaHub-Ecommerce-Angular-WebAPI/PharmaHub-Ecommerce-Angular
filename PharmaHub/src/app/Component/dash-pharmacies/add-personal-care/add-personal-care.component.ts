@@ -7,7 +7,6 @@ import { ProductUpdateService } from '../../../services/product-update.service';
 @Component({
   selector: 'app-add-personal-care',
   imports: [    FormsModule, CommonModule ],
-    providers: [ApiProductService],
   templateUrl: './add-personal-care.component.html',
   styleUrl: './add-personal-care.component.css'
 })
@@ -111,7 +110,15 @@ export class AddPersonalCareComponent {
         this.apiProductService.addproduct(formData).subscribe({
           next: res => {
             console.log('Product added successfully', res);
+          this.product.name = '';
+          this.product.description = '';
+          this.product.price = 0;
+          this.product.quantity = 0;
+          this.product.logoFile = null;
+         
+          
         this.productUpdateService.notifyProductAdded();
+        
 
           },
           error: err => {
