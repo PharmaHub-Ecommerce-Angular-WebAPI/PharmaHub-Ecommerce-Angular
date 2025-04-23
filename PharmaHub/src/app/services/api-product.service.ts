@@ -104,4 +104,21 @@ export class ApiProductService {
     return this.httpclient.get(`${environment.baseUrl}/api/Products/MaxPrice`, {
     });
   }
+
+  addproduct(data: FormData): Observable<any> 
+  {
+    
+    return this.httpclient.post(`${environment.baseUrl}/api/Products`, data, {
+      responseType: 'text' 
+    });
+  }
+
+  getProductById(id: string): Observable<Iproduct> {
+    return this.httpclient.get<Iproduct>(`${environment.baseUrl}/api/Products/Pharmacy/${id}`);
+  }
+
+  deleteProductById(id: string): Observable<Iproduct> {
+    return this.httpclient.delete<Iproduct>(`${environment.baseUrl}/api/Products/${id}`);
+  }
+  
 }
