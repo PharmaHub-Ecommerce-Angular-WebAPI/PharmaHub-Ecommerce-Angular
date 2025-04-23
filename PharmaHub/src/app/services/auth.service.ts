@@ -36,6 +36,11 @@ export class AuthService {
       return this.httpclient.post(`${environment.baseUrl}/api/auth/register`, data, {
         responseType: 'text' 
       });}
+
+      signupPharmacy(data: FormData): Observable<any> {
+        return this.httpclient.post(`${environment.baseUrl}/api/auth/pharmacyregister`, data, {
+          responseType: 'text' 
+        });}
   /////////////// login 
       login(credentials: { email: string; password: string }): Observable<any> {
         return this.httpclient.post<any>(`${environment.baseUrl}/api/auth/login`, credentials).pipe(
