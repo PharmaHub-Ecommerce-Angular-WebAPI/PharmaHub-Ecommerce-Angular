@@ -1,8 +1,9 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { MoveUpAnimateDirective } from '../../Directives/move-up-animate.directive';
 import { FormsModule, NgForm } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-pharmacist-sign-up',
@@ -11,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './pharmacist-sign-up.component.css',
 })
 export class PharmacistSignUpComponent {
-  constructor(private cdRef: ChangeDetectorRef) {}
+  constructor(private cdRef: ChangeDetectorRef, private authService: AuthService ,  private router: Router) {}
   signupemail: string = '';
   signupPassword: string = '';
   confirmPassword: string = '';
@@ -57,6 +58,10 @@ export class PharmacistSignUpComponent {
     },
   ];
   filteredCities: string[] = [];
+  verificationCode: string = '';
+  isCodeSent: boolean = false;
+  isCodeVerified : boolean = false; 
+
   onCountryChange(): void {
     const country = this.countries.find((c) => c.name === this.selectedCountry);
     this.filteredCities = country ? country.cities : [];
@@ -173,4 +178,98 @@ export class PharmacistSignUpComponent {
       this.closeTimeError = this.closeTime < 1 || this.closeTime > 24;
     }
   }
+  sendVerificationCode(): void {
+    const data = { 
+      email: this.signupemail, 
+      name: this.fullName };
+    this.authService.sendVerificationCode(data).subscribe({
+      next: (response) => {
+        console.log('Verification code sent successfully:', response);
+        this.isCodeSent = true;
+      },
+      error: (error) => {
+        console.error('Error sending verification code:', error);
+      }
+    });
+  }
+
+  verifyCode(): void {
+    const data = {
+      email: this.signupemail,
+      verificationCode: this.verificationCode,
+    };
+  
+    this.authService.verifyCode(data).subscribe({
+      next: (response) => {
+        console.log('Code verified successfully:', response);
+        this.isCodeVerified = true;
+      },
+      error: (error) => {
+        console.error('Error verifying code:', error);
+  
+        if (error.error) {
+          if (typeof error.error === 'string') {
+            alert(`Verification failed: ${error.error}`);
+          } else {
+            alert('Unexpected error occurred while verifying the code.');
+          }
+        } else {
+          alert('An unknown error occurred during verification.');
+        }
+      }
+    });
+  }
+  
+  signup() {
+    if (this.signupPassword !== this.confirmPassword) {
+      alert('Passwords do not match.');
+      return;
+    }
+  
+    const selectedCityValue = this.selectedCity;  
+  
+     const formData = new FormData();
+    formData.append('UserName', this.fullName);
+    formData.append('PhoneNumber', this.phoneNumber);
+    formData.append('Email', this.signupemail);
+    formData.append('Country', this.selectedCountry);
+    formData.append('city', this.selectedCity);
+    formData.append('Address', this.location);
+    formData.append('PharmacyName', this.pharmaName);
+    formData.append('CreditCardNumber', this.creditCard);
+    formData.append('OpenTime', this.is24Hours ? '0' : `${this.openTime}`);
+    formData.append('CloseTime', this.is24Hours ? '0' : `${this.closeTime}`);
+    formData.append('Password', this.signupPassword);
+    formData.append('ConfirmPassword', this.confirmPassword);
+    if (this.certificateFile) {
+      formData.append('FormalPapersURL', this.certificateFile, this.certificateFile.name);
+    }
+    
+    if (this.logoFile) {
+      formData.append('LogoURL', this.logoFile, this.logoFile.name);
+    }
+    console.log('Signup Form Data:', formData);
+  
+    
+    this.authService.signupPharmacy(formData).subscribe({
+      next: (response) => {
+        console.log('successfully ', response);
+        alert('successfully registered!');
+         this.router.navigate(['logincustomer']) ;  
+         
+
+      },
+      error: (error) => {
+        console.error('errors', error);
+        if (error.error && error.error.includes("Email is already registered")) {
+          alert('registration failed: Email is already registered.');
+        } else {
+          alert('An unknown error occurred during registration.');
+        }
+      }
+    });
+  }
+
+  
+
 }
