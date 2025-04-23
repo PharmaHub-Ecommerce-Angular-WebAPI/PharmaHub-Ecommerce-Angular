@@ -47,7 +47,7 @@ export class AuthService {
           tap(response => {
             const token = response.token;
             localStorage.setItem('authToken', token);
-      
+            
             this.isLoggedInSubject.next(true);
           })
         );
@@ -67,6 +67,14 @@ export class AuthService {
       // this.isLoggedInSubject.next(false);
       // localStorage.setItem('isLoggedIn', 'false');
       localStorage.removeItem('authToken');
+      localStorage.removeItem('isLoggedIn');
+      
+      localStorage.removeItem('token');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('role');
+      localStorage.removeItem('userName');
+
+
 
   this.isLoggedInSubject.next(false);
     }

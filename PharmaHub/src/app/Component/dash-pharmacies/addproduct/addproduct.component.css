@@ -5,7 +5,7 @@
     justify-content: space-between; /* توزيع الأزرار بشكل متساوي بين المسافة */
     gap: 20px; /* المسافة بين الأزرار في الصفوف */
     padding: 20px;
-    background-color:  #c8f7d2;
+    background-color:  #f5fff5;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   }

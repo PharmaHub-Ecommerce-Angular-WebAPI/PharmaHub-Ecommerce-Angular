@@ -1,149 +1,118 @@
-import { Component } from '@angular/core';
-import { Ipackage } from '../../../Models/ipackage';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ApiProductService } from '../../../services/api-product.service';
+import { ProductUpdateService } from '../../../services/product-update.service';
+import { Subscription } from 'rxjs';
 
+
+interface Iproduct {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  discountRate: number;
+  category: string;
+  imageUrl: string;
+  packagesComponents?: { componentName: string }[];
+}
 @Component({
   selector: 'app-products-instock',
-  imports: [FormsModule , CommonModule,],
+  standalone: true,
+  imports: [FormsModule, CommonModule],
+  providers: [ApiProductService],
   templateUrl: './products-instock.component.html',
-  styleUrl: './products-instock.component.css'
+  styleUrls: ['./products-instock.component.css']
 })
-export class ProductsInstockComponent {
-allPackages: Ipackage[] = []; ;
-constructor() {
-    // this.allPackages = [
-    //   {
-    //     imgUrl: './logo.png',
-    //     name: 'Card 1',
-    //     description: ['comp 1'],
-    //     id: 1,
-    //     pharmName: 'keky',
-    //     price: 2000,
-    //     imgPharm: './logo.png',
-    //     isFlipped: false,
-    //   },
-    //   {
-    //     imgUrl: './logo.png',
-    //     name: 'Card 2',
-    //     description: ['comp 1'],
-    //     id: 2,
-    //     pharmName: 'tarshoby',
-    //     price: 1500,
-    //     imgPharm: './logo.png',
-    //     isFlipped: false,
-    //   },
-    //   {
-    //     imgUrl: './logo.png',
-    //     name: 'Card 3',
-    //     description: ['comp 1'],
-    //     id: 3,
-    //     pharmName: 'almeldin',
-    //     price: 4000,
-    //     imgPharm: './logo.png',
-    //     isFlipped: false,
-    //   },
-    //   {
-    //     imgUrl: './logo.png',
-    //     name: 'Card 4',
-    //     description: ['comp 1'],
-    //     id: 4,
-    //     pharmName: 'weso',
-    //     price: 1926,
-    //     imgPharm: './logo.png',
-    //     isFlipped: false,
-    //   },
-    //   {
-    //     imgUrl: './logo.png',
-    //     name: 'Card 5',
-    //     description: ['comp 1'],
-    //     id: 5,
-    //     pharmName: 'khaled',
-    //     price: 400,
-    //     imgPharm: './logo.png',
-    //     isFlipped: false,
-    //   },
-    //   {
-    //     imgUrl: './logo.png',
-    //     name: 'Card 6',
-    //     description: ['comp 1'],
-    //     id: 6,
-    //     pharmName: 'mahdy',
-    //     price: 100,
-    //     imgPharm: './logo.png',
-    //     isFlipped: false,
-    //   },
-    //   {
-    //     imgUrl: './logo.png',
-    //     name: 'Card 7',
-    //     description: ['comp 1'],
-    //     id: 7,
-    //     pharmName: 'rewan',
-    //     price: 600,
-    //     imgPharm: './logo.png',
-    //     isFlipped: false,
-    //   },
-    //   {
-    //     imgUrl: './logo.png',
-    //     name: 'Card 8',
-    //     description: ['comp 1'],
-    //     id: 8,
-    //     pharmName: 'emo',
-    //     price: 800,
-    //     imgPharm: './logo.png',
-    //     isFlipped: false,
-    //   },
-    //   {
-    //     imgUrl: './logo.png',
-    //     name: 'Card 9',
-    //     description: ['comp 1'],
-    //     id: 9,
-    //     pharmName: 'roby',
-    //     price: 500,
-    //     imgPharm: './logo.png',
-    //     isFlipped: false,
-    //   },
-    //   {
-    //     imgUrl: './logo.png',
-    //     name: 'Card 10',
-    //     description: ['comp 1'],
-    //     id: 10,
-    //     pharmName: 'ali',
-    //     price: 100,
-    //     imgPharm: './logo.png',
-    //     isFlipped: false,
-    //   },
-    //   {
-    //     imgUrl: './logo.png',
-    //     name: 'Card 11',
-    //     description: ['comp 1'],
-    //     id: 11,
-    //     pharmName: 'koky',
-    //     price: 2,
-    //     imgPharm: './logo.png',
-    //     isFlipped: false,
-    //   },
-    //   {
-    //     imgUrl: './logo.png',
-    //     name: 'Card 12',
-    //     description: ['comp 1'],
-    //     id: 12,
-    //     pharmName: 'hader',
-    //     price: 555,
-    //     imgPharm: './logo.png',
-    //     isFlipped: false,
-    //   },
-    //   {
-    //     imgUrl: './logo.png',
-    //     name: 'Card 13',
-    //     description: ['comp 1'],
-    //     id: 13,
-    //     pharmName: 'koko',
-    //     price: 9080,
-    //     imgPharm: './logo.png',
-    //     isFlipped: false,
-    //   },
-    // ];
 
-    
-  }}
+
+export class ProductsInstockComponent implements OnInit {
+  // allPackages: any[] = [];
+  allPackages: Iproduct[] = [];
+  private subscription: Subscription | null = null;
+  categories: string[] = [];
+  groupedPackages: { [key: string]: any[] } = {};
+  
+  
+  constructor(private apiProductService: ApiProductService ,    private productUpdateService: ProductUpdateService
+  ) {}
+
+  ngOnInit() {
+    this.loadProducts();
+    const pharmacyId = localStorage.getItem('userId');
+  
+    if (pharmacyId) {
+      this.apiProductService.getProductById(pharmacyId).subscribe((res: any) => {
+        this.allPackages = res;
+      });
+    } else {
+      console.error('Pharmacy ID not found in localStorage');
+    }
+    this.subscription = this.productUpdateService.productAdded$.subscribe(() => {
+      this.loadProducts(); // يعيد تحميل المنتجات
+    });
+  }
+  // loadProducts() {
+  //   const pharmacyId = localStorage.getItem('userId');
+  //   if (pharmacyId) {
+  //     this.apiProductService.getProductById(pharmacyId).subscribe((res: any) => {
+  //       this.allPackages = res;
+  //     });
+  //   }
+  // }
+
+  ////////////////////ممم
+  // loadProducts() {
+  //   const pharmacyId = localStorage.getItem('userId');
+  //   if (pharmacyId) {
+  //     this.apiProductService.getProductById(pharmacyId).subscribe((res: any[]) => {
+  //       this.allPackages = res;
+  
+  //       // تجميع حسب الـ category
+  //       this.groupedPackages = {};
+  //       res.forEach(pkg => {
+  //         const category = pkg.category || 'Uncategorized';
+  //         if (!this.groupedPackages[category]) {
+  //           this.groupedPackages[category] = [];
+  //         }
+  //         this.groupedPackages[category].push(pkg);
+  //       });
+  
+  //       // استخراج أسماء الكاتيجوري لعرضها
+  //       this.categories = Object.keys(this.groupedPackages);
+  //     });
+  //   }
+  // }
+  loadProducts() {
+    const pharmacyId = localStorage.getItem('userId');
+    if (pharmacyId) {
+      this.apiProductService.getProductById(pharmacyId).subscribe((res: any) => {
+        // تحقق من شكل الـ response
+        console.log(res); // للتأكد من شكل الاستجابة
+  
+        // إذا كانت الاستجابة تحتوي على بيانات ضمن خاصية معينة (مثل data)
+        // يجب التعامل معها بشكل مناسب
+        const products: Iproduct[] = res.data || res; // تعديل هذا الجزء حسب الهيكل الفعلي للـ response
+  
+        this.allPackages = products;
+  
+        // تجميع حسب الـ category
+        this.groupedPackages = {};
+        products.forEach(pkg => {
+          const category = pkg.category || 'Uncategorized';
+          if (!this.groupedPackages[category]) {
+            this.groupedPackages[category] = [];
+          }
+          this.groupedPackages[category].push(pkg);
+        });
+  
+        // استخراج أسماء الكاتيجوري لعرضها
+        this.categories = Object.keys(this.groupedPackages);
+      });
+    }
+  }
+  
+  ngOnDestroy() {
+    this.subscription?.unsubscribe(); // تنظيف الاشتراك
+  }
+}

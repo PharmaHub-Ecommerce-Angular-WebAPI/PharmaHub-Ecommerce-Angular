@@ -1,1 +1,93 @@
 <p>add-pakage works!</p>
+<form #productForm="ngForm" (ngSubmit)="submitProduct()">
+    <!-- Name -->
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="product.name" required />
+    </div>
+  
+    <!-- Description -->
+    <div>
+      <label for="description">Description:</label>
+      <input type="text" id="description" name="description" [(ngModel)]="product.description" />
+    </div>
+  
+    <!-- Image File Upload -->
+    <!-- <div>
+      <label for="image">Image:</label>
+      <input type="file" id="image" (change)="onImageSelected($event)" />
+    </div>
+   -->
+
+    <div class="field">
+        <label for="logoFileInput" class="custom-file"
+          >Upload photo  for your product
+        </label>
+        <input
+          id="logoFileInput"
+          type="file"
+          required
+          accept=".png, .jpg, .jpeg"
+          (change)="onImageSelected($event)"
+          name="logoFileInput"
+          class="certificatefield"
+        />
+        <div *ngIf="logoTouched && logoError" class="error-message">
+          <p *ngIf="logoError === 'required'">Logo is required.</p>
+          <p *ngIf="logoError === 'invalidType'">
+            Only .png, .jpg, or .jpeg files are allowed.
+          </p>
+          <p *ngIf="logoError === 'tooLarge'">
+            File size must not exceed 5MB.
+          </p>
+        </div>
+      </div>
+      <img *ngIf="previewImage" [src]="previewImage" alt="Preview" style="max-width: 200px;" />
+    <!-- Price -->
+    <div>
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" [(ngModel)]="product.price" required />
+    </div>
+  
+    <!-- Quantity -->
+    <div>
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" name="quantity" [(ngModel)]="product.quantity" required />
+    </div>
+  
+    <!-- Strength -->
+    <!-- <div>
+      <label for="strength">Strength:</label>
+      <input type="number" id="strength" name="strength" [(ngModel)]="product.strength" />
+    </div>
+   -->
+    <!-- Category -->
+    <!-- <div>
+      <label for="category">Category:</label>
+      <input type="text" id="category" name="category" [(ngModel)]="product.category" />
+    </div>
+   -->
+    <!-- Pharmacy ID -->
+    <!-- <div>
+      <label for="pharmacyId">Pharmacy ID:</label>
+      <input type="text" id="pharmacyId" name="pharmacyId" [(ngModel)]="product.pharmacyId" required />
+    </div> -->
+  
+    <!-- Components -->
+    <div>
+      <label>Components:</label>
+      <div *ngFor="let comp of product.components; let i = index; trackBy: trackByIndex">
+        <input type="text" [(ngModel)]="product.components[i]" name="component{{i}}" />
+        <button type="button" (click)="removeComponent(i)">Remove</button>
+      </div>
+      <button type="button" (click)="addComponent()">Add Component</button>
+    </div>
+
+   
+  
+    <!-- Submit Button -->
+    <div>
+      <button type="submit">Submit Product</button>
+    </div>
+  </form>
+  

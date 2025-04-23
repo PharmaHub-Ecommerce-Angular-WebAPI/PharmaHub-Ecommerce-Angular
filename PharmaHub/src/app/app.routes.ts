@@ -15,6 +15,11 @@ import { LoginAndRegisterCustomerComponent } from './Component/login-and-registe
 
 import { SignupcustomerComponent } from './Component/signupcustomer/signupcustomer.component';
 import { PharmacistSignUpComponent } from './Component/pharmacist-sign-up/pharmacist-sign-up.component';
+import { AddPakageComponent } from './Component/dash-pharmacies/add-pakage/add-pakage.component';
+import { AddMedicineComponent } from './Component/dash-pharmacies/add-medicine/add-medicine.component';
+import { AddBeautyProductComponent } from './Component/dash-pharmacies/add-beauty-product/add-beauty-product.component';
+import { AddPersonalCareComponent } from './Component/dash-pharmacies/add-personal-care/add-personal-care.component';
+import { AddHealthDeviceComponent } from './Component/dash-pharmacies/add-health-device/add-health-device.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -36,7 +41,22 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'pharmacyinfo', pathMatch: 'full' },
       { path: 'pharmacyinfo', component: PharmacyInfoComponent },
-      { path: 'addproduct', component: AddproductComponent },
+      { path: 'addproduct', component: AddproductComponent,
+        children: [
+      // { path: '', redirectTo: 'addproduct', pathMatch: 'full' },
+      // { path: 'addproduct', component: AddproductComponent} ,
+
+      { path: 'addpackage', component: AddPakageComponent} ,
+      { path: 'addmedicine', component: AddMedicineComponent}   ,
+      { path: 'addbeautyproduct', component: AddBeautyProductComponent} ,
+      { path: 'addpersonalcare', component: AddPersonalCareComponent} ,
+      { path: 'addhealth', component: AddHealthDeviceComponent} ,
+
+
+      
+
+        ]
+       },
 
       { path: 'updateproduct', component: UpdateproductComponent },
       { path: 'deleteproduct', component: DeleteproductComponent },
