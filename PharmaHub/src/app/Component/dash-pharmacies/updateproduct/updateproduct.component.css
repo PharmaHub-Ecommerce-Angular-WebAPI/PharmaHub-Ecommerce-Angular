@@ -1,0 +1,66 @@
+/* edit-product.component.css */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f4f7f6;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #2a9d8f; /* Green color */
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    color: #2a9d8f;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  textarea {
+    resize: vertical;
+    height: 100px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-submit {
+    background-color: #2a9d8f;
+    color: white;
+    margin-right: 10px;
+  }
+  
+  .btn-reset {
+    background-color: #f4f7f6;
+    color: #2a9d8f;
+    border: 1px solid #2a9d8f;
+  }
+  
+  button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  
