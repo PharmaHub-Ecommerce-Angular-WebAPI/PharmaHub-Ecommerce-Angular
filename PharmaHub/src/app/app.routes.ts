@@ -20,9 +20,12 @@ import { AddMedicineComponent } from './Component/dash-pharmacies/add-medicine/a
 import { AddBeautyProductComponent } from './Component/dash-pharmacies/add-beauty-product/add-beauty-product.component';
 import { AddPersonalCareComponent } from './Component/dash-pharmacies/add-personal-care/add-personal-care.component';
 import { AddHealthDeviceComponent } from './Component/dash-pharmacies/add-health-device/add-health-device.component';
+import { AdminComponent } from './Component/admin/admin.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+
+  { path: 'admin', component: AdminComponent },
 
   { path: 'home', component: HomeComponent },
   { path: 'customer', component: CustomerComponent },

@@ -1,0 +1,38 @@
+<p>admin works!</p>
+<div class="container">
+    <div *ngIf="isLoading" class="loading">Loading requests...</div>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  
+    <div class="request-box" *ngIf="!isLoading">
+      <h2>Pharmacies Requests</h2>
+      <div class="request-list">
+        <div class="request-item" *ngFor="let request of pharmacyRequests">
+          <div class="request-info">
+            <span class="request-name">{{ request.name }}</span>
+            <a *ngIf="request.pdfLink" [href]="request.pdfLink" target="_blank" class="pdf-link">View PDF</a>
+          </div>
+          <div class="request-actions">
+            <span class="approve" (click)="approvePharmacy(request.email)">✔</span>
+            <span class="reject" (click)="rejectPharmacy(request.email)">❌</span>
+          </div>
+        </div>
+        <div *ngIf="pharmacyRequests.length === 0" class="no-requests">No pharmacy requests found</div>
+      </div>
+    </div>
+  
+    <div class="request-box" *ngIf="!isLoading">
+      <h2>Medicines Requests</h2>
+      <div class="request-list">
+        <div class="request-item" *ngFor="let request of medicineRequests">
+          <div class="request-info">
+            <span class="request-name">{{ request.name }} ({{ request.strength }})</span>
+          </div>
+          <div class="request-actions">
+            <span class="approve" (click)="approveMedicine(request.id)">✔</span>
+            <span class="reject" (click)="rejectMedicine(request.id)">❌</span>
+          </div>
+        </div>
+        <div *ngIf="medicineRequests.length === 0" class="no-requests">No medicine requests found</div>
+      </div>
+    </div>
+  </div>
