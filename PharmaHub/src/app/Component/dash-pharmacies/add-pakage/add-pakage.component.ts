@@ -2,17 +2,17 @@ import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { ApiProductService } from '../../../services/api-product.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ProductUpdateService } from '../../../services/product-update.service';
 
 @Component({
   selector: 'app-add-pakage',
   imports: [    FormsModule, CommonModule ],
-    providers: [ApiProductService],
   templateUrl: './add-pakage.component.html',
   styleUrl: './add-pakage.component.css'
 })
 export class AddPakageComponent {
    
-constructor(private apiProductService: ApiProductService) {}
+constructor(private apiProductService: ApiProductService , private productUpdateService: ProductUpdateService) {}
 
   product = {
     name: '',
@@ -51,32 +51,7 @@ constructor(private apiProductService: ApiProductService) {}
   logoError: 'required' | 'invalidType' | 'tooLarge' | null = null;
   logoTouched = false;
 
-  // onImageSelected(event: Event): void {
-  //   const input = event.target as HTMLInputElement;
-  //   this.logoTouched = true;
-
-  //   if (!input.files || input.files.length === 0) {
-  //     this.product.logoFile = null;
-  //     this.logoError = 'required';
-  //     return;
-  //   }
-
-  //   const file = input.files[0];
-  //   const validTypes = ['image/png', 'image/jpg', 'image/jpeg'];
-
-  //   if (!validTypes.includes(file.type)) {
-  //     this.product.logoFile = null;
-  //     this.logoError = 'invalidType';
-  //     return;
-  //   }
-
-  //   const maxSizeMB = 5;
-  //   if (file.size > maxSizeMB * 1024 * 1024) {
-  //     this.product.logoFile = null;
-  //     this.logoError = 'tooLarge';
-  //     return;
-  //   }
-  // }
+ 
   onImageSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.logoTouched = true;
@@ -118,8 +93,8 @@ constructor(private apiProductService: ApiProductService) {}
 
   getCleanComponents(): string[] {
     return this.product.components
-      .map(comp => comp.trim()) // شيل المسافات الزايدة
-      .filter((comp, index, self) => comp && self.indexOf(comp) === index); // شيل الفاضي والمكرر
+      .map(comp => comp.trim()) 
+      .filter((comp, index, self) => comp && self.indexOf(comp) === index); 
   }
 
   addComponent() {
@@ -153,13 +128,10 @@ constructor(private apiProductService: ApiProductService) {}
 
     if (this.product.logoFile) {
       formData.append('ImageUrl', this.product.logoFile, this.product.logoFile.name);
-      // formData.append('ImageUrl', this.logoFile, this.logoFile.name);
+      
     }
 
-    // this.product.components.forEach((comp, index) => {
-    //   formData.append(`Components[${index}]`, comp);
-    // });
-    // formData.append('Components', '');
+    
     const cleanComponents = this.getCleanComponents();
 
     cleanComponents.forEach((comp, index) => {
@@ -177,6 +149,14 @@ constructor(private apiProductService: ApiProductService) {}
     this.apiProductService.addproduct(formData).subscribe({
       next: res => {
         console.log('Product added successfully', res);
+        this.product.name = '';
+        this.product.description = '';
+        this.product.price = 0;
+        this.product.quantity = 0;
+        this.product.logoFile = null;
+        this.product.components = [''];
+        this.productUpdateService.notifyProductAdded();
+
       },
       error: err => {
         console.error('Error adding product', err);

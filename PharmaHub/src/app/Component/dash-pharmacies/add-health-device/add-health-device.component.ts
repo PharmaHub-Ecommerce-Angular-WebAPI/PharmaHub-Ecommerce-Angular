@@ -7,7 +7,6 @@ import { ProductUpdateService } from '../../../services/product-update.service';
 @Component({
   selector: 'app-add-health-device',
   imports: [    FormsModule, CommonModule ],
-    providers: [ApiProductService],
   templateUrl: './add-health-device.component.html',
   styleUrl: './add-health-device.component.css'
 })
@@ -109,6 +108,11 @@ export class AddHealthDeviceComponent {
       this.apiProductService.addproduct(formData).subscribe({
         next: res => {
           console.log('Product added successfully', res);
+          this.product.name = '';
+          this.product.description = '';
+          this.product.price = 0;
+          this.product.quantity = 0;
+          this.product.logoFile = null;
         this.productUpdateService.notifyProductAdded();
 
         },

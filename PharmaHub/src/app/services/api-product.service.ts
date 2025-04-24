@@ -120,5 +120,18 @@ export class ApiProductService {
   deleteProductById(id: string): Observable<Iproduct> {
     return this.httpclient.delete<Iproduct>(`${environment.baseUrl}/api/Products/${id}`);
   }
+
+  searchMedicines(query: string): Observable<any[]> {
+    return this.httpclient.get<any[]>(`${environment.baseUrl}/api/SuggestedMedicines/search?name=${query}`);
+  }
   
+  /////update product
+  updateProduct(id: string, data: any): Observable<any> {
+    return this.httpclient.put(`${environment.baseUrl}/api/Products/${id}`, data);
+  }
+
+  
+  getProductDetailsById(id: string): Observable<any> {
+    return this.httpclient.get(`${environment.baseUrl}/api/Products/${id}`);
+  }
 }

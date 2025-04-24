@@ -7,7 +7,6 @@ import { ProductUpdateService } from '../../../services/product-update.service';
 @Component({
   selector: 'app-add-beauty-product',
   imports: [    FormsModule, CommonModule ],
-    providers: [ApiProductService],
   
   templateUrl: './add-beauty-product.component.html',
   styleUrl: './add-beauty-product.component.css'
@@ -35,12 +34,7 @@ export class AddBeautyProductComponent {
     this.product.components.splice(index, 1);
   }
   
-  // onImageSelected(event: any) {
-  //   const file = event.target.files[0];
-  //   if (file) {
-  //     this.product.imageFile = file;
-  //   }
-  // }
+  
   // Handle the file change event
   logoError: 'required' | 'invalidType' | 'tooLarge' | null = null;
   logoTouched = false;
@@ -89,7 +83,6 @@ export class AddBeautyProductComponent {
     formData.append('Price', this.product.price.toString());
     formData.append('Quantity', this.product.quantity.toString());
     formData.append('Strength', '0'.toString()); 
-    // formData.append('pharmacyId', this.product.pharmacyId);
     formData.append('Category', 'BeautyProduct');
 
     const pharmacyId = localStorage.getItem('userId');
@@ -102,11 +95,8 @@ export class AddBeautyProductComponent {
 
     if (this.product.logoFile) {
       formData.append('ImageUrl', this.product.logoFile, this.product.logoFile.name);
-      // formData.append('ImageUrl', this.logoFile, this.logoFile.name);
     }
-    // this.product.components.forEach((comp, index) => {
-    //   formData.append(`Components[${index}]`, comp);
-    // });
+    
     formData.append('Components', '');
 
 
@@ -114,7 +104,11 @@ export class AddBeautyProductComponent {
     this.apiProductService.addproduct(formData).subscribe({
       next: res => {
         console.log('Product added successfully', res);
-
+        this.product.name = '';
+        this.product.description = '';
+        this.product.price = 0;
+        this.product.quantity = 0;
+        this.product.logoFile = null;
         this.productUpdateService.notifyProductAdded();
       },
       error: err => {

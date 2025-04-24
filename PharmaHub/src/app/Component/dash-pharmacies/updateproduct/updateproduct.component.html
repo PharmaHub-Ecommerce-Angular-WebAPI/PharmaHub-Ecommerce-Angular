@@ -1,1 +1,53 @@
-<p>updateproduct works!</p>
+<form (ngSubmit)="onSubmit()">
+    <div class="form-container">
+      <h2>Edit Product</h2>
+  
+      <!-- Show this only when product data is NOT loaded -->
+      <div class="form-group" *ngIf="!productDataLoaded">
+        <label for="productId">Product ID</label>
+        <input type="text" id="productId" [(ngModel)]="productId" name="productId" required />
+        <button type="button" (click)="getProductData()">Get Product Data</button>
+      </div>
+  
+
+ 
+      <!-- Show form fields only if product data is loaded -->
+      <div *ngIf="productDataLoaded">
+        <div class="form-group">
+          <label for="name">Product Name</label>
+          <input type="text" id="name" [(ngModel)]="name" name="name" />
+        </div>
+  
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" [(ngModel)]="description" name="description"></textarea>
+        </div>
+  
+        <div class="form-group">
+          <label for="imageUrl">Image URL</label>
+          <input type="text" id="imageUrl" [(ngModel)]="imageUrl" name="imageUrl" />
+        </div>
+  
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="number" id="price" [(ngModel)]="price" name="price" />
+        </div>
+  
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input type="number" id="quantity" [(ngModel)]="quantity" name="quantity" />
+        </div>
+  
+        <div class="form-group">
+          <label for="strength">Strength</label>
+          <input type="number" id="strength" [(ngModel)]="strength" name="strength" />
+        </div>
+  
+        <div class="form-actions">
+          <button type="submit" class="btn-submit">Update Product</button>
+          <!-- <button type="reset" class="btn-reset" (click)="resetForm()">Reset</button> -->
+        </div>
+      </div>
+    </div>
+  </form>
+  

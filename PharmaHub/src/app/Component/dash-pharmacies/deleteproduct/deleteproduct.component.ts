@@ -26,12 +26,13 @@ export class DeleteproductComponent {
 
     this.productService.deleteProductById(this.productId).subscribe({
       next:()   => {
-        alert('✅ Product deleted successfully.'),
+        alert(' Product deleted successfully.'),
 
         this.productUpdateService.notifyProductAdded();
+        this.productId = ''
       },
       
-      error: () => alert('❌ Failed to delete product.')
+      error: () => alert(' Failed to delete product.')
     });
   }
 }
