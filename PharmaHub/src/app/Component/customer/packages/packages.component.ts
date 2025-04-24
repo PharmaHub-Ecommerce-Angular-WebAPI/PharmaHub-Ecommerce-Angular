@@ -3,6 +3,7 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   OnDestroy,
   OnInit,
+  Input,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -10,15 +11,21 @@ import { Ipackage } from '../../../Models/ipackage';
 import { RouterModule } from '@angular/router';
 import { MoveUpAnimateDirective } from '../../../Directives/move-up-animate.directive';
 import { ApiProductService } from '../../../services/api-product.service';
-import { DiscountPipe } from "../../Pipes/discount.pipe";
-
+import { DiscountPipe } from '../../Pipes/discount.pipe';
+import { AddcartserviceService } from '../../../services/addcartservice.service';
 @Component({
   selector: 'app-packages',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ApiProductService],
-  
-  imports: [FormsModule, CommonModule, RouterModule, MoveUpAnimateDirective, DiscountPipe],
+
+  imports: [
+    FormsModule,
+    CommonModule,
+    RouterModule,
+    MoveUpAnimateDirective,
+    DiscountPipe,
+  ],
   templateUrl: './packages.component.html',
   styleUrls: ['./packages.component.css'],
 })
@@ -27,7 +34,11 @@ export class PackagesComponent implements OnInit, OnDestroy {
   currentIndex = 0;
   cardsPerView = 3;
   resizeObserver: any;
-  constructor(private apiService: ApiProductService) {
+  @Input() product: any;
+  constructor(
+    private apiService: ApiProductService,
+    private cartService: AddcartserviceService
+  ) {
     this.setCardsPerView();
     window.addEventListener('resize', this.setCardsPerView.bind(this));
   }
@@ -35,7 +46,12 @@ export class PackagesComponent implements OnInit, OnDestroy {
   //   this.setCardsPerView();
   //   window.addEventListener('resize', this.setCardsPerView.bind(this));
   // }
-
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
+  }
+  alertadd() {
+    alert('product added to cart');
+  }
   ngOnInit(): void {
     this.apiService.getPackages().subscribe((response: any[]) => {
       this.packages = response.map((pkg) => ({
@@ -48,10 +64,8 @@ export class PackagesComponent implements OnInit, OnDestroy {
         price: pkg.price,
         isFlipped: false,
         DissPrice: pkg.discountRate,
-        
       }));
-    }
-  )
+    });
   }
 
   ngOnDestroy() {
