@@ -25,4 +25,11 @@ export class CartComponent implements OnInit {
   get subtotal(): number {
     return this.cartService.getSubtotal();
   }
+  CardTypes = [
+    'CashOnDelivery',
+    'CreditCard',
+    'PayPal',
+    'ApplePay',
+    'AmazonPay',
+  ];
 }
