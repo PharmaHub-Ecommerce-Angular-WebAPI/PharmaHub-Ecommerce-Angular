@@ -26,27 +26,27 @@ export class AboutUsComponent {
     this.Team = [
       {
         Name: 'Khaled Altabey',
-        Image: './AboutUs/1.jpg',
+        Image: './AboutUs/Khaled.JPG',
         Position: 'Full Stack Developer',
       },
       {
         Name: 'Eman Elyamani',
-        Image: './AboutUs/1.jpg',
+        Image: './AboutUs/Eman.PNG',
         Position: 'Full Stack Developer',
       },
       {
         Name: 'Wesam Ryiad',
-        Image: './AboutUs/1.jpg',
+        Image: './AboutUs/Wesam.PNG',
         Position: 'Full Stack Developer',
       },
       {
         Name: 'Mohamed Yasser',
-        Image: './AboutUs/1.jpg',
+        Image: './AboutUs/Mahdi.jpg',
         Position: 'Full Stack Developer',
       },
       {
         Name: 'Rawan Qandil',
-        Image: './AboutUs/1.jpg',
+        Image: './AboutUs/Rawan.jpg',
         Position: 'Full Stack Developer',
       },
     ];
