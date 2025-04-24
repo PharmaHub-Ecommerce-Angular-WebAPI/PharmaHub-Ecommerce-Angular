@@ -49,6 +49,8 @@ export class LoginAndRegisterCustomerComponent {
           this.router.navigate(['customer']);
         } else if (role === 'Pharmacy') {
           this.router.navigate(['pharmacy']);
+        } else if (role === 'Admin') {
+          this.router.navigate(['pharmacy']);
         } else {
           alert('Unknown role');
         }
