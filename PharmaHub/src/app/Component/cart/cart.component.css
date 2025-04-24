@@ -31,7 +31,6 @@
   color: #fff;
 }
 .cardContainer {
-  display: flex;
   gap: 1.1rem;
   justify-content: space-between;
   margin: 2rem 0;
@@ -190,7 +189,7 @@ span {
 }
 .Item {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   padding: 1.4rem;
   background-color: #fff;
@@ -205,6 +204,7 @@ span {
 .image-box {
   width: 9rem;
   height: 9rem;
+  margin: 1.2rem;
   border-radius: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
@@ -214,7 +214,7 @@ span {
 }
 .cartItemDetails {
   display: flex;
-  gap: 3.5rem;
+  gap: 5rem;
   justify-content: center;
   align-items: center;
 }
@@ -225,7 +225,7 @@ span {
   padding: 0;
 }
 .cartItemName {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 500;
   color: #2b8a3e;
 }
