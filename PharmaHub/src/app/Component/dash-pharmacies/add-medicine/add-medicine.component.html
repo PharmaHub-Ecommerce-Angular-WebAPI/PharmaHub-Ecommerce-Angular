@@ -1,1 +1,76 @@
-<p>add-medicine works!</p>
+<div class="col-4">
+<div class="medicine-search">
+    <div class="search-container">
+      <input 
+        type="text" 
+        [(ngModel)]="searchQuery" 
+        placeholder="Search for medicines (e.g., Panadol)" 
+        class="search-bar" 
+      />
+      <button (click)="searchMedicines()" class="search-btn">Search</button>
+      <input 
+        type="number" 
+        [(ngModel)]="medicineNumber" 
+        placeholder="Enter medicine quantity" 
+        class="quantity-input" 
+      />
+    </div>
+  
+    <table class="medicines-table" *ngIf="medicines.length > 0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Strength</th>
+          <th>Add</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let medicine of medicines">
+            <td>{{ medicine.name }}</td>
+            <td>{{ medicine.strength }}</td>
+            <td>
+              <button (click)="addTostock(medicine.name , medicine.strength)" style="background-color: #bcef5d; color: white;width: 5rem;">+</button>
+            </td>
+          </tr>
+          
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- add midicen -->
+<div class="col-6">
+    <div class="add-product-container">
+        <button (click)="showForm = !showForm" class="btn yourm">
+            your medicine not found? Add it here
+        </button>
+      
+       
+        <form *ngIf="showForm" (ngSubmit)="onSubmit()" #addProductForm="ngForm" class="form-container">
+          <div class="form-group">
+            <label for="name">name</label>
+            <input 
+              type="text" 
+              id="name" 
+              class="form-control" 
+              [(ngModel)]="name" 
+              name="name" 
+              required />
+          </div>
+      
+          <div class="form-group">
+            <label for="strength">Strength</label>
+            <input 
+              type="number" 
+              id="strength" 
+              class="form-control" 
+              [(ngModel)]="strength" 
+              name="strength" 
+              required />
+          </div>
+      
+          <button type="submit" class="btn btn-success">Add  </button>
+        </form>
+      </div>
+</div>  
