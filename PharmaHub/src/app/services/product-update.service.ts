@@ -11,5 +11,6 @@ export class ProductUpdateService {
 
   notifyProductAdded() {
     this.productAddedSource.next();
+    console.log('📢 Product added notification sent!');
   }
 }
