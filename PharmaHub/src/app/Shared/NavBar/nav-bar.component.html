@@ -33,5 +33,11 @@
     </a>
     <button class="hamburger" (click)="toggleMenu()">☰</button>
     <button (click)="onLogout()">Logout</button>
+    <a href="#" class="cart-button" [routerLink]="['/cart']">
+      <i
+        class="fas fa-shopping-cart"
+        style="font-size: 24px; color: #2b8a3e"
+      ></i>
+    </a>
   </div>
 </header>
