@@ -1,16 +1,23 @@
 import { CommonModule } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  OnDestroy,
+  OnInit,
+  Input,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Ioffers } from '../../../Models/ioffers';
 import { DiscountPipe } from '../../Pipes/discount.pipe';
 import { RouterModule } from '@angular/router';
 import { MoveUpAnimateDirective } from '../../../Directives/move-up-animate.directive';
 import { ApiProductService } from '../../../services/api-product.service';
+import { AddcartserviceService } from '../../../services/addcartservice.service';
 
 @Component({
   selector: 'app-offers',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-providers: [ApiProductService],
+  providers: [ApiProductService],
   imports: [
     FormsModule,
     CommonModule,
@@ -26,12 +33,21 @@ export class OffersComponent {
   offers: Ioffers[] = [];
   currentIndex = 0;
   cardsPerView = 3;
+  @Input() product: any;
 
-  constructor(private apiService: ApiProductService) {
+  constructor(
+    private apiService: ApiProductService,
+    private cartService: AddcartserviceService
+  ) {
     this.updateCardsPerView();
     window.addEventListener('resize', this.updateCardsPerView.bind(this));
   }
-
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
+  }
+  alertadd() {
+    alert('product added to cart');
+  }
   ngOnInit(): void {
     this.apiService.getOffers().subscribe((response: any[]) => {
       this.offers = response.map((pkg) => ({
@@ -45,10 +61,9 @@ export class OffersComponent {
         isFlipped: false,
         DissPrice: pkg.discountRate,
       }));
-    }
-  )
+    });
   }
-   
+
   get limitedOffers() {
     return this.offers.slice(0, 6);
   }
@@ -57,7 +72,10 @@ export class OffersComponent {
     if (this.currentIndex > 0) {
       this.currentIndex--;
     } else {
-      this.currentIndex = Math.max(this.limitedOffers.length - this.cardsPerView, 0);
+      this.currentIndex = Math.max(
+        this.limitedOffers.length - this.cardsPerView,
+        0
+      );
     }
   }
 
@@ -78,6 +96,9 @@ export class OffersComponent {
   }
 
   get visibleCards() {
-    return this.limitedOffers.slice(this.currentIndex, this.currentIndex + this.cardsPerView);
+    return this.limitedOffers.slice(
+      this.currentIndex,
+      this.currentIndex + this.cardsPerView
+    );
   }
 }

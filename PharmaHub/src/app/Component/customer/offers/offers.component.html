@@ -50,13 +50,17 @@
                 class="row align-items-center align-content-center justify-content-between"
               >
                 <h4 class="custom-card-title col-8">{{ card.name }}</h4>
-                <lord-icon
-                  src="./addcart.json"
-                  trigger="hover"
-                  style="width: 1.5rem; height: 1.5rem"
-                  class="col-2 cart-icon"
-                >
-                </lord-icon>
+                <button>
+                  <lord-icon
+                    src="./addcart.json"
+                    trigger="hover"
+                    style="width: 1.5rem; height: 1.5rem"
+                    class="col-2 cart-icon"
+                    (click)="addToCart(card)"
+                    (click)="alertadd()"
+                  >
+                  </lord-icon>
+                </button>
               </div>
               <!-- <p class="custom-card-text row">Price : {{card.price | currency : 'EGP'}}</p> -->
               <div class="row custom-card-text1">
