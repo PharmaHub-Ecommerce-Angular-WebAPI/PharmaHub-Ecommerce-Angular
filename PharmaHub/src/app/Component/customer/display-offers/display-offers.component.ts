@@ -1,4 +1,10 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  OnDestroy,
+  OnInit,
+  Input,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MaxpriceService } from '../../../services/maxprice.service';
@@ -7,12 +13,19 @@ import { PharmNameService } from '../../../services/pharm-name.service';
 import { MoveUpAnimateDirective } from '../../../Directives/move-up-animate.directive';
 import { RouterModule } from '@angular/router';
 import { ApiProductService } from '../../../services/api-product.service';
-import { DiscountPipe } from "../../Pipes/discount.pipe";
+import { DiscountPipe } from '../../Pipes/discount.pipe';
+import { AddcartserviceService } from '../../../services/addcartservice.service';
 
 @Component({
   selector: 'app-display-offers',
   standalone: true,
-  imports: [FormsModule, CommonModule, MoveUpAnimateDirective, RouterModule, DiscountPipe],
+  imports: [
+    FormsModule,
+    CommonModule,
+    MoveUpAnimateDirective,
+    RouterModule,
+    DiscountPipe,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ApiProductService],
   templateUrl: './display-offers.component.html',
@@ -25,14 +38,20 @@ export class DisplayOffersComponent {
   cardsPerPage = 12;
   selectedPrice: number = Infinity;
   selectedPharmName: string | null = null;
+  @Input() product: any;
 
   constructor(
     private priceService: MaxpriceService,
-    private pharmNameService: PharmNameService ,
-        private apiService: ApiProductService
-    
+    private pharmNameService: PharmNameService,
+    private apiService: ApiProductService,
+    private cartService: AddcartserviceService
   ) {}
-    
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
+  }
+  alertadd() {
+    alert('product added to cart');
+  }
   ngOnInit(): void {
     // جلب العروض
     this.apiService.getOffers().subscribe((response: any[]) => {
@@ -47,37 +66,31 @@ export class DisplayOffersComponent {
         isFlipped: false,
         DissPrice: pkg.discountRate,
       }));
-  
-     
+
       const uniquePharmNames = [
         ...new Set(this.offers.map((p) => p.pharmName)),
       ];
       this.pharmNameService.setPharmNames(uniquePharmNames);
-  
-      
+
       this.filteredPackages = [...this.offers];
     });
-  
-    
+
     this.apiService.getmaxpriceOffers().subscribe((res: any) => {
       if (res && res.maxPrice) {
         this.priceService.setMaxPrice(res.maxPrice);
       }
     });
-  
-  
+
     this.priceService.selectedPrice.subscribe((price) => {
       this.selectedPrice = price;
       this.filterPackages();
     });
-  
-   
+
     this.pharmNameService.selectedPharmName$.subscribe((name) => {
       this.selectedPharmName = name;
       this.filterPackages();
     });
   }
-  
 
   filterPackages() {
     this.filteredPackages = this.offers.filter((pkg) => {
@@ -89,8 +102,6 @@ export class DisplayOffersComponent {
     });
     this.currentPage = 1;
   }
-
-
 
   get totalPages(): number {
     return Math.ceil(this.filteredPackages.length / this.cardsPerPage);
@@ -105,4 +116,3 @@ export class DisplayOffersComponent {
     this.currentPage = page;
   }
 }
-
