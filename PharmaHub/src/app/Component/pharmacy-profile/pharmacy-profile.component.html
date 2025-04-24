@@ -1,0 +1,63 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+/>
+<section class="Profile">
+  <div class="sectionContainer">
+    <div class="profileGrid">
+      <aside class="sideNav">
+        <ul>
+          <li>
+            <a href="#" [routerLink]="['/pharmacyprofile/profilepackages']"
+              ><i class="fas fa-box"></i> Packages</a
+            >
+          </li>
+          <li>
+            <a href="#" [routerLink]="['/pharmacyprofile/profileMedicines']"
+              ><i class="fas fa-prescription-bottle-alt"></i> Medicines</a
+            >
+          </li>
+          <li>
+            <a href="#" [routerLink]="['/pharmacyprofile/profileBeautyProduct']"
+              ><i class="fas fa-paint-brush"></i> Beauty Product</a
+            >
+          </li>
+          <li>
+            <a href="#" [routerLink]="['/pharmacyprofile/profilePersonalCare']"
+              ><i class="fas fa-pump-soap"></i> Personal care</a
+            >
+          </li>
+          <li>
+            <a href="#" [routerLink]="['/pharmacyprofile/profileHealthDevice']">
+              <i class="fas fa-heartbeat"></i>
+              Health Devices</a
+            >
+          </li>
+        </ul>
+      </aside>
+      <div class="profileContent">
+        <div class="profileHeadContainer">
+          <img [src]="imgUrl2" class="profileimg" />
+          <div class="text">
+            <h2>Al AbdElatif</h2>
+            <p>Address: 123 Main St, City, Country</p>
+          </div>
+        </div>
+        <hr />
+        <nav>
+          <ul>
+            <!-- <li><a href="#">Products</a></li> -->
+            <li>
+              <a href="#" [routerLink]="['/pharmacyprofile/profileOffers']"
+                >Offers</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div>
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
