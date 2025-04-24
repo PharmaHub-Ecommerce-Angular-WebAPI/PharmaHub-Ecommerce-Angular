@@ -1,0 +1,90 @@
+<div class="container mt-4" appMoveUpAnimate>
+  <div class="row justify-content-center">
+    <div
+      class="custom-card col-12 col-sm-6 col-md-4 mb-4 p-4 flip-card"
+      *ngFor="let card of visibleCards"
+    >
+      <div class="flip-card-inner" [class.flipped]="card.isFlipped">
+        <div class="flip-card-front">
+          <div class="custom-card-img-container">
+            <img [src]="card.imgUrl" alt="Image" class="custom-card-img" />
+            <lord-icon
+              class="custom-icon"
+              src="./heart.json"
+              trigger="hover"
+              style="width: 1.3rem; height: 1.3rem"
+            ></lord-icon>
+          </div>
+          <div class="custom-card-body">
+            <h5 class="custom-card-title">{{ card.name }}</h5>
+            <div class="row custom-card-text1">
+              <p class="col-3">Price:</p>
+              <p class="col-2" style="text-decoration-line: line-through">
+                {{ card.price }}
+              </p>
+              <p class="col-2">
+                <b>{{ card.price | discount : card.DissPrice }} </b>
+              </p>
+              <p class="col-1 custom-card-text">EGP</p>
+            </div>
+            <p class="custom-card-text">
+              {{ card.description.slice(0, 2).join(", ") }}
+              @if (card.description.length > 2) {
+              <button
+                class="flip-button-1"
+                (click)="card.isFlipped = !card.isFlipped"
+              >
+                ...See More &rarr;
+              </button>
+              }
+            </p>
+            <button>
+              <lord-icon
+                src="./addcart.json"
+                trigger="hover"
+                style="width: 1.5rem; height: 1.5rem"
+                class="col-2 cart-icon"
+                (click)="addToCart(card)"
+                (click)="alertadd()"
+              >
+              </lord-icon>
+            </button>
+            <div
+              class="px-2 row align-items-center justify-content-center pharma-logo-container"
+            >
+              <img class="pharma-logo" [src]="card.imgPharm" />
+              <p class="custom-card-text row col-6 m-1">{{ card.pharmName }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="flip-card-back">
+          <p class="custom-card-text">
+            {{ card.description }}
+          </p>
+          <button
+            class="flip-button-2"
+            (click)="card.isFlipped = !card.isFlipped"
+          >
+            Back
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <nav class="pagination-nav text-center mt-4">
+    <div class="backButton" style="max-width: 10rem">
+      <a href="#" class="Back-Button" [routerLink]="['/customer']">Back</a>
+    </div>
+    <button
+      *ngFor="let page of [].constructor(totalPages); let i = index"
+      class="btn mx-1 page"
+      [class.active-page]="currentPage === i + 1"
+      (click)="setPage(i + 1)"
+    >
+      {{ i + 1 }}
+    </button>
+  </nav>
+  <br />
+</div>
