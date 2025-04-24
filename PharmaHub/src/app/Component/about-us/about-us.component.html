@@ -52,7 +52,12 @@
   <div class="Team-Container" appMoveUpAnimate>
     <div class="Team-member" *ngFor="let member of Team">
       <div class="Member-Image">
-        <img [src]="member.Image" alt="Team Member" class="Team-member-image" />
+        <img
+          [src]="member.Image"
+          alt="Team Member"
+          class="Team-member-image"
+          loading="lazy"
+        />
       </div>
       <div class="Team-member-info">
         <h3>{{ member.Name }}</h3>

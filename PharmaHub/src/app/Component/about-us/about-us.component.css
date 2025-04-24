@@ -115,6 +115,7 @@
   justify-items: center;
   align-items: center;
 }
+
 .Team-member-image {
   transition: transform 0.3s ease;
   border: #2b8a3e 4px solid;
@@ -136,10 +137,12 @@
   grid-column: -3/-1;
   grid-row: -2;
 }
+
 .Team-member-image {
-  width: 12rem;
-  height: auto;
+  width: 15rem;
+  height: 15rem;
   border-radius: 100%;
+  object-fit: cover;
 }
 @keyframes fadeIn {
   0% {

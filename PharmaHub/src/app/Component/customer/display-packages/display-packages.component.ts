@@ -1,4 +1,10 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  OnInit,
+  OnDestroy,
+  Input,
+} from '@angular/core';
 import { Ipackage } from '../../../Models/ipackage';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -10,11 +16,18 @@ import { ApiProductService } from '../../../services/api-product.service';
 import { Iproduct } from '../../../Models/iproduct';
 import { forkJoin } from 'rxjs';
 import { DiscountPipe } from '../../Pipes/discount.pipe';
+import { AddcartserviceService } from '../../../services/addcartservice.service';
 
 @Component({
   selector: 'app-display-packages',
   standalone: true,
-  imports: [FormsModule, CommonModule, MoveUpAnimateDirective, RouterModule, DiscountPipe],
+  imports: [
+    FormsModule,
+    CommonModule,
+    MoveUpAnimateDirective,
+    RouterModule,
+    DiscountPipe,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ApiProductService],
   templateUrl: './display-packages.component.html',
@@ -27,19 +40,30 @@ export class DisplayPackagesComponent implements OnInit {
   cardsPerPage = 12;
   selectedPrice: number = Infinity;
   selectedPharmName: string | null = null;
+  @Input() product: any;
 
   constructor(
+    private cartService: AddcartserviceService,
     private priceService: MaxpriceService,
     private pharmNameService: PharmNameService,
     private apiService: ApiProductService
   ) {}
-
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
+  }
+  alertadd() {
+    alert('product added to cart');
+  }
   ngOnInit(): void {
     const packagesWithoutOffers$ = this.apiService.getPackages();
     const packagesWithOffers$ = this.apiService.getpackgeslimeted();
     const maxPrice$ = this.apiService.getmaxpricePackages();
 
-    forkJoin([packagesWithoutOffers$, packagesWithOffers$, maxPrice$]).subscribe(
+    forkJoin([
+      packagesWithoutOffers$,
+      packagesWithOffers$,
+      maxPrice$,
+    ]).subscribe(
       ([nonOfferPackages, offerPackages, max]: [any[], any[], any]) => {
         const formattedNonOffer = nonOfferPackages.map((pkg) => ({
           id: pkg.id,
@@ -66,7 +90,6 @@ export class DisplayPackagesComponent implements OnInit {
 
         this.allPackages = [...formattedNonOffer, ...formattedOffers];
 
-      
         const maxPriceFromApi = typeof max === 'number' ? max : parseFloat(max);
         this.priceService.setMaxPrice(maxPriceFromApi);
 
@@ -79,7 +102,6 @@ export class DisplayPackagesComponent implements OnInit {
       }
     );
 
-    
     this.priceService.selectedPrice.subscribe((price) => {
       this.selectedPrice = price;
       this.filterPackages();

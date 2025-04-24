@@ -1,0 +1,92 @@
+.sectionContainer {
+  width: 85rem;
+  margin: 0 auto;
+  height: 100%;
+  padding: 1rem;
+}
+.sideNav ul {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 2rem;
+  width: 16rem;
+  background-color: #2b8a3e;
+  border-radius: 50px;
+  height: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+  box-shadow: 0 5px 7px #2b8a3e;
+}
+.sideNav ul li a:link,
+.sideNav ul li a:visited {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+.sideNav ul li a:hover,
+.sideNav ul li a:active {
+  color: #2b8a3e;
+  background-color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+}
+.profileHeadContainer {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.profileimg {
+  width: 11rem;
+  border: 2px solid #2b8a3e;
+  border-radius: 50%;
+  box-shadow: 0 0 7px #2b8a3e;
+}
+.text h2 {
+  font-size: 2.5rem;
+  color: #2b8a3e;
+}
+.text p {
+  font-size: 1.1rem;
+  color: #777777db;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+}
+.profileGrid {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  gap: 2rem;
+  height: 100%;
+}
+.profileHeadContainer {
+  padding: 1.2rem;
+}
+Nav ul li a:link,
+Nav ul li a:visited {
+  color: #77777798;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+Nav ul li a:hover,
+Nav ul li a:active {
+  color: #777777c4;
+  background-color: rgb(249, 253, 250);
+  transform: scale(1.5);
+  padding: 0.5rem 0.5rem;
+  /* border-radius: 50px 50px;
+  box-shadow: 0 0 5px #77777798; */
+}
+Nav ul li a:focus {
+  border-bottom: #2b8a3e solid 2px;
+  border-top: #2b8a3e solid 2px;
+  color: #777777eb;
+  padding: 0;
+}

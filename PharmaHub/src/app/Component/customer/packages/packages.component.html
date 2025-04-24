@@ -59,13 +59,17 @@
               <h4 class="custom-card-title" style="text-align: center">
                 {{ card.name }}
               </h4>
-              <lord-icon
-                src="./addcart.json"
-                trigger="hover"
-                style="width: 1.5rem; height: 1.5rem"
-                class="col-2 cart-icon"
-              >
-              </lord-icon>
+              <button>
+                <lord-icon
+                  src="./addcart.json"
+                  trigger="hover"
+                  style="width: 1.5rem; height: 1.5rem"
+                  class="col-2 cart-icon"
+                  (click)="addToCart(card)"
+                  (click)="alertadd()"
+                >
+                </lord-icon>
+              </button>
             </div>
             <!-- Price and Describtion -->
             <!-- <p class="custom-card-text row">Price : {{card.price | currency : 'EGP'}}</p> -->
@@ -73,8 +77,6 @@
               Price : <strong> {{ card.price }} EGP</strong>
             </p>
 
-
-            
             <p class="custom-card-text" style="text-align: center">
               {{ card.description.slice(0, 2).join(", ") }}
               @if (card.description.length > 2) {

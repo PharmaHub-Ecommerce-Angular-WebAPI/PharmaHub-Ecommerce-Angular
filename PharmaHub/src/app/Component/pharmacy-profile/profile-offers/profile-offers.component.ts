@@ -1,3 +1,6 @@
+import { DisplayPackagesComponent } from '../../customer/display-packages/display-packages.component';
+import { AddcartserviceService } from '../../../services/addcartservice.service';
+import { ApiProductService } from '../../../services/api-product.service';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -5,33 +8,28 @@ import {
   OnInit,
   Input,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+
+import { RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MaxpriceService } from '../../../services/maxprice.service';
 import { Ioffers } from '../../../Models/ioffers';
+import { MaxpriceService } from '../../../services/maxprice.service';
 import { PharmNameService } from '../../../services/pharm-name.service';
-import { MoveUpAnimateDirective } from '../../../Directives/move-up-animate.directive';
-import { RouterModule } from '@angular/router';
-import { ApiProductService } from '../../../services/api-product.service';
 import { DiscountPipe } from '../../Pipes/discount.pipe';
-import { AddcartserviceService } from '../../../services/addcartservice.service';
 
 @Component({
-  selector: 'app-display-offers',
-  standalone: true,
+  selector: 'app-profile-offers',
   imports: [
-    FormsModule,
-    CommonModule,
-    MoveUpAnimateDirective,
+    DisplayPackagesComponent,
     RouterModule,
+    RouterLink,
+    CommonModule,
     DiscountPipe,
   ],
+  templateUrl: './profile-offers.component.html',
+  styleUrl: './profile-offers.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [ApiProductService],
-  templateUrl: './display-offers.component.html',
-  styleUrl: './display-offers.component.css',
 })
-export class DisplayOffersComponent {
+export class ProfileOffersComponent {
   offers: Ioffers[] = [];
   filteredPackages: Ioffers[] = [];
   currentPage = 1;
