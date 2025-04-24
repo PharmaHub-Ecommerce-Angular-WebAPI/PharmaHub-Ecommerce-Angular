@@ -15,6 +15,14 @@ import { LoginAndRegisterCustomerComponent } from './Component/login-and-registe
 
 import { SignupcustomerComponent } from './Component/signupcustomer/signupcustomer.component';
 import { PharmacistSignUpComponent } from './Component/pharmacist-sign-up/pharmacist-sign-up.component';
+import { PharmacyProfileComponent } from './Component/pharmacy-profile/pharmacy-profile.component';
+import { CartComponent } from './Component/cart/cart.component';
+import { ProfilePackagesComponent } from './Component/pharmacy-profile/profile-packages/profile-packages.component';
+import { ProfileMedicinesComponent } from './Component/pharmacy-profile/profile-medicines/profile-medicines.component';
+import { ProfileBeautyProductComponent } from './Component/pharmacy-profile/profile-beauty-product/profile-beauty-product.component';
+import { ProfilePersonalCareComponent } from './Component/pharmacy-profile/profile-personal-care/profile-personal-care.component';
+import { ProfileHealthDevicesComponent } from './Component/pharmacy-profile/profile-health-devices/profile-health-devices.component';
+import { ProfileOffersComponent } from './Component/pharmacy-profile/profile-offers/profile-offers.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -27,9 +35,34 @@ export const routes: Routes = [
   { path: 'AboutUs', component: AboutUsComponent },
   { path: 'logincustomer', component: LoginAndRegisterCustomerComponent },
   { path: 'pharmacyinfo', component: PharmacyInfoComponent },
-  // { path: 'pharmacyprofile', component: PharmacyProfileComponent },
+  {
+    path: 'pharmacyprofile',
+    component: PharmacyProfileComponent,
+    children: [
+      { path: '', redirectTo: 'profileOffers', pathMatch: 'full' },
+      { path: 'profilepackages', component: ProfilePackagesComponent },
+      { path: 'profileMedicines', component: ProfileMedicinesComponent },
+      {
+        path: 'profileBeautyProduct',
+        component: ProfileBeautyProductComponent,
+      },
+      {
+        path: 'profilePersonalCare',
+        component: ProfilePersonalCareComponent,
+      },
+      {
+        path: 'profileHealthDevice',
+        component: ProfileHealthDevicesComponent,
+      },
+      {
+        path: 'profileOffers',
+        component: ProfileOffersComponent,
+      },
+    ],
+  },
   { path: 'CustomerSignUp', component: SignupcustomerComponent },
   { path: 'PharmacistSignUp', component: PharmacistSignUpComponent },
+  { path: 'cart', component: CartComponent },
   {
     path: 'pharmacy',
     component: DashPharmaciesComponent,
