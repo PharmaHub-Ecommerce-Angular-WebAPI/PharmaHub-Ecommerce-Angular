@@ -4,7 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { MoveUpAnimateDirective } from '../../Directives/move-up-animate.directive';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-login-and-register-customer',
@@ -14,23 +14,19 @@ import {jwtDecode} from 'jwt-decode';
   styleUrl: './login-and-register-customer.component.css',
 })
 export class LoginAndRegisterCustomerComponent {
-  //// formdata 
+  //// formdata
   loginemail: string = '';
   loginPassword: string = '';
   confirmPassword: string = '';
 
+  constructor(private authService: AuthService, private router: Router) {}
 
-  constructor(private authService: AuthService , private router: Router) {
-  }
-  
-  
-  
   login() {
     const loginData = {
       email: this.loginemail,
-      password: this.loginPassword
+      password: this.loginPassword,
     };
-  
+
     this.authService.login(loginData).subscribe({
       next: (response) => {
         const token = response.token;
@@ -41,16 +37,32 @@ export class LoginAndRegisterCustomerComponent {
         const userName = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
         const userId = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
 
+
+        const decodedToken: any = jwtDecode(token);
+        const role =
+          decodedToken[
+            'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+          ];
+        const userName =
+          decodedToken[
+            'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
+          ];
+        const userId =
+          decodedToken[
+            'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
+          ];
+        this.authService.setUserRole(role);
         localStorage.setItem('role', role);
         localStorage.setItem('userName', userName);
         localStorage.setItem('userId', userId);
-        
+
         if (role === 'Customer') {
-          this.router.navigate(['customer']);
+          window.location.href = '/customer';
         } else if (role === 'Pharmacy') {
-          this.router.navigate(['pharmacy']);
+          window.location.href = '/pharmacy';
         } else if (role === 'Admin') {
-          this.router.navigate(['admin']);
+
+          window.location.href = '/admin';
         } else {
           alert('Unknown role');
         }
@@ -58,14 +70,12 @@ export class LoginAndRegisterCustomerComponent {
       error: (error) => {
         console.error('Login error:', error);
         alert('Invalid email or password.');
-      }
+      },
     });
   }
-  
 
   onSubmit(form: NgForm) {
     if (form.invalid) return 'invalid inputs';
     return 'Valid information ✅';
   }
-
 }

@@ -1,25 +1,171 @@
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+.packages-section {
+  padding-bottom: 6rem;
 }
-
+.section-header {
+  max-width: 75rem;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
 .card-container {
   display: flex;
   justify-content: center;
   gap: 2rem;
   flex-wrap: wrap;
   position: relative;
+  padding: 2rem 0;
   max-width: 75rem;
   margin: 0 auto;
-  padding: 2rem 0;
+}
+.custom-card {
+  transition: transform 0.3s ease;
+}
+.custom-card:hover {
+  transform: translateY(-5px);
+}
+.pharma-logo {
+  max-width: 3.75rem;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+.pharma-logo:hover {
+  transform: rotateY(180deg);
+}
+.custom-card-img {
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+  height: auto;
+}
+
+.custom-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+.cart-icon {
+  position: absolute;
+  right: 30px;
+  bottom: 131px;
+  cursor: pointer;
+}
+
+.custom-card-body {
+  padding: 1.2rem;
+}
+
+.custom-card-title {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #207230;
+  /* margin-bottom: 10px; */
+}
+
+.custom-card-text {
+  font-size: 0.75rem;
+  color: #207230;
+  /* margin-bottom: 15px; */
+}
+
+.center-card {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
+.Heading {
+  font-size: 2.6rem;
+  color: #2b8a3e;
+  max-width: 35rem;
+}
+
+/* arrow buttons */
+.arrow-btn {
+  --arrow-size: 2.5rem;
+  --arrow-color: #2b8a3e;
+  --arrow-color-hover: #d8f5a2;
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.arrow-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: calc(var(--arrow-size) * 0.7071);
+  height: calc(var(--arrow-size) * 0.7071);
+  box-sizing: border-box;
+  border-top: calc(var(--arrow-size) / 5) solid var(--arrow-color);
+  transition: all 0.2s ease-in-out;
+}
+
+.arrow-btn.left {
+  left: 5rem;
+}
+
+.arrow-btn.right {
+  right: 5rem;
+}
+
+.arrow-btn.left::after {
+  left: calc(var(--arrow-size) / 5);
+  border-left: calc(var(--arrow-size) / 5) solid var(--arrow-color);
+  transform: rotate(-45deg);
+  transform-origin: top left;
+}
+
+.arrow-btn.right::after {
+  right: calc(var(--arrow-size) / 5);
+  border-right: calc(var(--arrow-size) / 5) solid var(--arrow-color);
+  transform: rotate(45deg);
+  transform-origin: top right;
+}
+
+.arrow-btn.left:hover::after {
+  box-shadow: calc(var(--arrow-size) / -8) calc(var(--arrow-size) / -8) 0
+    var(--arrow-color);
+  border-color: var(--arrow-color-hover);
+}
+
+.arrow-btn.right:hover::after {
+  box-shadow: calc(var(--arrow-size) / 8) calc(var(--arrow-size) / -8) 0
+    var(--arrow-color);
+  border-color: var(--arrow-color-hover);
+}
+
+/* all packages button */
+.btn {
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  background-color: #d8f5a2;
+  color: #37b24d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.btn:hover {
+  background-color: #f9fdfa;
+  box-shadow: inset 0 0 0 3px #37b24d;
+  color: #37b24d;
 }
 
 .flip-card {
   background-color: transparent;
   width: 15rem;
-  height: 22rem;
+  height: 20rem;
   perspective: 150rem;
 }
 
@@ -27,12 +173,11 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-
   transition: transform 0.9s;
   transform-style: preserve-3d;
   border-radius: 50px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #ebfbee;
+  background-color: rgb(235, 251, 238);
 }
 
 .flip-card-inner.flipped {
@@ -86,75 +231,6 @@ body {
   color: #207230;
   box-shadow: inset 0 0 0 2px #207230;
 }
-.custom-card {
-  transition: transform 0.3s ease;
-  margin: 1%;
-}
-.custom-card:hover {
-  transform: translateY(-5px);
-}
-.pharma-logo {
-  max-width: 3.2rem;
-  height: auto;
-  transition: transform 0.3s ease;
-}
-.pharma-logo:hover {
-  transform: rotateY(180deg);
-}
-
-.custom-card-img {
-  display: block;
-  margin: 0 auto;
-  width: 65%;
-  height: auto;
-}
-
-.custom-icon {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  cursor: pointer;
-}
-.cart-icon {
-  position: absolute;
-  right: 16px;
-  bottom: 118px;
-  cursor: pointer;
-}
-
-.custom-card-body {
-  padding: 1.2rem;
-}
-
-.custom-card-title {
-  font-size: 0.75rem;
-  font-weight: bold;
-  text-align: center;
-
-  color: #207230;
-}
-
-.custom-card-text {
-  font-size: 0.8rem;
-  color: #207230;
-  /* margin-bottom: 15px; */
-}
-
-.active-page {
-  background-color: #207230;
-  color: white !important;
-}
-
-.page {
-  border: 2.5px solid #d8fddf !important;
-  color: #207230;
-}
-.pagination-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
 .Back-Button:link,
 .Back-Button:visited {
   display: inline-block;
@@ -174,4 +250,30 @@ body {
   box-shadow: inset 0 0 0 2.5px #d8f5a2;
   background-color: #f9fdfa;
   color: #2b8a3e;
+}
+
+/* For small screens */
+@media (max-width: 576px) {
+  .custom-card {
+    width: 60%;
+  }
+  .flip-card-back {
+    gap: 3rem;
+    padding: 1rem;
+  }
+  .Heading {
+    font-size: 2.5rem;
+    color: #2b8a3e;
+    max-width: 35rem;
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  .arrow-btn.left {
+    left: 1rem;
+  }
+
+  .arrow-btn.right {
+    right: 1rem;
+  }
 }
