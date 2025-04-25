@@ -51,8 +51,8 @@ export class ProfileOffersComponent {
     alert('product added to cart');
   }
   ngOnInit(): void {
-    // جلب العروض
-    this.apiService.getOffers().subscribe((response: any[]) => {
+    
+    this.apiService.getOffersPHARMACY().subscribe((response: any[]) => {
       this.offers = response.map((pkg) => ({
         id: pkg.id,
         name: pkg.name,
@@ -64,26 +64,26 @@ export class ProfileOffersComponent {
         isFlipped: false,
         DissPrice: pkg.discountRate,
       }));
-
+  
       const uniquePharmNames = [
         ...new Set(this.offers.map((p) => p.pharmName)),
       ];
       this.pharmNameService.setPharmNames(uniquePharmNames);
-
+  
       this.filteredPackages = [...this.offers];
     });
-
+  
     this.apiService.getmaxpriceOffers().subscribe((res: any) => {
       if (res && res.maxPrice) {
         this.priceService.setMaxPrice(res.maxPrice);
       }
     });
-
+  
     this.priceService.selectedPrice.subscribe((price) => {
       this.selectedPrice = price;
       this.filterPackages();
     });
-
+  
     this.pharmNameService.selectedPharmName$.subscribe((name) => {
       this.selectedPharmName = name;
       this.filterPackages();
