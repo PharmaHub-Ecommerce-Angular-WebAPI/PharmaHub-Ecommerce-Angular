@@ -243,3 +243,39 @@ span {
   background-color: #fff;
 }
 /* .cartItemQuantity */
+/* cart.component.css */
+#card-element {
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+#card-element.StripeElement--focus {
+  border-color: #6772e5;
+  box-shadow: 0 0 5px rgba(103, 114, 229, 0.5);
+}
+
+#card-label {
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  color: #999;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.card-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.card-filled #card-label {
+  top: -8px;
+  font-size: 12px;
+  background: white;
+  padding: 0 4px;
+  color: #333;
+}

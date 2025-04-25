@@ -11,5 +11,5 @@ import { ProductsInstockComponent } from './products-instock/products-instock.co
   styleUrl: './dash-pharmacies.component.css'
 })
 export class DashPharmaciesComponent {
-
+  
 }

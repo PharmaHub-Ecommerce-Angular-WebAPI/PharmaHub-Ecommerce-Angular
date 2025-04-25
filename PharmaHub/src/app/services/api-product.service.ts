@@ -134,4 +134,14 @@ export class ApiProductService {
   getProductDetailsById(id: string): Observable<any> {
     return this.httpclient.get(`${environment.baseUrl}/api/Products/${id}`);
   }
+
+  /////order
+  addOrder(data: any ): Observable<any> 
+  {
+    
+    return this.httpclient.post(`${environment.baseUrl}/api/orders/create`, data)
+    //   , {
+    //   responseType: 'text' 
+    // });
+  }
 }
