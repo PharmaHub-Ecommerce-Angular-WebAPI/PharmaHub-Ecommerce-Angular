@@ -36,14 +36,14 @@
         </ul>
       </aside>
       <div class="profileContent">
-        <div class="profileHeadContainer">
-          <img [src]="imgUrl2" class="profileimg" />
+        <div class="profileHeadContainer" *ngIf="pharmacy">
+          <img [src]="pharmacy.logoURL" class="profileimg" />
           <div class="text">
-            <h2>Al AbdElatif</h2>
-            <p>Address: 123 Main St</p>
-            <p>country</p>
-            <p>city</p>
-            <p>Phone: 0123456789</p>
+            <h2>{{ pharmacy.pharmacyName }}</h2>
+            <p>Address: {{ pharmacy.address }}</p>
+              <p>Country: {{ pharmacy.country }}</p>
+              <p>City: {{ pharmacy.city }}</p>
+              <p>Phone: {{ pharmacy.phoneNumber }}</p>
           </div>
         </div>
         <hr />
