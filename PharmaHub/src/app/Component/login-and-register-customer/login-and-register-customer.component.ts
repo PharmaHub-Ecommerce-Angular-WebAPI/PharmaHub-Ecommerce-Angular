@@ -30,14 +30,7 @@ export class LoginAndRegisterCustomerComponent {
     this.authService.login(loginData).subscribe({
       next: (response) => {
         const token = response.token;
-        //localStorage.setItem('token', token); 
-  
-        const decodedToken: any = jwtDecode(token);
-        const role = decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
-        const userName = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
-        const userId = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
-
-
+        localStorage.setItem('token', token);
         const decodedToken: any = jwtDecode(token);
         const role =
           decodedToken[
@@ -55,13 +48,13 @@ export class LoginAndRegisterCustomerComponent {
         localStorage.setItem('role', role);
         localStorage.setItem('userName', userName);
         localStorage.setItem('userId', userId);
+        alert(`Welcome, ${userName}!`);
 
         if (role === 'Customer') {
           window.location.href = '/customer';
         } else if (role === 'Pharmacy') {
           window.location.href = '/pharmacy';
         } else if (role === 'Admin') {
-
           window.location.href = '/admin';
         } else {
           alert('Unknown role');
