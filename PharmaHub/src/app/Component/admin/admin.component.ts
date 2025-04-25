@@ -52,7 +52,7 @@ export class AdminComponent implements OnInit{
   }
 
   fetchMedicineRequests(): void {
-    this.http.get<MedicineRequest[]>('https://localhost:7290/api/Product/PendingProduct')
+    this.http.get<MedicineRequest[]>('https://localhost:7290/api/Products/pending')
       .subscribe({
         next: (data) => {
           this.medicineRequests = data;
@@ -91,7 +91,7 @@ export class AdminComponent implements OnInit{
   }
 
   approveMedicine(id: number): void {
-    this.http.post(`https://localhost:7290/api/Product/approve/${id}`, {})
+    this.http.post(`https://localhost:7290/api/Products/approve/${id}`, {})
       .subscribe({
         next: () => {
           this.medicineRequests = this.medicineRequests.filter(req => req.id !== id);
@@ -103,7 +103,7 @@ export class AdminComponent implements OnInit{
   }
 
   rejectMedicine(id: number): void {
-    this.http.post(`https://localhost:7290/api/Product/reject/${id}`, {})
+    this.http.delete(`https://localhost:7290/api/Products/${id}`, {})
       .subscribe({
         next: () => {
           this.medicineRequests = this.medicineRequests.filter(req => req.id !== id);
