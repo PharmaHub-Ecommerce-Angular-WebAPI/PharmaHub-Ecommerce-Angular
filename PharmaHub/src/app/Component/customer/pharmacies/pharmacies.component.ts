@@ -24,7 +24,7 @@ export class PharmaciesComponent implements OnInit {
         id: pkg.id,
         Name: pkg.pharmacyName,
         imgUrl: pkg.logoURL,
-
+       
       }));
     });
   }

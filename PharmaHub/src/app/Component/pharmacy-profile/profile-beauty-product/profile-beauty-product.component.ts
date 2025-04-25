@@ -55,17 +55,12 @@ export class ProfileBeautyProductComponent implements OnInit {
     alert('product added to cart');
   }
   ngOnInit(): void {
-    const packagesWithoutOffers$ = this.apiService.getPackages();
-    const packagesWithOffers$ = this.apiService.getpackgeslimeted();
+    const beautyProductPackages$ = this.apiService.getBeautyPHARMACY();
     const maxPrice$ = this.apiService.getmaxpricePackages();
-
-    forkJoin([
-      packagesWithoutOffers$,
-      packagesWithOffers$,
-      maxPrice$,
-    ]).subscribe(
-      ([nonOfferPackages, offerPackages, max]: [any[], any[], any]) => {
-        const formattedNonOffer = nonOfferPackages.map((pkg) => ({
+  
+    beautyProductPackages$.subscribe(
+      (beautyProductPackages: any[]) => {
+        const formattedBeautyProduct = beautyProductPackages.map((pkg) => ({
           id: pkg.id,
           name: pkg.name,
           imgUrl: pkg.imageUrl,
@@ -75,43 +70,35 @@ export class ProfileBeautyProductComponent implements OnInit {
           price: pkg.price,
           isFlipped: false,
         }));
-
-        const formattedOffers = offerPackages.map((offer) => ({
-          id: offer.id,
-          name: offer.name,
-          imgUrl: offer.imageUrl,
-          description: offer.packageComponents,
-          pharmName: offer.pharmacyName,
-          imgPharm: offer.pharmacyLogo,
-          price: offer.price,
-          discountRate: offer.discountRate,
-          isFlipped: false,
-        }));
-
-        this.allPackages = [...formattedNonOffer, ...formattedOffers];
-
-        const maxPriceFromApi = typeof max === 'number' ? max : parseFloat(max);
-        this.priceService.setMaxPrice(maxPriceFromApi);
-
-        const uniquePharmNames = [
-          ...new Set(this.allPackages.map((p) => p.pharmName)),
-        ];
-        this.pharmNameService.setPharmNames(uniquePharmNames);
-
-        this.filteredPackages = [...this.allPackages];
+  
+        this.allPackages = [...formattedBeautyProduct];
+  
+        // جلب الحد الأقصى للسعر
+        maxPrice$.subscribe((max: any) => {
+          const maxPriceFromApi = typeof max === 'number' ? max : parseFloat(max);
+          this.priceService.setMaxPrice(maxPriceFromApi);
+  
+          const uniquePharmNames = [
+            ...new Set(this.allPackages.map((p) => p.pharmName)),
+          ];
+          this.pharmNameService.setPharmNames(uniquePharmNames);
+  
+          this.filteredPackages = [...this.allPackages];
+        });
       }
     );
-
+  
     this.priceService.selectedPrice.subscribe((price) => {
       this.selectedPrice = price;
       this.filterPackages();
     });
-
+  
     this.pharmNameService.selectedPharmName$.subscribe((name) => {
       this.selectedPharmName = name;
       this.filterPackages();
     });
   }
+  
 
   filterPackages() {
     this.filteredPackages = this.allPackages.filter((pkg) => {

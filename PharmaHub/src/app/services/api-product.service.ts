@@ -25,56 +25,62 @@ export class ApiProductService {
     });
   }
 
-  // getPackages() {
-  //   const start = performance.now();
+  getPackagesPHARMACY() {
+    const id = localStorage.getItem('pharmacyId')as string;
+    return this.httpclient.get<Iproduct[]>(`${this.apiUrl}`, {
+      params: {
+        categories: 'Package' ,
+        size : 12, 
+        offer :false,
+        pharmacyId : id 
+      }
+    });
+  }
+  getMedicinePHARMACY() {
+    const id = localStorage.getItem('pharmacyId')as string;
+    return this.httpclient.get<Iproduct[]>(`${this.apiUrl}`, {
+      params: {
+        categories: 'Medicine' ,
+        size : 12, 
+        offer :false,
+        pharmacyId : id 
+      }
+    });
+  } 
+   getHealthdevicePHARMACY() {
+    const id = localStorage.getItem('pharmacyId')as string;
+    return this.httpclient.get<Iproduct[]>(`${this.apiUrl}`, {
+      params: {
+        categories: 'HealthDevice' ,
+        size : 12, 
+        offer :false,
+        pharmacyId : id 
+      }
+    });
+  }  
+  getBeautyPHARMACY() {
+    const id = localStorage.getItem('pharmacyId')as string;
+    return this.httpclient.get<Iproduct[]>(`${this.apiUrl}`, {
+      params: {
+        categories: 'BeautyProduct' ,
+        size : 12, 
+        offer :false,
+        pharmacyId : id 
+      }
+    });
+  }
+    getPersonalCarePHARMACY() {
+    const id = localStorage.getItem('pharmacyId')as string;
+    return this.httpclient.get<Iproduct[]>(`${this.apiUrl}`, {
+      params: {
+        categories: 'PersonalCare' ,
+        size : 12, 
+        offer :false,
+        pharmacyId : id 
+      }
+    });
+  }
   
-  //   return this.httpclient.get<Iproduct[]>(`${this.apiUrl}`, {
-  //     params: {
-  //       categories: 'Package',
-  //       size: 12,
-  //       offer: false
-  //     }
-  //   }).pipe(
-  //     tap(() => {
-  //       const end = performance.now();
-  //       console.log(`⏱️ [API] getPackages() took ${Math.round(end - start)} ms`);
-  //     })
-  //   );
-  // }
-  
-
-  // getPackages() {
-  //   const cachedData = localStorage.getItem('packages');
-  //   const cacheTime = localStorage.getItem('packages_expiry');
-  
-  //   const start = performance.now(); // ⏱️ بداية التوقيت
-  
-  //   if (cachedData && cacheTime && Date.now() < +cacheTime) {
-  //     const end = performance.now(); // ⏱️ نهاية التوقيت
-  //     console.log('%c[Cache] Packages loaded from cache!', 'color: green');
-  //     console.log(`⏳ Loaded in ${Math.round(end - start)} ms`);
-  //     return of(JSON.parse(cachedData));
-  //   } else {
-  //     console.log('%c[API] Fetching packages from API...', 'color: orange');
-  //     return this.httpclient.get<Iproduct[]>(`${this.apiUrl}`, {
-  //       params: {
-  //         categories: 'Package',
-  //         size: 12,
-  //         offer: false
-  //       }
-  //     }).pipe(
-  //       tap((data) => {
-  //         const end = performance.now(); // ⏱️ نهاية التوقيت
-  //         console.log(`✅ API responded in ${Math.round(end - start)} ms`);
-  
-  //         localStorage.setItem('packages', JSON.stringify(data));
-  //         localStorage.setItem('packages_expiry', (Date.now() + 30 * 60 * 1000).toString()); // 30 دقيقة كاش
-  //         console.log('%c[Cache] Packages cached for 30 minutes.', 'color: blue');
-  //       })
-  //     );
-  //   }
-  // }
-
   getOffers() {
     return this.httpclient.get<Iproduct[]>(`${this.apiUrl}`, {
       params: {
@@ -84,6 +90,19 @@ export class ApiProductService {
       }
     });
   }
+  
+  getOffersPHARMACY() {
+    const id = localStorage.getItem('pharmacyId')as string;
+    return this.httpclient.get<Iproduct[]>(`${this.apiUrl}`, {
+      params: {
+        categories: ['Medicine' , 'BeautyProduct' , 'PersonalCare' ,'HealthDevice' ,'Others' , 'Package']  ,
+        size : 12, 
+        offer :true ,
+        pharmacyId : id 
+      }
+    });
+  }
+
   getpackgeslimeted() {
     return this.httpclient.get<Iproduct[]>(`${this.apiUrl}`, {
       params: {

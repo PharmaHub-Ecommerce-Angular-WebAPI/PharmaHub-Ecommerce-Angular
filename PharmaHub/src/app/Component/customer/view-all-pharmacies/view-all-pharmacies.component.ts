@@ -33,6 +33,7 @@ export class ViewAllPharmaciesComponent  implements OnInit {
         id: pkg.id,
         Name: pkg.pharmacyName,
         imgUrl: pkg.logoURL,
+       
 
       }));
       this.filteredPharmacies = this.pharmacies;
@@ -52,4 +53,9 @@ export class ViewAllPharmaciesComponent  implements OnInit {
       return matchesPharm;
     });
   }
+
+  savePharmacyId(id: string) {
+    localStorage.setItem('pharmacyId', id);  // حفظ id الصيدلية في الـ localStorage
+  }
+  
 }

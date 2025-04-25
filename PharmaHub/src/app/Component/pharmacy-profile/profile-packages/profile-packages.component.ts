@@ -54,18 +54,14 @@ export class ProfilePackagesComponent implements OnInit {
   alertadd() {
     alert('product added to cart');
   }
+  
   ngOnInit(): void {
-    const packagesWithoutOffers$ = this.apiService.getPackages();
-    const packagesWithOffers$ = this.apiService.getpackgeslimeted();
-    const maxPrice$ = this.apiService.getmaxpricePackages();
-
-    forkJoin([
-      packagesWithoutOffers$,
-      packagesWithOffers$,
-      maxPrice$,
-    ]).subscribe(
-      ([nonOfferPackages, offerPackages, max]: [any[], any[], any]) => {
-        const formattedNonOffer = nonOfferPackages.map((pkg) => ({
+    // جلب البيانات من API واحدة
+    const allPackages$ = this.apiService.getPackagesPHARMACY(); // استبدال forkJoin بـ API واحدة
+  
+    allPackages$.subscribe(
+      (response: any[]) => {
+        const formattedPackages = response.map((pkg) => ({
           id: pkg.id,
           name: pkg.name,
           imgUrl: pkg.imageUrl,
@@ -74,44 +70,47 @@ export class ProfilePackagesComponent implements OnInit {
           imgPharm: pkg.pharmacyLogo,
           price: pkg.price,
           isFlipped: false,
+          discountRate: pkg.discountRate || 0, // إذا كانت العروض موجودة
         }));
-
-        const formattedOffers = offerPackages.map((offer) => ({
-          id: offer.id,
-          name: offer.name,
-          imgUrl: offer.imageUrl,
-          description: offer.packageComponents,
-          pharmName: offer.pharmacyName,
-          imgPharm: offer.pharmacyLogo,
-          price: offer.price,
-          discountRate: offer.discountRate,
-          isFlipped: false,
-        }));
-
-        this.allPackages = [...formattedNonOffer, ...formattedOffers];
-
-        const maxPriceFromApi = typeof max === 'number' ? max : parseFloat(max);
+  
+        // تخزين جميع الباكجات في this.allPackages
+        this.allPackages = formattedPackages;
+  
+        // ضبط الحد الأقصى للسعر (إذا كان موجودًا في البيانات)
+        const maxPriceFromApi = this.allPackages.reduce(
+          (max, pkg) => (pkg.price > max ? pkg.price : max),
+          0
+        );
         this.priceService.setMaxPrice(maxPriceFromApi);
-
+  
+        // استخراج أسماء الصيدليات الفريدة
         const uniquePharmNames = [
           ...new Set(this.allPackages.map((p) => p.pharmName)),
         ];
         this.pharmNameService.setPharmNames(uniquePharmNames);
-
+  
+        // تعيين الباكجات المفلترة
         this.filteredPackages = [...this.allPackages];
+      },
+      (error) => {
+        console.error('Error fetching packages:', error);
       }
     );
-
+  
+    // الاشتراك في تحديث الفلترة حسب السعر
     this.priceService.selectedPrice.subscribe((price) => {
       this.selectedPrice = price;
       this.filterPackages();
     });
-
+  
+    // الاشتراك في تحديث الفلترة حسب اسم الصيدلية
     this.pharmNameService.selectedPharmName$.subscribe((name) => {
       this.selectedPharmName = name;
       this.filterPackages();
     });
   }
+  
+  
 
   filterPackages() {
     this.filteredPackages = this.allPackages.filter((pkg) => {
