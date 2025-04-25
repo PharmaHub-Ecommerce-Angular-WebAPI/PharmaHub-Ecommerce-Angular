@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
     "@popperjs/core": "^2.11.8",
+    "@stripe/stripe-js": "^7.2.0",
     "bootstrap": "^5.3.4",
     "jwt-decode": "^4.0.0",
     "lord-icon-element": "^4.1.2",
