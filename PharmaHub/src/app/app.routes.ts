@@ -27,6 +27,8 @@ import { ProfileBeautyProductComponent } from './Component/pharmacy-profile/prof
 import { ProfilePersonalCareComponent } from './Component/pharmacy-profile/profile-personal-care/profile-personal-care.component';
 import { ProfileHealthDevicesComponent } from './Component/pharmacy-profile/profile-health-devices/profile-health-devices.component';
 import { ProfileOffersComponent } from './Component/pharmacy-profile/profile-offers/profile-offers.component';
+import { ServicespageComponent } from './Component/servicespage/servicespage.component';
+import { ContactUsComponent } from './Component/contact-us/contact-us.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -40,7 +42,9 @@ export const routes: Routes = [
   { path: 'allpharmacies', component: ViewAllPharmaciesComponent },
   { path: 'AboutUs', component: AboutUsComponent },
   { path: 'logincustomer', component: LoginAndRegisterCustomerComponent },
+  { path: 'Services', component: ServicespageComponent },
   { path: 'pharmacyinfo', component: PharmacyInfoComponent },
+  { path: 'contactus', component: ContactUsComponent },
   {
     path: 'pharmacyprofile',
     component: PharmacyProfileComponent,

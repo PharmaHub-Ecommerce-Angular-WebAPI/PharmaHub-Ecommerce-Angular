@@ -18,6 +18,12 @@
             item.label
           }}</a>
         </li>
+        <li class="smallscreenlogin">
+          <a href="#" class="link" [routerLink]="'/logincustomer'">
+            Login/SignUp</a
+          >
+        </li>
+        <li><button (click)="onLogout()" class="logout">Log out</button></li>
       </ul>
     </nav>
   </div>
@@ -61,6 +67,7 @@
       *ngIf="userRole == 'Customer'"
     >
       <i class="fas fa-shopping-cart cart-button"></i>
+      <span class="cart-count">{{ cartItemCount }}</span>
     </a>
     <link
       rel="stylesheet"
@@ -72,6 +79,7 @@
     </a>
     <!-- <button (click)="onLogout()" class="logout" >Log out</button> -->
     <button *ngIf="showLogoutButton" (click)="onLogout()" class="logout">Log out</button>
+
     <button class="hamburger" (click)="toggleMenu()">☰</button>
   </div>
 </header>
