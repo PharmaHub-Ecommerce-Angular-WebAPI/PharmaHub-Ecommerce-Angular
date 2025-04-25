@@ -55,10 +55,11 @@ export class NavBarComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         this.currentRoute = event.urlAfterRedirects;
         this.userRole = localStorage.getItem('role') ?? '';
-        // this.updateNavbarItems();
+        this.setNavbarItemsBasedOnRole();
       }
     });
   }
+
   setNavbarItemsBasedOnRole() {
     if (this.userRole === 'Pharmacy') {
       this.navbarItems = [

@@ -280,3 +280,10 @@ header {
     z-index: 9999;
   }
 }
+.custom-select {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l5-5H5z"></path></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  border-radius: 100px;
+}
