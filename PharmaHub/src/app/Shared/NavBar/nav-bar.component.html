@@ -23,7 +23,7 @@
             Login/SignUp</a
           >
         </li>
-        <li><button (click)="onLogout()" class="logout">Log out</button></li>
+        <li><button *ngIf="showLogoutButton" (click)="onLogout()" class="logout">Log out</button></li>
       </ul>
     </nav>
   </div>
@@ -78,7 +78,7 @@
       </lord-icon>
     </a>
     <!-- <button (click)="onLogout()" class="logout" >Log out</button> -->
-    <button *ngIf="showLogoutButton" (click)="onLogout()" class="logout">Log out</button>
+    <!-- <button *ngIf="showLogoutButton" (click)="onLogout()" class="logout">Log out</button> -->
 
     <button class="hamburger" (click)="toggleMenu()">☰</button>
   </div>
