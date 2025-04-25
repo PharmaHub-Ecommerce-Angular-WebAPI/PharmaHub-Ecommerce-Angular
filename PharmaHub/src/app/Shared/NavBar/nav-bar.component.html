@@ -10,34 +10,59 @@
       </h1>
     </a>
   </div>
-  <div class="center-section" [ngClass]="{ open: isMenuOpen }">
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#" class="link">Services</a></li>
-        <li>
-          <a href="#" class="link" [routerLink]="['/allpharmacies']"
-            >Pharmacies</a
-          >
+  <div class="center-section">
+    <nav class="dropdown-nav">
+      <ul class="nav-links" [ngClass]="{ show: isMenuOpen }">
+        <li *ngFor="let item of navbarItems">
+          <a href="#" class="link" [routerLink]="item.route">{{
+            item.label
+          }}</a>
         </li>
-        <li>
-          <a href="#" class="link" [routerLink]="['/AboutUs']">About Us</a>
-        </li>
-        <li><a href="#" class="link">Contact</a></li>
       </ul>
     </nav>
   </div>
-  <div class="right-sction">
+  <div class="right-section">
+    <div class="search-dropdown-container" *ngIf="userRole == 'Customer'">
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="Search for a pharmacy"
+          class="search-bar"
+        />
+        <i class="fas fa-search search-icon"></i>
+        <select
+          [(ngModel)]="selectedSearchType"
+          class="form-select"
+          style="width: 3rem; background-color: #d8fddf; opacity: 60%"
+        >
+          <option value=""></option>
+          <option value="simple">Simple Search</option>
+          <option value="advanced">Advanced Search</option>
+        </select>
+        <ul class="dropdown-list" *ngIf="showDropdown">
+          <li class="dropdown-item">
+            <i class="fas fa-search" style="font-size: 0.7rem"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <a
+      href="#"
+      class="cart-button"
+      [routerLink]="['/cart']"
+      *ngIf="userRole == 'Customer'"
+    >
+      <i class="fas fa-shopping-cart cart-button"></i>
+    </a>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <a href="#" class="login-button" [routerLink]="['/logincustomer']">
       <lord-icon src="https://cdn.lordicon.com/rzsnbiaw.json" trigger="hover">
       </lord-icon>
     </a>
+    <button (click)="onLogout()" class="logout">Log out</button>
     <button class="hamburger" (click)="toggleMenu()">☰</button>
-    <button (click)="onLogout()">Logout</button>
-    <a href="#" class="cart-button" [routerLink]="['/cart']">
-      <i
-        class="fas fa-shopping-cart"
-        style="font-size: 24px; color: #2b8a3e"
-      ></i>
-    </a>
   </div>
 </header>
