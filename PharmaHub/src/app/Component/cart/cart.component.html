@@ -6,7 +6,9 @@
       <div class="ShoppingCart">
         <div class="backShopping">
           <h4>
-            <a href="#" class="ContinueShoppingButton">&larr; Continue Shopping</a>
+            <a href="#" class="ContinueShoppingButton"
+              >&larr; Continue Shopping</a
+            >
           </h4>
         </div>
         <hr />
@@ -15,7 +17,9 @@
             <i class="fas fa-shopping-cart cart-icon"></i> Your Shopping Cart
           </h3>
           <div class="cartItems">
-            <p *ngIf="cartItems.length === 0" class="emptyCartText">Your cart is empty 🛒</p>
+            <p *ngIf="cartItems.length === 0" class="emptyCartText">
+              Your cart is empty 🛒
+            </p>
             <div class="Item" *ngFor="let item of cartItems">
               <div class="image-box">
                 <img [src]="item.imgUrl" alt="image" class="cartItemImage" />
@@ -23,7 +27,15 @@
               <div class="cartItemDetails">
                 <h4 class="cartItemName">{{ item.name }}</h4>
                 <p class="cartItemPrice">price : {{ item.price }}</p>
-                <input type="number" name="Quantity" placeholder="Quantity" required [(ngModel)]="item.quantity" min="1" />
+                <input
+                  type="number"
+                  name="Quantity"
+                  placeholder="Quantity"
+                  required
+                  [(ngModel)]="item.quantity"
+                  min="1"
+                  (ngModelChange)="updateCartItemQuantity(item)"
+                />
               </div>
               <button class="removeButton" (click)="removeItem(item.id)">
                 <i class="far fa-trash-alt"></i>
@@ -39,9 +51,15 @@
         <div class="cardInfo">
           <div class="cardContainer">
             <div style="display: flex; gap: 1rem" class="cardIcons">
-              <select class="Cardinput" [(ngModel)]="selectedValue" name="paymentMethod">
+              <select
+                class="Cardinput"
+                [(ngModel)]="selectedValue"
+                name="paymentMethod"
+              >
                 <option value="" disabled selected>Card Type</option>
-                <option *ngFor="let card of CardTypes" [value]="card">{{ card }}</option>
+                <option *ngFor="let card of CardTypes" [value]="card">
+                  {{ card }}
+                </option>
               </select>
             </div>
           </div>
@@ -63,8 +81,8 @@
             <label id="card-label"></label>
             <div id="card-element"></div>
           </div>
-          <div id="card-errors" style="color: red; font-size: 12px;"></div>
-          
+          <div id="card-errors" style="color: red; font-size: 12px"></div>
+
           <div class="CardExpiry-Cvv">
             <div class="ExpiryDate">
               <!-- <input
@@ -106,5 +124,5 @@
       </div>
     </div>
   </div>
-  <div id="card-errors" class="text-danger" ></div>
+  <div id="card-errors" class="text-danger"></div>
 </section>

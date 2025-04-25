@@ -1,219 +1,35 @@
 <!-- home.component.html -->
-<div class="container-wrapper position-relative mt-4">
+<div class="container-wrapper">
   <iframe
-    src="https://my.spline.design/pillanddnaanimation-354120818a6dbc621953df90b70f0abc/"
+    src="https://my.spline.design/pillanddnaanimation-354120818a6dbc621953df90b70f0abc"
     frameborder="0"
     width="100%"
-    height="100%"
+    height="97%"
+    loading="lazy"
   ></iframe>
-
-  <section class="hero-section p-2">
-    <div class="container position-absolute top-50 start-0 m-4">
-      <h1 class="display-4 fw-bold tajawal-extralight">PHARMA</h1>
-      <h1
-        class="display-4 fw-bold tajawal-extralight"
-        style="color: var(--bg-navbar)"
+  <div class="gradient">
+    <h1 appMoveAnimateleftorright direction="right">Welcome to PharmaHub</h1>
+    <p appMoveAnimateleftorright direction="left">
+      Your Trusted Partner in Healthcare
+    </p>
+    <div
+      class="herobuttoncontainer"
+      appMoveAnimateleftorright
+      direction="right"
+    >
+      <a href="#" class="hero-btn1" [routerLink]="['/CustomerSignUp']"
+        >Get Started as a Customer</a
       >
-        HUB
-      </h1>
-      <p class="lead" style="color: #7e8488c9">
-        <strong>Start Your Pharma Journey Today</strong> <br />
-        Join PharmaHub to explore services or browse available products.
-      </p>
-
-      <a
-        href="/pharmacy-login"
-        class="btn btn-outline-secondary btn-lg m-3"
-        [routerLink]="['/PharmacistSignUp']"
-        >Pharmacy Login & Services</a
-      >
-      <a
-        href="/products"
-        class="btn btn-lg"
-        style="background-color: #d1c6ba; color: var(--bg-navbar)"
-        [routerLink]="['/CustomerSignUp']"
-        >Explore Available Products</a
+      <a href="#" class="hero-btn2" [routerLink]="['/PharmacistSignUp']"
+        >Get Started as a Pharmacist</a
       >
     </div>
-  </section>
-
-  <div
-    class="neumorphic-box overlay-content position-absolute p-2 bottom-0 end-0 d-flex justify-content-center align-items-center"
-  ></div>
+  </div>
 </div>
-
-<section id="Services" class="py-5">
-  <div class="container text-center">
-    <!-- Top Logo Row (like the top logos in the image) -->
-    <div class="container my-5">
-      <div
-        class="d-flex justify-content-between align-items-center flex-wrap gap-4 logo-row"
-      >
-        <img src="/HomePage/1.png" alt="Logo 1" class="img-fluid logo" />
-        <img src="/HomePage/2.png" alt="Logo 2" class="img-fluid logo" />
-        <img src="/HomePage/3.png" alt="Logo 3" class="img-fluid logo" />
-        <img src="/HomePage/4.png" alt="Logo 4" class="img-fluid logo" />
-        <img src="/HomePage/5.png" alt="Logo 5" class="img-fluid logo" />
-      </div>
-    </div>
-
-    <div class="d-flex flex-row mb-3 align-self-stretch justify-content-center">
-      <!-- Bottom Section: Swiper + Features (Explore Top Destination + Icons) -->
-      <div class="swiper-container p-2 ms-2 row g-4">
-        <div class="row-md-4">
-          <h1 class="mb-4 fw-bold tajawal-extralight" style="color: #7c7972">
-            SERVICES
-          </h1>
-          <h4
-            class="mb-4 tajawal-extralight fw-bold"
-            style="color: rgb(124, 124, 124)"
-          >
-            Bringing care closer to you
-          </h4>
-        </div>
-        <swiper-container
-          pagination="true"
-          pagination-dynamic-bullets="true"
-          autoplay-delay="2000"
-          autoplay-disable-on-interaction="false"
-          loop="true"
-          class="row-md-4"
-        >
-          <swiper-slide>
-            <h1>Create Your Online Pharmacy Shop</h1>
-            <p>
-              Easily register and launch your personalized pharmacy store to
-              sell medicines and beauty products online.
-            </p>
-          </swiper-slide>
-          <swiper-slide>
-            <h1>Product Management Made Easy</h1>
-            <p>
-              Add, update, and organize your products with a user-friendly
-              interface designed for pharmacy owners.
-            </p>
-          </swiper-slide>
-          <swiper-slide>
-            <h1>Detailed Product Pages</h1>
-            <p>
-              Show important product details including usage, ingredients, and
-              price to help users make informed decisions.
-            </p>
-          </swiper-slide>
-        </swiper-container>
-      </div>
-
-      <div class="row my-5">
-        <div class="col-md-4">
-          <div class="p-4 card-services">
-            <lord-icon
-              src="https://cdn.lordicon.com/njlzolhx.json"
-              trigger="hover"
-              style="width: 7rem; height: 7rem"
-            >
-            </lord-icon>
-            <h3>Find Nearby Pharmacies</h3>
-            <p>
-              Quickly locate the closest pharmacy to your area. Our system helps
-              you connect with trusted pharmacies near you to save time and get
-              your products faster.
-            </p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="p-4 card-services">
-            <lord-icon
-              src="https://cdn.lordicon.com/vwobawor.json"
-              trigger="hover"
-              style="width: 7rem; height: 7rem"
-            >
-            </lord-icon>
-            <h3>Easy Online Ordering</h3>
-            <p>
-              Browse products and place your orders with just a few clicks.
-              Enjoy a smooth and secure shopping experience from your nearest
-              pharmacies, all from the comfort of your home.
-            </p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="p-4 card-services">
-            <lord-icon
-              src="https://cdn.lordicon.com/aksvbzmu.json"
-              trigger="hover"
-              style="width: 7rem; height: 7rem"
-            >
-            </lord-icon>
-            <h3>Pharmacy Consultation</h3>
-            <p>
-              Need expert advice? You’ll soon be able to chat directly with
-              licensed pharmacists for guidance on your medications and health
-              concerns—all within the platform.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- <section class="WhyChooseUs">
+  <div class="Text-box">
+    <h2>Why Choose Us?</h2>
   </div>
-</section>
+</section> -->
 
-<!-- About Us Section -->
-<section id="about" class="py-5 bg-white">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-6">
-        <h2 class="fw-bold">About PharmaHub</h2>
-        <p>
-          PharmaHub is a digital platform that bridges the gap between genetics
-          and pharmaceuticals. Our goal is to empower pharmacy owners and
-          consumers by offering smart tools for product management, a visual
-          understanding of medicine interactions, and an easy-to-navigate
-          platform for medical products.
-        </p>
-        <p>
-          With a focus on innovation and accessibility, we provide online
-          pharmacy solutions, product education, and advanced molecular
-          visualization features tailored for both professionals and patients.
-        </p>
-      </div>
-      <div class="col-md-6">
-        <img
-          src="assets/about-image.jpg"
-          alt="About PharmaHub"
-          class="img-fluid rounded shadow-sm"
-        />
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact" class="py-5">
-  <div class="container">
-    <h2 class="text-center mb-5">Contact Us</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <form>
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" required />
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" required />
-          </div>
-          <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea
-              class="form-control"
-              id="message"
-              rows="5"
-              required
-            ></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+<app-footer-marquee> </app-footer-marquee>

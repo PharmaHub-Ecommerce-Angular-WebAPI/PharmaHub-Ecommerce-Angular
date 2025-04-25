@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import lottie from 'lottie-web';
 import { FormsModule } from '@angular/forms';
-
+import { AddcartserviceService } from '../../services/addcartservice.service';
 interface NavbarItem {
   label: string;
   route: string;
@@ -33,10 +33,19 @@ export class NavBarComponent implements OnInit {
   isMenuOpen = false;
   isLoggedIn = false;
   userRole: string = '';
+  cartItemCount: number = 0;
   currentRoute = '';
   navbarItems: NavbarItem[] = [];
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private cartService: AddcartserviceService
+  ) {}
   ngOnInit() {
+    this.cartService.cartItems$.subscribe((items) => {
+      // Calculate the total count based on quantity of each item in the cart
+      this.cartItemCount = items.reduce((acc, item) => acc + item.quantity, 0);
+    });
     this.authService.userRole$.subscribe((role) => {
       this.userRole = role ?? '';
       this.setNavbarItemsBasedOnRole();
@@ -64,25 +73,25 @@ export class NavBarComponent implements OnInit {
     if (this.userRole === 'Pharmacy') {
       this.navbarItems = [
         { label: 'Dashboard', route: '/pharmacy' },
-        { label: 'Services', route: '/services' },
+        { label: 'Services', route: '/Services' },
         { label: 'About Us', route: '/AboutUs' },
-        { label: 'Contact', route: '/contact' },
+        { label: 'Contact', route: '/contactus' },
       ];
     } else if (this.userRole === 'Customer') {
       this.navbarItems = [
-        { label: 'Services', route: '/services' },
+        { label: 'Services', route: '/Services' },
         { label: 'Favourites', route: '/favourites' },
         { label: 'Pharmacies', route: '/allpharmacies' },
         { label: 'About Us', route: '/AboutUs' },
-        { label: 'Contact', route: '/contact' },
+        { label: 'Contact', route: '/contactus' },
       ];
     } else {
       // Not logged in or unknown role
       this.navbarItems = [
-        { label: 'Home', route: '/' },
-        { label: 'Services', route: '/services' },
+        { label: 'Home', route: '/home' },
+        { label: 'Services', route: '/Services' },
         { label: 'About Us', route: '/AboutUs' },
-        { label: 'Contact us', route: '/about-us' },
+        { label: 'Contact us', route: '/contactus' },
       ];
     }
   }
