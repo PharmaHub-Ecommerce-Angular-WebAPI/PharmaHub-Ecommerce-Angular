@@ -9,7 +9,7 @@
     <div class="Heading-Search-Bar ViewAllPharmaciesSearch">
       <app-fillter-phname></app-fillter-phname>
     </div>
-    <div class="pharmacies-container">
+    <div class="pharmacies-container" >
       <div class="Pharmacies-grid-container container">
         <div class="row gy-4 gx-4 justify-content-center" appMoveUpAnimate>
           <a
@@ -18,6 +18,7 @@
             title="navigate pharmacy"
             class="pharmacy-item col-12 col-sm-6 col-md-4 col-lg-3"
             [routerLink]="['/pharmacyprofile']"
+            (click)="savePharmacyId(pharma.id)"
           >
             <div class="pharmacy-image">
               <img [src]="pharma.imgUrl" alt="pharmacy-logo" />
