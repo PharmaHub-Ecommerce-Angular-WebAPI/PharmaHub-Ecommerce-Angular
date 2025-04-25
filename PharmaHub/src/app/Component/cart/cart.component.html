@@ -1,12 +1,12 @@
+<!-- index.html -->
 <section appMoveUpAnimate>
   <div class="sectionContainer">
     <div class="section-grid">
+      <!-- Cart Items -->
       <div class="ShoppingCart">
         <div class="backShopping">
           <h4>
-            <a href="#" class="ContinueShoppingButton"
-              >&larr; Continue Shopping</a
-            >
+            <a href="#" class="ContinueShoppingButton">&larr; Continue Shopping</a>
           </h4>
         </div>
         <hr />
@@ -15,9 +15,7 @@
             <i class="fas fa-shopping-cart cart-icon"></i> Your Shopping Cart
           </h3>
           <div class="cartItems">
-            <p *ngIf="cartItems.length === 0" class="emptyCartText">
-              Your cart is empty 🛒
-            </p>
+            <p *ngIf="cartItems.length === 0" class="emptyCartText">Your cart is empty 🛒</p>
             <div class="Item" *ngFor="let item of cartItems">
               <div class="image-box">
                 <img [src]="item.imgUrl" alt="image" class="cartItemImage" />
@@ -25,14 +23,7 @@
               <div class="cartItemDetails">
                 <h4 class="cartItemName">{{ item.name }}</h4>
                 <p class="cartItemPrice">price : {{ item.price }}</p>
-                <input
-                  type="number"
-                  name="Quantity"
-                  placeholder="Quantity"
-                  required
-                  [value]="item.quantity || 1"
-                  min="1"
-                />
+                <input type="number" name="Quantity" placeholder="Quantity" required [(ngModel)]="item.quantity" min="1" />
               </div>
               <button class="removeButton" (click)="removeItem(item.id)">
                 <i class="far fa-trash-alt"></i>
@@ -41,73 +32,72 @@
           </div>
         </div>
       </div>
-      <!-- ///////////////////////////////////////////// -->
-      <!-- Card Details And Payment -->
-      <!-- ///////////////////////////////////////////// -->
+
+      <!-- Card Details and Payment -->
       <div class="Card-Details">
         <h3 class="cardsHeading">Card Details</h3>
         <div class="cardInfo">
           <div class="cardContainer">
-            <!-- <p class="cardType">Card Type</p> -->
             <div style="display: flex; gap: 1rem" class="cardIcons">
-              <select class="Cardinput">
+              <select class="Cardinput" [(ngModel)]="selectedValue" name="paymentMethod">
                 <option value="" disabled selected>Card Type</option>
-                <option *ngFor="let card of CardTypes" [value]="card">
-                  {{ card }}
-                </option>
+                <option *ngFor="let card of CardTypes" [value]="card">{{ card }}</option>
               </select>
             </div>
           </div>
+
           <div class="CardName">
-            <!-- <label for="CardName">Cardholder's Name</label> -->
             <input
               type="text"
               id="CardName"
               placeholder="Cardholder's Name"
               class="Cardinput"
+              [(ngModel)]="cardHolder"
+              name="cardHolder"
             />
           </div>
-          <div class="cardNumber">
-            <!-- <label for="cardNumber">Card Number</label> -->
-            <input
-              type="text"
-              id="cardNumber"
-              placeholder="Card Number"
-              class="Cardinput"
-            />
+
+          <!-- Removed the Card Number input since we use Stripe Elements -->
+          <!-- <div id="card-element" ></div> -->
+          <div class="card-wrapper" [class.card-filled]="cardFilled">
+            <label id="card-label"></label>
+            <div id="card-element"></div>
           </div>
+          <div id="card-errors" style="color: red; font-size: 12px;"></div>
+          
           <div class="CardExpiry-Cvv">
             <div class="ExpiryDate">
-              <!-- <label for="ExpiryDate" style="margin-bottom: 0.5rem"
-                >Expiry Date</label
-              > -->
-              <input
+              <!-- <input
                 type="text"
                 id="ExpiryDate"
                 placeholder="ExpiryDate MM/YY"
                 class="Edate"
-              />
+                [(ngModel)]="expiryDate"
+                name="expiryDate"
+              /> -->
             </div>
             <div class="CVV">
-              <!-- <label for="CVV" style="margin-bottom: 0.5rem">CVV</label> -->
-              <input type="text" id="CVV" placeholder="CVV" class="secretcvv" />
+              <!-- <input
+                type="text"
+                id="CVV"
+                placeholder="CVV"
+                class="secretcvv"
+                [(ngModel)]="cvv"
+                name="cvv"
+              /> -->
             </div>
           </div>
         </div>
-        <hr style="color: aliceblue" />
+        <hr />
         <div class="Subtotal">
           <p class="subtotalText">Subtotal</p>
           <p class="price">{{ subtotal }}</p>
         </div>
-        <!-- <div class="Shipping">
-          <p class="shippingText">Shipping</p>
-          <p class="price">0.00 EGP</p>
-        </div> -->
         <div class="Total">
           <p class="TotalText">Total</p>
           <p class="price">{{ subtotal }}</p>
         </div>
-        <button class="checkoutButton">
+        <button class="checkoutButton" (click)="submitProduct()">
           <div class="checkout">
             <span>{{ subtotal }}</span>
             <span>CHECKOUT &rarr;</span>
@@ -116,4 +106,5 @@
       </div>
     </div>
   </div>
+  <div id="card-errors" class="text-danger" ></div>
 </section>
