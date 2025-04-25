@@ -64,21 +64,23 @@ export class NavBarComponent implements OnInit {
       this.navbarItems = [
         { label: 'Dashboard', route: '/pharmacy' },
         { label: 'Services', route: '/services' },
-        { label: 'About Us', route: '/about-us' },
+        { label: 'About Us', route: '/AboutUs' },
         { label: 'Contact', route: '/contact' },
       ];
     } else if (this.userRole === 'Customer') {
       this.navbarItems = [
+        { label: 'Services', route: '/services' },
         { label: 'Favourites', route: '/favourites' },
-        { label: 'Pharmacies', route: '/pharmacies' },
-        { label: 'Cart', route: '/cart' },
-        { label: 'Search', route: '/search' },
+        { label: 'Pharmacies', route: '/allpharmacies' },
+        { label: 'About Us', route: '/AboutUs' },
+        { label: 'Contact', route: '/contact' },
       ];
     } else {
       // Not logged in or unknown role
       this.navbarItems = [
         { label: 'Home', route: '/' },
-        { label: 'About Us', route: '/about-us' },
+        { label: 'Services', route: '/services' },
+        { label: 'About Us', route: '/AboutUs' },
         { label: 'Contact us', route: '/about-us' },
       ];
     }
