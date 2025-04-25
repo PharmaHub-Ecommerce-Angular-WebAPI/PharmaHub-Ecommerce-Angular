@@ -93,3 +93,11 @@ body {
   opacity: 1;
   transform: translateX(0);
 }
+.toast-container {
+  z-index: 9999 !important;
+}
+
+.toast {
+  display: block !important;
+  opacity: 1 !important;
+}
