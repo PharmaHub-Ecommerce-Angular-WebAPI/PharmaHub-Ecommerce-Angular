@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NavBarComponent } from './Shared/NavBar/nav-bar.component';
 import { FooterComponent } from './Shared/Footer/footer.component';
 
+
 // import { CustomerComponent } from './Component/customer/customer.component';
 // import { ViewAllPharmaciesComponent } from './Component/view-all-pharmacies/view-all-pharmacies.component';
 
@@ -15,4 +16,6 @@ import { FooterComponent } from './Shared/Footer/footer.component';
 })
 export class AppComponent {
   title = 'PharmaHub';
+ 
+
 }
