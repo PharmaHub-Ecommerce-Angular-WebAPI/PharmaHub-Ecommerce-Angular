@@ -34,7 +34,7 @@ export class LoginAndRegisterCustomerComponent {
     this.authService.login(loginData).subscribe({
       next: (response) => {
         const token = response.token;
-        localStorage.setItem('token', token); 
+        //localStorage.setItem('token', token); 
   
         const decodedToken: any = jwtDecode(token);
         const role = decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
@@ -50,7 +50,7 @@ export class LoginAndRegisterCustomerComponent {
         } else if (role === 'Pharmacy') {
           this.router.navigate(['pharmacy']);
         } else if (role === 'Admin') {
-          this.router.navigate(['pharmacy']);
+          this.router.navigate(['admin']);
         } else {
           alert('Unknown role');
         }
