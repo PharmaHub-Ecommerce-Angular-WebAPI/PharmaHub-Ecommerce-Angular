@@ -5,6 +5,7 @@ import { MoveUpAnimateDirective } from '../../Directives/move-up-animate.directi
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { jwtDecode } from 'jwt-decode';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-and-register-customer',
@@ -19,7 +20,7 @@ export class LoginAndRegisterCustomerComponent {
   loginPassword: string = '';
   confirmPassword: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router , private toastr: ToastrService) {}
 
   login() {
     const loginData = {
@@ -49,7 +50,7 @@ export class LoginAndRegisterCustomerComponent {
         localStorage.setItem('userName', userName);
         localStorage.setItem('userId', userId);
         alert(`Welcome, ${userName}!`);
-
+     
         if (role === 'Customer') {
           window.location.href = '/customer';
         } else if (role === 'Pharmacy') {
