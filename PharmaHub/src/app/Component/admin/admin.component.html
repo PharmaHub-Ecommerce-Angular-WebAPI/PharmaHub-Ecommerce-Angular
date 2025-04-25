@@ -1,6 +1,9 @@
-<p>admin works!</p>
+
 <div class="container">
-    <div *ngIf="isLoading" class="loading">Loading requests...</div>
+    <div *ngIf="isLoading" class="loading">
+      <div class="spinner"></div>
+      Loading requests...
+    </div>
     <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
   
     <div class="request-box" *ngIf="!isLoading">
