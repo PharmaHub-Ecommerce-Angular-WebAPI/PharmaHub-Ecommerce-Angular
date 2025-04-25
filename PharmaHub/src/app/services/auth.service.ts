@@ -88,6 +88,8 @@ export class AuthService {
     localStorage.removeItem('userId');
     localStorage.removeItem('role');
     localStorage.removeItem('userName');
+    localStorage.removeItem('pharmacyId');
+
 
     this.isLoggedInSubject.next(false);
     window.location.reload();
