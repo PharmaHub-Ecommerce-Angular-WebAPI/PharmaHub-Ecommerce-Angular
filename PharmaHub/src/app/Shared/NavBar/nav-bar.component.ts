@@ -12,6 +12,9 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import lottie from 'lottie-web';
 import { FormsModule } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, of, Subject, switchMap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { ApiPharmacyService } from '../../services/api-pharmacy.service';
 
 interface NavbarItem {
   label: string;
@@ -35,30 +38,81 @@ export class NavBarComponent implements OnInit {
   userRole: string = '';
   currentRoute = '';
   navbarItems: NavbarItem[] = [];
-  constructor(private router: Router, private authService: AuthService) {}
+  showLogoutButton = false;
+  showLogiutButton = true;
+
+  constructor(private router: Router, private authService: AuthService ,private apipharmacy: ApiPharmacyService) {}
+
+  private searchSubject = new Subject<string>();
+  pharmacies: any[] = [];
+
   ngOnInit() {
     this.authService.userRole$.subscribe((role) => {
       this.userRole = role ?? '';
       this.setNavbarItemsBasedOnRole();
+      this.updateLogoutVisibility();
     });
-    this.userRole = localStorage.getItem('role') ?? '';
-    this.setNavbarItemsBasedOnRole();
-    defineElement(lottie.loadAnimation);
 
     this.authService.isLoggedIn$.subscribe((status) => {
       this.isLoggedIn = status;
-      this.userRole = localStorage.getItem('role') ?? '';
-      // this.updateNavbarItems();
+      this.updateLogoutVisibility();
     });
 
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         this.currentRoute = event.urlAfterRedirects;
-        this.userRole = localStorage.getItem('role') ?? '';
-        this.setNavbarItemsBasedOnRole();
+        this.updateLogoutVisibility();
       }
     });
+
+    this.userRole = localStorage.getItem('role') ?? '';
+    this.setNavbarItemsBasedOnRole();
+
+
+    defineElement(lottie.loadAnimation);
+const token = localStorage.getItem('token');
+    if (!token) {
+      this.showLogiutButton = true;
+    } else {
+      this.showLogiutButton = false;
+    }
+
+    this.searchSubject.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap((query) => {
+        if (query.length >= 5) {
+          return this.apipharmacy.getSearchPharmacies(query);
+        } else {
+          this.showDropdown = false;
+          return of([]);
+        }
+      })
+    ).subscribe((pharmacies) => {
+      this.pharmacies = pharmacies;
+      this.showDropdown = pharmacies.length > 0;
+    });
   }
+  
+  onSearchInput() {
+    this.searchSubject.next(this.searchQuery);
+  }
+  
+ 
+
+  updateLogoutVisibility() {
+    const token = localStorage.getItem('token');
+   
+
+    this.showLogoutButton = !!token ;
+  }
+  updateLoginVisibility() {
+    const token = localStorage.getItem('token');
+   
+
+    this.showLogiutButton =!! token ;
+  }
+
 
   setNavbarItemsBasedOnRole() {
     if (this.userRole === 'Pharmacy') {
@@ -77,7 +131,6 @@ export class NavBarComponent implements OnInit {
         { label: 'Contact', route: '/contact' },
       ];
     } else {
-      // Not logged in or unknown role
       this.navbarItems = [
         { label: 'Home', route: '/' },
         { label: 'Services', route: '/services' },
@@ -86,37 +139,6 @@ export class NavBarComponent implements OnInit {
       ];
     }
   }
-  // updateNavbarItems() {
-  //   if (this.currentRoute.startsWith('/admin')) {
-  //     this.navbarItems = [
-  //       { label: 'Admin', route: '/admin' },
-  //       { label: 'Dashboard', route: '/admin/users' },
-  //       { label: 'Logout', route: '/logout' },
-  //     ];
-  //   } else if (this.isLoggedIn && this.userRole === 'Customer') {
-  //     this.navbarItems = [
-  //       { label: 'Services', route: '/services' },
-  //       { label: 'Contact', route: '/contact' },
-  //       { label: 'About Us', route: '/aboutus' },
-  //       { label: 'Favourites', route: '/favourites' },
-  //       { label: 'Pharmacies', route: '/allpharmacies' },
-  //       { label: 'Cart', route: '/cart' },
-  //     ];
-  //   } else if (this.isLoggedIn && this.userRole === 'Pharmacy') {
-  //     this.navbarItems = [
-  //       { label: 'Services', route: '/services' },
-  //       { label: 'Contact', route: '/contact' },
-  //       { label: 'About Us', route: '/aboutus' },
-  //       { label: 'Dashboard', route: '/pharmacy-dashboard' },
-  //     ];
-  //   } else {
-  //     this.navbarItems = [
-  //       { label: 'Services', route: '/services' },
-  //       { label: 'Contact', route: '/contact' },
-  //       { label: 'About Us', route: '/aboutus' },
-  //     ];
-  //   }
-  // }
 
   onLogout() {
     this.authService.logout();
@@ -130,7 +152,6 @@ export class NavBarComponent implements OnInit {
   @HostListener('document:click', ['$event'])
   onOutsideClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
-
     const clickedInsideBurger = target.closest('.hamburger');
     const clickedInsideNav = target.closest('.nav-links');
 
@@ -138,11 +159,12 @@ export class NavBarComponent implements OnInit {
       this.isMenuOpen = false;
     }
   }
-  // الكود ده عشان السيرش اللي في الناف عشان يعرض الاقتراحات اللي بتنزل وقت البحث محتاج يتعدل حسب ال api
+
   searchText: string = '';
   showDropdown = false;
   allOptions: string[] = [];
   filteredOptions: string[] = [];
+
   onSearchChange() {
     const input = this.searchText.trim();
     if (input === '') {
@@ -150,14 +172,14 @@ export class NavBarComponent implements OnInit {
       this.showDropdown = false;
     }
   }
+
   searchQuery: string = '';
   selectedSearchType: string = 'simple';
+
   performSearch() {
     if (this.selectedSearchType === 'simple') {
-      // Do the logic if Simple search Api Here
       console.log('Simple Search:', this.searchQuery);
     } else if (this.selectedSearchType === 'advanced') {
-      // Do the logic if Advanced search Api Here
       console.log('Advanced Search:', this.searchQuery);
     }
   }
