@@ -2,7 +2,7 @@
   padding-bottom: 6rem;
 }
 .section-header {
-  max-width: 75rem;
+  max-width: 85rem;
   margin: 0 auto;
   margin-bottom: 1.5rem;
   display: flex;
@@ -13,11 +13,11 @@
 .card-container {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 4rem;
   flex-wrap: wrap;
   position: relative;
   padding: 2rem 0;
-  max-width: 75rem;
+  max-width: 85rem;
   margin: 0 auto;
 }
 .custom-card {
@@ -40,7 +40,16 @@
   width: 60%;
   height: auto;
 }
-
+.custom-card-img-container {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
 .custom-icon {
   position: absolute;
   top: 15px;
@@ -48,14 +57,27 @@
   cursor: pointer;
 }
 .cart-icon {
-  position: absolute;
-  right: 30px;
-  bottom: 131px;
+  background-color: #ebfbee;
   cursor: pointer;
 }
-
+.priceandcart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+}
+.price {
+  color: #2b8a3e;
+  margin: 0 !important;
+}
+.pharmName {
+  color: #2b8a3e;
+}
 .custom-card-body {
   padding: 1.2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
 
 .custom-card-title {
@@ -73,8 +95,9 @@
 
 .center-card {
   transform: scale(1.2);
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease-in-out;
 }
+
 .Heading {
   font-size: 2.6rem;
   color: #2b8a3e;
@@ -164,8 +187,8 @@
 
 .flip-card {
   background-color: transparent;
-  width: 15rem;
-  height: 20rem;
+  width: 18rem;
+  height: 28rem;
   perspective: 150rem;
 }
 
@@ -255,4 +278,45 @@
   .arrow-btn.right {
     right: 1rem;
   }
+}
+.custom-card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2b8a3e; /* Slightly darker green to enhance readability */
+  margin-bottom: 0.8rem;
+  text-align: center;
+  line-height: 1.2;
+}
+.custom-card-text {
+  font-size: 0.9rem;
+  color: #555; /* A darker gray for readability */
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.custom-card-text strong {
+  color: #37b24d; /* Highlight the price in the main theme color */
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.custom-card-body p {
+  margin-bottom: 1rem; /* Add space between description and buttons */
+}
+.flip-button-1 {
+  background-color: #ebfbee;
+  color: #2b8a3e;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.flip-button-1:hover {
+  color: #fff;
+  background-color: #37b24d;
+  border-radius: 5px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }

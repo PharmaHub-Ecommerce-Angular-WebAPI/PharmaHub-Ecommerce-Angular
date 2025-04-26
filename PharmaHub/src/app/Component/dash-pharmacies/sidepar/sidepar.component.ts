@@ -10,9 +10,16 @@ import { PharmacyInfoComponent } from '../pharmacy-info/pharmacy-info.component'
 
 @Component({
   selector: 'app-sidepar',
-  imports : [CommonModule , FormsModule, RouterModule , AddproductComponent , RouterOutlet  , DeleteproductComponent , UpdateproductComponent , PharmacyInfoComponent],   
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    DeleteproductComponent,
+    UpdateproductComponent,
+    PharmacyInfoComponent,
+  ],
   templateUrl: './sidepar.component.html',
-  styleUrls: ['./sidepar.component.css']
+  styleUrls: ['./sidepar.component.css'],
 })
 export class SideparComponent {
   isMenuOpen = false;

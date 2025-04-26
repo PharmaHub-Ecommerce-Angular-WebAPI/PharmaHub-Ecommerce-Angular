@@ -53,13 +53,17 @@
           </div>
           <!-- cart icon and Card Name -->
           <div class="custom-card-body">
-            <div
-              class="row align-items-center align-content-center justify-content-between"
-            >
-              <h4 class="custom-card-title" style="text-align: center">
-                {{ card.name }}
-              </h4>
-              <button>
+            <h4 class="custom-card-title" style="text-align: center">
+              {{ card.name }}
+            </h4>
+            <!-- Price and Describtion -->
+            <!-- <p class="custom-card-text row">Price : {{card.price | currency : 'EGP'}}</p> -->
+
+            <div class="priceandcart">
+              <p class="price">
+                Price : <strong> {{ card.price }} EGP</strong>
+              </p>
+              <button style="background-color: #ebfbee">
                 <lord-icon
                   src="./addcart.json"
                   trigger="hover"
@@ -71,12 +75,6 @@
                 </lord-icon>
               </button>
             </div>
-            <!-- Price and Describtion -->
-            <!-- <p class="custom-card-text row">Price : {{card.price | currency : 'EGP'}}</p> -->
-            <p class="custom-card-text">
-              Price : <strong> {{ card.price }} EGP</strong>
-            </p>
-
             <p class="custom-card-text" style="text-align: center">
               {{ card.description.slice(0, 2).join(", ") }}
               @if (card.description.length > 2) {
@@ -98,7 +96,7 @@
                 [src]="card.imgPharm"
                 alt="Pharmacy Logo"
               />
-              <p class="custom-card-text row col-6 m-1">{{ card.pharmName }}</p>
+              <p class="pharmName row col-6 m-1">{{ card.pharmName }}</p>
             </div>
           </div>
         </div>

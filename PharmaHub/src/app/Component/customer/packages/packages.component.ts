@@ -18,13 +18,7 @@ import { AddcartserviceService } from '../../../services/addcartservice.service'
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ApiProductService],
-  imports: [
-    FormsModule,
-    CommonModule,
-    RouterModule,
-    MoveUpAnimateDirective,
-    DiscountPipe,
-  ],
+  imports: [FormsModule, CommonModule, RouterModule, MoveUpAnimateDirective],
   templateUrl: './packages.component.html',
   styleUrls: ['./packages.component.css'],
 })
