@@ -112,7 +112,178 @@
   }
 }
 /* Why choose Us section ?*/
-.WhyChooseUs {
-  width: 75rem;
+.whyChooseSection {
+  background-color: #f6fdf8;
+  padding: 4rem 1.5rem;
+}
+
+.whyChooseContainer {
+  max-width: 1200px;
   margin: 0 auto;
+  text-align: center;
+}
+
+.whyChooseContainer h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #2b8a3e;
+}
+
+.whyChooseContainer h2 span {
+  color: #1a5c2d;
+}
+
+.intro {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.featureCard {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.featureCard:hover {
+  transform: translateY(-8px);
+}
+
+.featureCard i {
+  font-size: 2rem;
+  color: #2b8a3e;
+  margin-bottom: 0.8rem;
+}
+
+.featureCard h3 {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.featureCard p {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* Responsive text */
+@media (max-width: 768px) {
+  .whyChooseContainer h2 {
+    font-size: 2rem;
+  }
+
+  .intro {
+    font-size: 1rem;
+  }
+
+  .featureCard {
+    padding: 1rem;
+  }
+}
+/* Testimonial */
+.testimonialSection {
+  padding: 4rem 2rem;
+  background-color: #f6fdf8;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #2b8a3e;
+}
+
+.carouselContainer {
+  position: relative;
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem 7rem;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.testimonialCard {
+  transition: opacity 0.6s ease-in-out;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.testimonialText {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.testimonialName {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #2b8a3e;
+}
+
+.testimonialRole {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+  color: #2b8a3e;
+  z-index: 10;
+  transition: background-color 0.3s;
+}
+
+.arrow:hover {
+  background-color: #2b8a3e;
+  color: white;
+}
+
+.arrow.left {
+  left: 1rem;
+}
+
+.arrow.right {
+  right: 1em;
+}
+
+@media (max-width: 768px) {
+  .carouselContainer {
+    padding: 2rem 1.5rem;
+  }
+
+  .arrow.left {
+    left: 0.5rem;
+  }
+
+  .arrow.right {
+    right: 0.5rem;
+  }
 }
