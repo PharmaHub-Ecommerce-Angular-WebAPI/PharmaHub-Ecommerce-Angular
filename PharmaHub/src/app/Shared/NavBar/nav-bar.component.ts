@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, of, Subject, switchMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ApiPharmacyService } from '../../services/api-pharmacy.service';
+import { SearchResult, SearchService } from '../../services/search.service';
 
 import { AddcartserviceService } from '../../services/addcartservice.service';
 interface NavbarItem {
@@ -43,7 +44,15 @@ export class NavBarComponent implements OnInit {
   showLogoutButton = false;
   showLogiutButton = true;
 
-  constructor(private router: Router, private authService: AuthService ,private apipharmacy: ApiPharmacyService , private cartService: AddcartserviceService) {}
+
+  
+  selectedSearchType: string = '';
+  searchTerm: string = '';
+  searchResults: SearchResult[] = [];
+  showDropdown: boolean = false;
+
+
+  constructor(private router: Router, private authService: AuthService ,private apipharmacy: ApiPharmacyService , private cartService: AddcartserviceService,private searchService: SearchService) {}
 
   private searchSubject = new Subject<string>();
   pharmacies: any[] = [];
@@ -84,26 +93,53 @@ const token = localStorage.getItem('token');
       this.showLogiutButton = false;
     }
 
-    this.searchSubject.pipe(
-      debounceTime(300),
-      distinctUntilChanged(),
-      switchMap((query) => {
-        if (query.length >= 5) {
-          return this.apipharmacy.getSearchPharmacies(query);
-        } else {
-          this.showDropdown = false;
-          return of([]);
-        }
-      })
-    ).subscribe((pharmacies) => {
-      this.pharmacies = pharmacies;
-      this.showDropdown = pharmacies.length > 0;
-    });
+    // this.searchSubject.pipe(
+    //   debounceTime(300),
+    //   distinctUntilChanged(),
+    //   switchMap((query) => {
+    //     if (query.length >= 5) {
+    //       return this.apipharmacy.getSearchPharmacies(query);
+    //     } else {
+    //       this.showDropdown = false;
+    //       return of([]);
+    //     }
+    //   })
+    // ).subscribe((pharmacies) => {
+    //   this.pharmacies = pharmacies;
+    //   this.showDropdown = pharmacies.length > 0;
+    // });
+    
   }
+
+
+
   
-  onSearchInput() {
-    this.searchSubject.next(this.searchQuery);
+  onSearch() {
+    if (!this.searchTerm.trim()) {
+      this.searchResults = [];
+      return;
+    }
+
+    const isAdvanced = this.selectedSearchType === 'advanced';
+    this.searchService.searchProducts(this.searchTerm, isAdvanced)
+      .subscribe(results => {
+        this.searchResults = results;
+        this.showDropdown = results.length > 0;
+      });
   }
+
+  clearSearch() {
+    this.searchTerm = '';
+    this.searchResults = [];
+    this.showDropdown = false;
+  }
+
+
+  
+  
+  // onSearchInput() {
+  //   this.searchSubject.next(this.searchQuery);
+  // }
   
  
 
@@ -132,8 +168,8 @@ const token = localStorage.getItem('token');
     } else if (this.userRole === 'Customer') {
       this.navbarItems = [
         { label: 'Services', route: '/Services' },
+        { label: 'Products', route: '/customer' },
         { label: 'Favourites', route: '/favourites' },
-        { label: 'Pharmacies', route: '/allpharmacies' },
         { label: 'About Us', route: '/AboutUs' },
         { label: 'Contact', route: '/contactus' },
       ];
@@ -167,27 +203,27 @@ const token = localStorage.getItem('token');
     }
   }
 
-  searchText: string = '';
-  showDropdown = false;
-  allOptions: string[] = [];
-  filteredOptions: string[] = [];
+  // searchText: string = '';
+  // showDropdown = false;
+  // allOptions: string[] = [];
+  // filteredOptions: string[] = [];
 
-  onSearchChange() {
-    const input = this.searchText.trim();
-    if (input === '') {
-      this.filteredOptions = [];
-      this.showDropdown = false;
-    }
-  }
+  // onSearchChange() {
+  //   const input = this.searchText.trim();
+  //   if (input === '') {
+  //     this.filteredOptions = [];
+  //     this.showDropdown = false;
+  //   }
+  // }
 
-  searchQuery: string = '';
-  selectedSearchType: string = 'simple';
+  // searchQuery: string = '';
+  // selectedSearchType: string = 'simple';
 
-  performSearch() {
-    if (this.selectedSearchType === 'simple') {
-      console.log('Simple Search:', this.searchQuery);
-    } else if (this.selectedSearchType === 'advanced') {
-      console.log('Advanced Search:', this.searchQuery);
-    }
-  }
+  // performSearch() {
+  //   if (this.selectedSearchType === 'simple') {
+  //     console.log('Simple Search:', this.searchQuery);
+  //   } else if (this.selectedSearchType === 'advanced') {
+  //     console.log('Advanced Search:', this.searchQuery);
+  //   }
+  // }
 }
