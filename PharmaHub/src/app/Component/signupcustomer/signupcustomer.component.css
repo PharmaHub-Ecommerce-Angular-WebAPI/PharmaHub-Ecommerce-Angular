@@ -2,7 +2,7 @@
   background: #f9fdfa;
 }
 .wrapper {
-  max-width: 27rem;
+  max-width: 55rem;
   margin: 2rem auto;
   background: #daffe0;
   padding: 2rem;
@@ -77,11 +77,14 @@ form .field input:focus::placeholder {
   width: 100%;
   border-radius: 15px;
   border: none;
-  position: relative;
+   position: relative; 
   background: linear-gradient(90deg, #2b8a3e, #30ac49, #23d546, #1ddd17);
   background-size: 300% 100%;
   background-position: left;
   transition: background-position 1s ease;
+
+ 
+  
 }
 .btn:hover {
   background-position: right;
@@ -91,7 +94,7 @@ form .btn input[type="submit"] {
   width: 100%;
   z-index: 1;
   position: relative;
-  background: none;
+  /* background: none; */
   color: #fff;
   border-radius: 15px;
   font-size: 20px;
@@ -116,4 +119,42 @@ form .btn input[type="submit"] {
   /* margin-top: 5px; */
   padding-left: 5px;
   min-height: 20px;
+}
+
+
+
+
+.fields {
+  display: grid;
+  gap: 2rem; 
+  grid-template-columns: repeat(2, 1fr); 
+}
+
+.field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.form-inner form .field input {
+  height: 3rem;
+  width: 100%;
+  outline: none;
+  padding-left: 15px;
+  border-radius: 15px;
+  border: 1px solid #23983bb4;
+  border-bottom-width: 2px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+
+.form-inner form .field input:focus {
+  border-color: #2b8a3e;
+}
+
+@media (max-width: 768px) {
+  .fields {
+    grid-template-columns: 1fr; 
+  }
 }

@@ -19,7 +19,7 @@
           }}</a>
         </li>
         <li class="smallscreenlogin">
-          <a href="#" class="link" [routerLink]="'/logincustomer'">
+          <a *ngIf="showLogiutButton" href="#" class="link" [routerLink]="'/logincustomer'">
             Login/SignUp</a
           >
         </li>

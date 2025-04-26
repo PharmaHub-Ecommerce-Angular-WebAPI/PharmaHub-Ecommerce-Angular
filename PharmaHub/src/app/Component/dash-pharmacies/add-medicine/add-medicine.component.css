@@ -114,3 +114,25 @@
     color: white;
   }
   
+
+  @media (max-width: 768px) {
+    .search-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .search-bar,
+    .quantity-input,
+    .search-btn {
+      width: 100%;
+    }
+  
+    .search-btn {
+      margin-top: 10px;
+    }
+  
+    .quantity-input {
+      margin-top: 10px;
+    }
+  }
+   

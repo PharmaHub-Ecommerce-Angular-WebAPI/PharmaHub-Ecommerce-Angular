@@ -57,7 +57,7 @@ export class SignupcustomerComponent {
       name: this.fullName };
     this.authService.sendVerificationCode(data).subscribe({
       next: (response) => {
-        console.log('Verification code sent successfully:', response);
+        alert('Verification code sent successfully:');
         this.isCodeSent = true;
       },
       error: (error) => {
