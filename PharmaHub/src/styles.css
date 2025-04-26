@@ -14,43 +14,19 @@ html {
 }
 
 :root {
-  /* --bg: #e0e5eb;
-  --shadow-dark: #bec3c8;
-  --shadow-light: #ffffff;
-  --primary: rgba(255, 255, 255, 0.85);
-  --gray: rgba(110, 110, 110, 0.93);
-  --text: #bbb2a9;
-  --text-2: #5d5c5c;
-  --bg-navbar: #596c7b;
-  --shadow-dark-nav: #4c5c69;
-  --shadow-light-nav: #667c8d; */
+  --primary: #2b8a3e;
+  --bg: #f6fdf8;
+  --text-2: #444;
+  --text-1: #2b8a3e;
 }
 
 body {
-  /* font-family: "Inter", system-ui, sans-serif; */
-  /* background: var(--bg);
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--bg);
   color: var(--text);
-  min-height: 100vh; */
+  min-height: 100vh;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--bg-navbar);
-  border-radius: 10px;
-  transition: background 0.3s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--bg-navbar);
-}
 @keyframes moveInUp {
   0% {
     opacity: 0;

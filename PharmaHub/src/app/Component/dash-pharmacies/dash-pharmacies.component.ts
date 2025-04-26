@@ -6,10 +6,8 @@ import { ProductsInstockComponent } from './products-instock/products-instock.co
 
 @Component({
   selector: 'app-dash-pharmacies',
-  imports: [SideparComponent , PharmacyInfoComponent , RouterOutlet , ProductsInstockComponent],
+  imports: [SideparComponent, RouterOutlet, ProductsInstockComponent],
   templateUrl: './dash-pharmacies.component.html',
-  styleUrl: './dash-pharmacies.component.css'
+  styleUrl: './dash-pharmacies.component.css',
 })
-export class DashPharmaciesComponent {
-  
-}
+export class DashPharmaciesComponent {}

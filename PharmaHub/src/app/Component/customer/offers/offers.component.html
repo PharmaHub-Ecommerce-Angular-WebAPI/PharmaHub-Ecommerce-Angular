@@ -40,17 +40,30 @@
                 class="custom-icon"
                 src="./heart.json"
                 trigger="hover"
-                style="width: 1.85rem; height: 1.8rem"
+                style="width: 1.5rem; height: 1.5rem"
               >
               </lord-icon>
             </div>
             <!-- cart icon and Card Name -->
             <div class="custom-card-body">
-              <div
-                class="row align-items-center align-content-center justify-content-between"
-              >
-                <h4 class="custom-card-title col-8">{{ card.name }}</h4>
-                <button>
+              <h4 class="custom-card-title">{{ card.name }}</h4>
+
+              <!-- <p class="custom-card-text row">Price : {{card.price | currency : 'EGP'}}</p> -->
+              <div class="prices">
+                <div class="old-price">
+                  <p
+                    style="text-decoration-line: line-through"
+                    class="expensive"
+                  >
+                    price: {{ card.price }}
+                  </p>
+                </div>
+                <div class="newPrice">
+                  <p class="cheap">
+                    {{ card.price | discount : card.DissPrice }} EG
+                  </p>
+                </div>
+                <button style="background-color: #ebfbee">
                   <lord-icon
                     src="./addcart.json"
                     trigger="hover"
@@ -61,17 +74,6 @@
                   >
                   </lord-icon>
                 </button>
-              </div>
-              <!-- <p class="custom-card-text row">Price : {{card.price | currency : 'EGP'}}</p> -->
-              <div class="row custom-card-text1">
-                <p class="col-2">Price:</p>
-                <p class="col-2" style="text-decoration-line: line-through">
-                  {{ card.price }}
-                </p>
-                <p class="col-2">
-                  <b>{{ card.price | discount : card.DissPrice }} </b>
-                </p>
-                <p class="col-2 custom-card-text">EGP</p>
               </div>
 
               <p class="custom-card-text2">
@@ -95,7 +97,7 @@
                   [src]="card.imgPharm"
                   alt="Pharmacy Logo"
                 />
-                <p class="custom-card-text1 row col-6 m-1">
+                <p class="pharmName row col-6 m-1">
                   {{ card.pharmName }}
                 </p>
               </div>
