@@ -26,10 +26,80 @@
     </div>
   </div>
 </div>
-<!-- <section class="WhyChooseUs">
-  <div class="Text-box">
-    <h2>Why Choose Us?</h2>
+<section class="whyChooseSection" appMoveUpAnimate>
+  <div class="whyChooseContainer">
+    <h2>Why Choose <span>PharmaHub</span>?</h2>
+    <p class="intro">
+      PharmaHub is your all-in-one platform for trusted pharmacies, easy
+      medicine search, and professional stock management.
+    </p>
+
+    <div class="featuresGrid">
+      <!-- Row 1 -->
+      <div class="featureCard">
+        <i class="fas fa-truck"></i>
+        <h3>Fast Delivery</h3>
+        <p>Swift and secure delivery to your home.</p>
+      </div>
+      <div class="featureCard">
+        <i class="fas fa-certificate"></i>
+        <h3>Certified Products</h3>
+        <p>Only 100% authentic and verified items.</p>
+      </div>
+      <div class="featureCard">
+        <i class="fas fa-search"></i>
+        <h3>Smart Search</h3>
+        <p>Quickly find the medicine or product you need.</p>
+      </div>
+      <div class="featureCard">
+        <i class="fas fa-headset"></i>
+        <h3>24/7 Support</h3>
+        <p>Always here to help you—day or night.</p>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="featureCard">
+        <i class="fas fa-box-open"></i>
+        <h3>Stock Management</h3>
+        <p>Pharmacists can manage products and inventory easily.</p>
+      </div>
+      <div class="featureCard">
+        <i class="fas fa-plus-square"></i>
+        <h3>Add Medicines</h3>
+        <p>Upload and manage your pharmacy’s product catalog.</p>
+      </div>
+      <div class="featureCard">
+        <i class="fas fa-sign-in-alt"></i>
+        <h3>Join PharmaHub</h3>
+        <p>Register your pharmacy and become one of our trusted partners.</p>
+      </div>
+      <div class="featureCard">
+        <i class="fas fa-box"></i>
+        <h3>Offer Packages</h3>
+        <p>Create special deals and packages for your customers.</p>
+      </div>
+    </div>
   </div>
-</section> -->
+</section>
+
+<div class="testimonialSection" appMoveUpAnimate>
+  <h2 class="sectionTitle">What Our Users Say</h2>
+  <div class="carouselContainer">
+    <button class="arrow left" (click)="prevTestimonial()">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <div class="testimonialCard">
+      <img [src]="testimonials[currentIndex].avatar" class="avatar" />
+      <p class="testimonialText">"{{ testimonials[currentIndex].text }}"</p>
+      <p class="testimonialName">{{ testimonials[currentIndex].name }}</p>
+      <p class="testimonialRole">{{ testimonials[currentIndex].role }}</p>
+    </div>
+
+    <button class="arrow right" (click)="nextTestimonial()">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+</div>
 
 <app-footer-marquee> </app-footer-marquee>

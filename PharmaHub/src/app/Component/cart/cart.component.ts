@@ -4,11 +4,12 @@ import { ApiProductService } from '../../services/api-product.service';
 import { loadStripe, Stripe, StripeCardElement } from '@stripe/stripe-js';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
 })

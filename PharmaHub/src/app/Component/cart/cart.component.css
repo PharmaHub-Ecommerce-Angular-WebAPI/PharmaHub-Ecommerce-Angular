@@ -279,3 +279,98 @@ span {
   padding: 0 4px;
   color: #333;
 }
+/* ---------------- RESPONSIVE DESIGN ---------------- */
+
+/* Medium screens (tablets and below) */
+@media (max-width: 1024px) {
+  .sectionContainer {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .section-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .Card-Details {
+    height: auto;
+    padding: 1.5rem;
+  }
+
+  .cardItemDetails {
+    gap: 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cartItems {
+    gap: 1rem;
+  }
+
+  .Item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .image-box {
+    width: 100%;
+    height: auto;
+  }
+
+  .checkout {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .cardIcons {
+    flex-direction: column;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 600px) {
+  .CartHeading,
+  .cardsHeading {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .ContinueShoppingButton {
+    font-size: 1rem;
+    display: block;
+    text-align: center;
+  }
+
+  .Item {
+    padding: 1rem;
+  }
+
+  .cardContainer,
+  .CardName,
+  .CardExpiry-Cvv {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .Cardinput,
+  .Edate,
+  .secretcvv {
+    width: 100%;
+  }
+
+  .Subtotal,
+  .Total {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .section-grid {
+    gap: 2rem;
+  }
+
+  span {
+    font-size: 1rem;
+  }
+}

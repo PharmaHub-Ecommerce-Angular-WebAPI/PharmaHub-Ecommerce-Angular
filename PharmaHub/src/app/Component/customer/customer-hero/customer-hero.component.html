@@ -7,8 +7,18 @@
         Your journey to better health starts now.
       </p>
 
-      <a href="#" class="btn btn-full margin-right-sm">Shop Now</a>
-      <a href="#" class="btn btn-outline">Discover More &darr;</a>
+      <a
+        href="#"
+        class="btn btn-full margin-right-sm"
+        [routerLink]="'/allpharmacies'"
+        >Shop Now</a
+      >
+      <a
+        href="#target-section"
+        class="btn btn-outline"
+        [routerLink]="'/alloffers'"
+        >Discover More &darr;</a
+      >
     </div>
     <div class="Hero-Image-box">
       <img [src]="imgUrl" class="Hero-img" alt="a bowl of pills" />

@@ -20,7 +20,6 @@ import { AboutUsComponent } from '../about-us/about-us.component';
     PharmaciesEntryComponent,
     OffersEnteryComponent,
     FooterMarqueeComponent,
-    AboutUsComponent,
   ],
   templateUrl: './customer.component.html',
   styleUrl: './customer.component.css',

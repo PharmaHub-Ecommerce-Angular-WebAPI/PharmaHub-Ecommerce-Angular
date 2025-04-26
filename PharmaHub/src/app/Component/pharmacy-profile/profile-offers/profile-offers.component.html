@@ -17,15 +17,28 @@
           </div>
           <div class="custom-card-body">
             <h5 class="custom-card-title">{{ card.name }}</h5>
-            <div class="row custom-card-text1">
-              <p class="col-3">Price:</p>
-              <p class="col-2" style="text-decoration-line: line-through">
-                {{ card.price }}
-              </p>
-              <p class="col-2">
-                <b>{{ card.price | discount : card.DissPrice }} </b>
-              </p>
-              <p class="col-1 custom-card-text">EGP</p>
+            <div class="prices">
+              <div class="ol-price">
+                <p class="expensive" style="text-decoration-line: line-through">
+                  Price: {{ card.price }}
+                </p>
+              </div>
+              <div class="newPrice">
+                <p class="cheap">
+                  <b>{{ card.price | discount : card.DissPrice }} EGP</b>
+                </p>
+              </div>
+              <button style="background-color: #ebfbee">
+                <lord-icon
+                  src="./addcart.json"
+                  trigger="hover"
+                  style="width: 1.5rem; height: 1.5rem"
+                  class="col-2 cart-icon"
+                  (click)="addToCart(card)"
+                  (click)="alertadd()"
+                >
+                </lord-icon>
+              </button>
             </div>
             <p class="custom-card-text">
               {{ card.description.slice(0, 2).join(", ") }}
@@ -38,17 +51,6 @@
               </button>
               }
             </p>
-            <button>
-              <lord-icon
-                src="./addcart.json"
-                trigger="hover"
-                style="width: 1.5rem; height: 1.5rem"
-                class="col-2 cart-icon"
-                (click)="addToCart(card)"
-                (click)="alertadd()"
-              >
-              </lord-icon>
-            </button>
             <div
               class="px-2 row align-items-center justify-content-center pharma-logo-container"
             >
@@ -74,9 +76,6 @@
 
   <!-- Pagination -->
   <nav class="pagination-nav text-center mt-4">
-    <div class="backButton" style="max-width: 10rem">
-      <a href="#" class="Back-Button" [routerLink]="['/customer']">Back</a>
-    </div>
     <button
       *ngFor="let page of [].constructor(totalPages); let i = index"
       class="btn mx-1 page"
