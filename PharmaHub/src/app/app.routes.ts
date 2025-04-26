@@ -29,6 +29,7 @@ import { ProfileHealthDevicesComponent } from './Component/pharmacy-profile/prof
 import { ProfileOffersComponent } from './Component/pharmacy-profile/profile-offers/profile-offers.component';
 import { ServicespageComponent } from './Component/servicespage/servicespage.component';
 import { ContactUsComponent } from './Component/contact-us/contact-us.component';
+import { OrderBoxComponent } from './Component/dash-pharmacies/order-box/order-box.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -97,6 +98,7 @@ export const routes: Routes = [
 
       { path: 'updateproduct', component: UpdateproductComponent },
       { path: 'deleteproduct', component: DeleteproductComponent },
+      { path: 'orderbox', component: OrderBoxComponent },
     ],
   },
 ];

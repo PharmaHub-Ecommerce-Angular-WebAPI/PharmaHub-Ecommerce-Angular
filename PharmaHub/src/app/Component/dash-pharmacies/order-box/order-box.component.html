@@ -1,0 +1,51 @@
+<div class="container">
+    <h2>Pharmacy Orders</h2>
+    
+    <div *ngIf="isLoading" class="loading">Loading orders...</div>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  
+    <div class="orders-container" *ngIf="!isLoading && !errorMessage">
+      <div *ngIf="orders.length === 0" class="no-orders">No orders found</div>
+  
+      <div class="order-card" *ngFor="let order of orders" [class.pending]="order.orderStatus === 'Pending'">
+        <div class="order-header" (click)="toggleOrder(order)">
+          <div class="order-summary">
+            <span class="order-id">Order #{{ order.id | slice:0:8 }}</span>
+            <span class="customer-name">{{ order.customerName }}</span>
+            <span class="customer-location">{{ order.customerLocation }}</span>
+            <span class="payment-method">{{ order.paymentMethod }}</span>
+            <span class="total-amount">${{ order.totalAmount }}</span>
+            <span class="order-status" [class.pending]="order.orderStatus === 'Pending'">{{ order.orderStatus }}</span>
+          </div>
+          <div class="toggle-icon">
+            <span>{{ order.expanded ? '▼' : '▶' }}</span>
+          </div>
+        </div>
+  
+        <div class="order-details" *ngIf="order.expanded">
+          <div class="detail-row">
+            <span class="detail-label">Order ID:</span>
+            <span class="detail-value">{{ order.id }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Date:</span>
+            <span class="detail-value">{{ formatDate(order.createdAt) }}</span>
+          </div>
+          
+          <h3 class="products-title">Products</h3>
+          <div class="products-list">
+            <div class="product-item" *ngFor="let product of order.products">
+              <span class="product-name">{{ product.productName }}</span>
+              <span class="product-amount">x{{ product.amount }}</span>
+            </div>
+          </div>
+  
+          <div class="order-actions" *ngIf="order.orderStatus === 'Pending'">
+            <button class="confirm-button" (click)="confirmOrder(order.id); $event.stopPropagation()">
+              Confirm Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
