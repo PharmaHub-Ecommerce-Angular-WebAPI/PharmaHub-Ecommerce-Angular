@@ -5,15 +5,11 @@
     </div>
     <div class="form-container">
       <div class="form-inner">
-
-       <form class="signup" (ngSubmit)="signup(); onSubmit(formRef)" #signupForm="ngForm" #formRef="ngForm">
-       
+        <form class="signup" (ngSubmit)="signup(); onSubmit(formRef)" #signupForm="ngForm" #formRef="ngForm">
           <div class="fields">
 
-            <!-- Full Name -->
+            <!-- Full Name and Phone Number -->
             <div class="field">
-
-
               <input
                 type="text"
                 placeholder="Full Name"
@@ -24,28 +20,14 @@
                 [(ngModel)]="fullName"
                 #fullNameField="ngModel"
               />
-              <!-- Error messages -->
-              <div
-                *ngIf="fullNameField.invalid && fullNameField.touched"
-                class="error-message"
-              >
-                <p *ngIf="fullNameField.errors?.['required']">
-                  Full Name is required.
-                </p>
-                <p *ngIf="fullNameField.errors?.['maxlength']">
-                  Full Name must be no more than 100 characters.
-                </p>
-                <p *ngIf="fullNameField.errors?.['pattern']">
-                  Full Name must contain only letters and spaces.
-                </p>
+              <div *ngIf="fullNameField.invalid && fullNameField.touched" class="error-message">
+                <p *ngIf="fullNameField.errors?.['required']">Full Name is required.</p>
+                <p *ngIf="fullNameField.errors?.['maxlength']">Full Name must be no more than 100 characters.</p>
+                <p *ngIf="fullNameField.errors?.['pattern']">Full Name must contain only letters and spaces.</p>
               </div>
-
             </div>
 
-            <!-- Phone Number -->
             <div class="field">
-
-
               <input
                 type="text"
                 placeholder="Phone Number"
@@ -57,37 +39,29 @@
                 [(ngModel)]="phoneNumber"
                 #phoneNumberField="ngModel"
               />
-              <!-- Error messages -->
-              <div
-                *ngIf="phoneNumberField.invalid && phoneNumberField.touched"
-                class="error-message"
-              >
-                <p *ngIf="phoneNumberField.errors?.['required']">
-                  Phone Number is required.
-                </p>
-                <p *ngIf="phoneNumberField.errors?.['minlength']">
-                  Phone Number must be exactly 14 digits.
-                </p>
-                <p *ngIf="phoneNumberField.errors?.['maxlength']">
-                  Phone Number must be exactly 14 digits.
-                </p>
-                <p *ngIf="phoneNumberField.errors?.['pattern']">
-                  Phone Number must contain only numbers.
-                </p>
+              <div *ngIf="phoneNumberField.invalid && phoneNumberField.touched" class="error-message">
+                <p *ngIf="phoneNumberField.errors?.['required']">Phone Number is required.</p>
+                <p *ngIf="phoneNumberField.errors?.['minlength']">Phone Number must be exactly 14 digits.</p>
+                <p *ngIf="phoneNumberField.errors?.['maxlength']">Phone Number must be exactly 14 digits.</p>
+                <p *ngIf="phoneNumberField.errors?.['pattern']">Phone Number must contain only numbers.</p>
               </div>
-
             </div>
 
-            <!-- Email input -->
+            <!-- Email and Country -->
             <div class="field">
-              <input type="email" name="signupemail" placeholder="Email Address" [(ngModel)]="signupemail"
-                #signupemailField="ngModel" required />
+              <input
+                type="email"
+                name="signupemail"
+                placeholder="Email Address"
+                [(ngModel)]="signupemail"
+                #signupemailField="ngModel"
+                required
+              />
               <div *ngIf="signupemailField.invalid && signupemailField.touched" class="error-message">
                 <p *ngIf="signupemailField.errors?.['required']">Email is required.</p>
               </div>
             </div>
 
-            <!-- Selected country -->
             <div class="field">
               <select
                 [(ngModel)]="selectedCountry"
@@ -101,7 +75,7 @@
               </select>
             </div>
 
-            <!-- Selected city -->
+            <!-- City and Location -->
             <div class="field">
               <select
                 [(ngModel)]="selectedCity"
@@ -114,7 +88,6 @@
               </select>
             </div>
 
-            <!-- Location input -->
             <div class="field">
               <input
                 type="text"
@@ -131,7 +104,7 @@
               </div>
             </div>
 
-            <!-- Password input -->
+            <!-- Password and Confirm Password -->
             <div class="field">
               <input
                 type="password"
@@ -144,13 +117,10 @@
               />
               <div *ngIf="signupPasswordField.invalid && signupPasswordField.touched" class="error-message">
                 <p *ngIf="signupPasswordField.errors?.['required']">Password is required.</p>
-                <p *ngIf="signupPasswordField.errors?.['pattern']">
-                  Password must be at least 10 characters and include uppercase, lowercase, number, and special character.
-                </p>
+                <p *ngIf="signupPasswordField.errors?.['pattern']">Password must be at least 10 characters and include uppercase, lowercase, number, and special character.</p>
               </div>
             </div>
 
-            <!-- Confirm password -->
             <div class="field">
               <input
                 type="password"
@@ -171,14 +141,22 @@
             </div>
 
             <div class="btn">
+              <button type="submit" [disabled]="!isCodeSent || !isCodeVerified || !signupForm.valid || signupPassword !== confirmPassword"
+              *ngIf="isCodeSent && isCodeVerified" style="background: transparent ;
+              color: #fff;
+              font-size: 20px;
+              font-weight: 500;">Signup</button>
 
-              <button type="submit" [disabled]="!isCodeSent || !isCodeVerified || !signupForm.valid || signupPassword !== confirmPassword">Signup</button>
-              
-              <button type="button" (click)="sendVerificationCode()" *ngIf="!isCodeSent">Send Verification Code</button>
-              <button type="button" (click)="verifyCode()" *ngIf="isCodeSent && !isCodeVerified">Verify Code</button>
-
+              <button type="button"  (click)="sendVerificationCode()" *ngIf="!isCodeSent" style="background: transparent;
+              color: #fff;
+              font-size: 20px;
+              font-weight: 500;
+              ">Send Verification Code</button>
+              <button type="button" (click)="verifyCode()" *ngIf="isCodeSent && !isCodeVerified" style="background: transparent;
+              color: #fff;
+              font-size: 20px;
+              font-weight: 500; ">Verify Code</button>
             </div>
-
           </div>
         </form>
       </div>
