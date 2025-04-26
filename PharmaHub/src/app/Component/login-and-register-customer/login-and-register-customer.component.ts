@@ -19,9 +19,11 @@ export class LoginAndRegisterCustomerComponent {
   loginemail: string = '';
   loginPassword: string = '';
   confirmPassword: string = '';
-
-  constructor(private authService: AuthService, private router: Router , private toastr: ToastrService) {}
-
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
   login() {
     const loginData = {
       email: this.loginemail,
@@ -50,7 +52,6 @@ export class LoginAndRegisterCustomerComponent {
         localStorage.setItem('userName', userName);
         localStorage.setItem('userId', userId);
         alert(`Welcome, ${userName}!`);
-     
         if (role === 'Customer') {
           window.location.href = '/customer';
         } else if (role === 'Pharmacy') {
