@@ -144,3 +144,31 @@ label {
   font-size: 1rem;
   color: #2b8a3e;
 }
+
+@media (max-width: 768px) {
+  .fields {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+
+  .form-inner form .field input {
+    height: 2.5rem;
+  }
+
+  .hours24Container {
+    gap: 0.5rem; 
+    font-size: 1rem; 
+  }
+
+  .btn {
+    height: 45px; 
+  }
+
+  .custom-file {
+    font-size: 1rem;
+  }
+  
+  .form-inner form .field input:focus {
+    font-size: 16px;
+  }
+}
