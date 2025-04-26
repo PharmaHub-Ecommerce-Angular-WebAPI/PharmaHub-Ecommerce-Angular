@@ -28,49 +28,54 @@
     </nav>
   </div>
   <!-- your-component.component.html -->
-<div class="right-section">
-  <div class="search-dropdown-container" *ngIf="userRole == 'Customer'">
-    <div class="input-group">
-      <input
-        type="text"
-        placeholder="Search for a pharmacy"
-        class="search-bar"
-        [(ngModel)]="searchTerm"
-        (input)="onSearch()"
-      />
-      <i class="fas fa-search search-icon"></i>
-      <select
-        [(ngModel)]="selectedSearchType"
-        class="custom-select"
-        style="
-          width: 2.9rem;
-          background-color: #d8fddf;
-          opacity: 60%;
-          appearance: none;
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          padding-right: 20px;
-        "
-        (change)="onSearch()"
-      >
-        <option value=""></option>
-        <option value="simple">Simple Search</option>
-        <option value="advanced">Advanced Search</option>
-      </select>
-      <ul class="dropdown-list" *ngIf="showDropdown && searchResults.length">
-        <li class="dropdown-item" *ngFor="let result of searchResults">
-          <div class="search-result-item">
-            <img [src]="result.productImageUrl" alt="Product image" class="product-image">
-            <div class="product-info">
-              <span class="product-name">{{ result.productName }}</span>
-              <span class="product-price">{{ result.productPrice | currency }}</span>
-              <span class="pharmacy-name">{{ result.pharmacyName }}</span>
+  <div class="right-section">
+    <div class="search-dropdown-container" *ngIf="userRole == 'Customer'">
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="Search for a pharmacy"
+          class="search-bar"
+          [(ngModel)]="searchTerm"
+          (input)="onSearch()"
+        />
+        <i class="fas fa-search search-icon"></i>
+        <select
+          [(ngModel)]="selectedSearchType"
+          class="custom-select"
+          style="
+            width: 2.9rem;
+            background-color: #d8fddf;
+            opacity: 60%;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            padding-right: 20px;
+          "
+          (change)="onSearch()"
+        >
+          <option value=""></option>
+          <option value="simple">Simple Search</option>
+          <option value="advanced">Advanced Search</option>
+        </select>
+        <ul class="dropdown-list" *ngIf="showDropdown && searchResults.length">
+          <li 
+            class="dropdown-item" 
+            *ngFor="let result of searchResults"
+            (click)="selectProduct(result)"
+          >
+            <div class="search-result-item">
+              <img [src]="result.productImageUrl" alt="Product image" class="product-image">
+              <div class="product-info">
+                <span class="product-name">{{ result.productName }}</span>
+                <span class="product-price">{{ result.productPrice | currency }}</span>
+                <span class="pharmacy-name">{{ result.pharmacyName }}</span>
+              </div>
             </div>
-          </div>
-        </li>
-      </ul>
-    </div>     
-  </div>
+          </li>
+        </ul>
+      </div>     
+    </div>
+ 
 
     <a
       href="#"

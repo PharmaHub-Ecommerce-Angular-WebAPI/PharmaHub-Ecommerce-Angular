@@ -134,9 +134,27 @@ const token = localStorage.getItem('token');
     this.showDropdown = false;
   }
 
+  selectProduct(result: SearchResult) {
+    // Save pharmacyId to local storage
+    localStorage.setItem('pharmacyId', result.pharmacyId);
+    
+    // Navigate to pharmacy profile
+    this.router.navigate(['/pharmacyprofile']).then(() => {
+      // After navigation succeeds, do a hard reload
+      window.location.reload();
+    });
 
+    
+    window.location.reload();
+    // Close the dropdown
+    this.showDropdown = false;
+    this.searchTerm = '';
+    this.searchResults = [];
+  }
   
-  
+  ngOnDestroy() {
+    localStorage.removeItem('pharmacyId');
+  }
   // onSearchInput() {
   //   this.searchSubject.next(this.searchQuery);
   // }
