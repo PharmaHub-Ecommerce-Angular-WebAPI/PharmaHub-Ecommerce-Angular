@@ -22,7 +22,7 @@
 }
 .fields {
   display: grid;
-  gap: 4rem;
+  gap: 2rem;
 }
 .field {
   width: 100%;

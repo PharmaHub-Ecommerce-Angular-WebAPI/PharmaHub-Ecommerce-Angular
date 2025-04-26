@@ -1,6 +1,6 @@
 <!-- sign up  -->
 <!-- //////////////////////////////////////////////////////// -->
-<section >
+<section>
   <div class="wrapper">
     <div class="title-text">
       <div class="title signup">Join PharmaHub as a Licensed Pharmacist</div>
@@ -8,7 +8,12 @@
     <div class="form-container">
       <div class="form-inner">
         <!-- <form class="signup" #formRef="ngForm" (ngSubmit)="onSubmit(formRef)"> -->
-          <form class="signup" (ngSubmit)="signup(); onSubmit(formRef)" #signupForm="ngForm" #formRef="ngForm">
+        <form
+          class="signup"
+          (ngSubmit)="signup(); onSubmit(formRef)"
+          #signupForm="ngForm"
+          #formRef="ngForm"
+        >
           <div class="fields">
             <!-- Full Name -->
             <div class="field">
@@ -66,7 +71,7 @@
                   Phone Number must be exactly 14 digits.
                 </p>
                 <p *ngIf="phoneNumberField.errors?.['pattern']">
-                  Phone Number must contain only numbers.
+                  type the plus sign first (+).
                 </p>
               </div>
             </div>
@@ -78,7 +83,6 @@
                 required
                 name="signupemail"
                 [(ngModel)]="signupemail"
-              
                 #signupemailField="ngModel"
               />
               <!-- Email Validation -->
@@ -213,17 +217,17 @@
 
             <!-- open time -->
             <!-- 24 Hours Checkbox -->
-            <p
-              style="
-                text-align: center;
-                font-size: 1.5rem;
-                color: #2b8a3e;
-                font-weight: 500;
-              "
-            >
-              Working Hours
-            </p>
             <div class="hours24Container">
+              <p
+                style="
+                  text-align: center;
+                  font-size: 1.5rem;
+                  color: #2b8a3e;
+                  font-weight: 500;
+                "
+              >
+                Working Hours
+              </p>
               <label for="is24Hours">
                 <input
                   type="checkbox"
@@ -301,8 +305,8 @@
                   Password is required.
                 </p>
                 <p *ngIf="signupPasswordField.errors?.['pattern']">
-                  Password must be at least 10 characters and include uppercase,
-                  lowercase, number, and special character.
+                  at least 10 characters include uppercase, lowercase, number,
+                  and special character.
                 </p>
               </div>
             </div>
@@ -389,16 +393,62 @@
                 "
               />
             </div> -->
-<!-- Verification Code input -->
-<div *ngIf="isCodeSent" class="field">
-  <input type="text" placeholder="Enter Verification Code" required [(ngModel)]="verificationCode" name="verificationCode" />
-</div>
+            <!-- Verification Code input -->
+            <div *ngIf="isCodeSent" class="field">
+              <input
+                type="text"
+                placeholder="Enter Verification Code"
+                required
+                [(ngModel)]="verificationCode"
+                name="verificationCode"
+              />
+            </div>
             <div class="btn">
+              <button
+                type="submit"
+                [disabled]="
+                  !isCodeSent ||
+                  !isCodeVerified ||
+                  !signupForm.valid ||
+                  signupPassword !== confirmPassword
+                "
+                *ngIf="isCodeSent && isCodeVerified"
+                style="
+                  background: transparent;
+                  color: #fff;
+                  font-size: 20px;
+                  font-weight: 500;
+                "
+              >
+                Signup
+              </button>
 
-              <button type="submit" [disabled]="!isCodeSent || !isCodeVerified || !signupForm.valid || formRef.invalid || signupPassword !== confirmPassword">Signup</button>
-              <button type="button" (click)="sendVerificationCode()" *ngIf="!isCodeSent">Send Verification Code</button>
-              <button type="button" (click)="verifyCode()" *ngIf="isCodeSent && !isCodeVerified">Verify Code</button>
-
+              <button
+                type="button"
+                (click)="sendVerificationCode()"
+                *ngIf="!isCodeSent"
+                style="
+                  background: transparent;
+                  color: #fff;
+                  font-size: 20px;
+                  font-weight: 500;
+                "
+              >
+                Send Verification Code
+              </button>
+              <button
+                type="button"
+                (click)="verifyCode()"
+                *ngIf="isCodeSent && !isCodeVerified"
+                style="
+                  background: transparent;
+                  color: #fff;
+                  font-size: 20px;
+                  font-weight: 500;
+                "
+              >
+                Verify Code
+              </button>
             </div>
           </div>
         </form>
